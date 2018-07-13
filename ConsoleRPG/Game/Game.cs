@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleRPG.Core
+namespace ConsoleRPG.Game
 {
-    class Test
+    class Game
     {
-        public string Name { get; set; }
     }
 }

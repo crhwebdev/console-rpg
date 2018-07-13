@@ -1,7 +1,7 @@
-﻿using ConsoleRPG.UI;
+﻿using ConsoleRPG.Game;
 using Xunit;
 
-namespace ConsoleRPG.Tests.UI
+namespace ConsoleRPG.Tests.Game
 {
     public class GameTest
     {

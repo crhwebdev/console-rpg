@@ -1,4 +1,4 @@
-﻿using ConsoleRPG.Core;
+﻿using ConsoleRPG.UI;
 using Xunit;
 
 namespace ConsoleRPG.Tests.UI
