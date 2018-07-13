@@ -8,7 +8,7 @@ namespace ConsoleRPG
         {            
             while (true)
             {
-
+                Console.ReadLine();
                 break;
                 
             }
