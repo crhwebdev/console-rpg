@@ -3,7 +3,7 @@ using Xunit;
 
 namespace ConsoleRPG.Tests
 {
-    public class UserInterfaceTest
+    public class ScreenTest
     {
         [Fact]
         public void TestTest()
