@@ -5,6 +5,24 @@ using System.Text;
 namespace ConsoleRPG.System
 {
     class Message
-    {
+    {        
+        public List<string> Content { get; private set; }
+                    
+        public Message()
+        {
+            Content = new List<string>();
+        }
+
+        public Message(string message)
+        {
+            Content = new List<string> { message };
+        }
+
+        public Message(List<string> messages)
+        {
+            Content = messages;
+        }
+
+
     }
 }

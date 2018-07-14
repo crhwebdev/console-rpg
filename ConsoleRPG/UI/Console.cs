@@ -6,6 +6,7 @@ namespace ConsoleRPG.UI
 {
     class ConsoleTest
     {
+
      
     }
 }
