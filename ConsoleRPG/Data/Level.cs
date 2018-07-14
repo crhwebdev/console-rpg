@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleRPG.Game
+namespace ConsoleRPG.Data
 {
-    class Game
+    class Level
     {
     }
 }

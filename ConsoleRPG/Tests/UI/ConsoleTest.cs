@@ -1,9 +1,10 @@
-﻿using ConsoleRPG.UI;
-using Xunit;
+﻿using Xunit;
+using ConsoleRPG.UI;
+
 
 namespace ConsoleRPG.Tests.UI
 {
-    public class UserInterfaceTest
+    public class ConsoleTest
     {
         [Fact]
         public void TestTest()

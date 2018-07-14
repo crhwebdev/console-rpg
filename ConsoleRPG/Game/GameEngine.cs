@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleRPG.UI
+namespace ConsoleRPG.Game
 {
-    class UserInterface
+    class GameEngine
     {
     }
 }

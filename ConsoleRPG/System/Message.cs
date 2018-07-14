@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleRPG.UI
+namespace ConsoleRPG.System
 {
-    class Screen
+    class Message
     {
     }
 }
