@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleRPG.System
 {
-    class Message
+    public class Message
     {        
         public List<string> Content { get; private set; }
                     

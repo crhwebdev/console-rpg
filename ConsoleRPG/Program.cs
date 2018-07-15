@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleRPG.UI;
+using System;
 
 namespace ConsoleRPG
 {
@@ -6,6 +7,8 @@ namespace ConsoleRPG
     {
         static void Main(string[] args)
         {
+            //create new instance of GameConsole
+         
             //Start Game
 
             while (true)
