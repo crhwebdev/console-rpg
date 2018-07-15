@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
+//Deprecated
+
 namespace ConsoleRPG.System
 {
     public class DisplayText : IEnumerable
