@@ -50,11 +50,11 @@ namespace ConsoleRPG.UI
             _displayBuffer = null;
         }
 
-        public Message GetUserInput(string cursor)
+        public string GetUserInput(string cursor)
         {
             _console.Write(cursor);
-            var input = _console.ReadLine();
-            return new Message(input);
+            return _console.ReadLine();
+            
             
         }
      

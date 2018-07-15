@@ -26,7 +26,7 @@ namespace ConsoleRPG.Game
                 _console.Update();
                 var input = _console.GetUserInput("What is your command?");
 
-                if(input.Content.Count > 0 && input.Content[0] == "q")
+                if(input == "q")
                 {
                     break;
                 }

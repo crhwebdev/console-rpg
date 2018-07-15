@@ -62,10 +62,10 @@ namespace ConsoleRPG.Tests.UI
         }
 
         [Fact]
-        public void GetUserInputReturnsMessage()
+        public void GetUserInputReturnsString()
         {
             var message = _gameConsole.GetUserInput("");
-            Assert.IsType<Message>(message);
+            Assert.IsType<string>(message);
         }
         
     }
