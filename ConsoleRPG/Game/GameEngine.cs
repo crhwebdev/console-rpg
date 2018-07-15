@@ -19,7 +19,7 @@ namespace ConsoleRPG.Game
         
         public static void Start()
         {
-            _console.SetDisplay("Game Engine starting....");
+            _console.SetDisplay(new DisplayTextLine("Game Engine starting....", ConsoleColor.Red));
 
             while (true)
             {

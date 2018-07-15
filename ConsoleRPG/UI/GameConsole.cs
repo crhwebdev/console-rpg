@@ -26,8 +26,10 @@ namespace ConsoleRPG.UI
             if(_displayBuffer != null)
             {
                 foreach (DisplayTextLine line in _displayBuffer)
-                {
+                {                    
+                    Console.ForegroundColor = line.Color;                    
                     _console.WriteLine(line.Text);
+                    Console.ResetColor();
                 }
 
                 ClearDisplay();
@@ -38,6 +40,11 @@ namespace ConsoleRPG.UI
         public void SetDisplay(DisplayText contents)
         {
             _displayBuffer = contents;
+        }
+
+        public void SetDisplay(DisplayTextLine line)
+        {
+            _displayBuffer = new DisplayText(line);
         }
 
         public void SetDisplay(string contents)

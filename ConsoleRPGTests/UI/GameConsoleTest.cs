@@ -1,14 +1,14 @@
 ﻿using Xunit;
 using System;
+using System.Linq;
 using System.IO;
 using System.Collections.Generic;
 using ConsoleRPG.UI;
-using ConsoleRPG.Tests.Mocks;
+using ConsoleRPGTests.Mocks;
 using ConsoleRPG.System;
 
-namespace ConsoleRPG.Tests.UI
+namespace ConsoleRPGTests.UI
 {
-
     public class GameConsoleTest
     {
         //Console displays text passed as a message
@@ -26,7 +26,7 @@ namespace ConsoleRPG.Tests.UI
         }
 
         private void ClearTest()
-        {            
+        {
             _standardOut.AutoFlush = true;
             Console.SetOut(_standardOut);
         }
@@ -34,7 +34,7 @@ namespace ConsoleRPG.Tests.UI
         [Fact]
         public void UpdateWritesStringToConsole()
         {
-            Console.SetOut(_out);            
+            Console.SetOut(_out);
             _gameConsole.SetDisplay("Hello World!");
             _gameConsole.Update();
             Assert.Equal("Hello World!\r\n", _out.ToString());
@@ -67,7 +67,6 @@ namespace ConsoleRPG.Tests.UI
             var message = _gameConsole.GetUserInput("");
             Assert.IsType<string>(message);
         }
-        
+
     }
-  
 }

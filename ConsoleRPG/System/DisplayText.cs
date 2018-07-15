@@ -20,6 +20,11 @@ namespace ConsoleRPG.System
             _content = new List<DisplayTextLine> { new DisplayTextLine(message) };            
         }
 
+        public DisplayText(DisplayTextLine line)
+        {
+            _content = new List<DisplayTextLine> { line };
+        }
+
         public DisplayText(List<DisplayTextLine> messages)
         {
             _content = messages;

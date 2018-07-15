@@ -1,9 +1,9 @@
-﻿using ConsoleRPG.System;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ConsoleRPG.System;
 
-namespace ConsoleRPG.Tests.Mocks
+namespace ConsoleRPGTests.Mocks
 {
     public class MockGameConsole : IConsole
     {
