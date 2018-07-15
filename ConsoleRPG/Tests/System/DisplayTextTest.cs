@@ -4,7 +4,7 @@ using ConsoleRPG.System;
 
 namespace ConsoleRPG.Tests.System
 {
-    public class MessageTest
+    public class DisplayTextTest
     {
 
         //Can initialize a message with nothing, a string, or a list
@@ -15,28 +15,28 @@ namespace ConsoleRPG.Tests.System
 
         //can set and get Contents property 
 
-        [Fact]
-        public void CanCreateMessageWithStringAndGetContent()
-        {
-            string content = "Hello World!";
-            var message = new Message("Hello World!");
-            Assert.Equal(new List<string> { content }, message.Content);
-        }
+        //[Fact]
+        //public void CanCreateMessageWithStringAndGetContent()
+        //{
+        //    string content = "Hello World!";
+        //    var message = new DisplayText("Hello World!");
+        //    Assert.Equal(new List<string> { content }, message.Content);
+        //}
 
-        [Fact]
-        public void CanCreateMessageWithEmptyAndGetContent()
-        {            
-            var message = new Message();
-            Assert.True(message.Content.Count == 0);
-        }
+        //[Fact]
+        //public void CanCreateMessageWithEmptyAndGetContent()
+        //{            
+        //    var message = new DisplayText();
+        //    Assert.True(message.Content.Count == 0);
+        //}
 
-        [Fact]
-        public void CanCreateMessageWithListAndGetContent()
-        {
-            var contents = new List<string> { "Hello World!", "From Me" };
-            var message = new Message(contents);
-            Assert.Equal(contents, message.Content);
-        }
+        //[Fact]
+        //public void CanCreateMessageWithListAndGetContent()
+        //{
+        //    var contents = new List<string> { "Hello World!", "From Me" };
+        //    var message = new DisplayText(contents);
+        //    Assert.Equal(contents, message.Content);
+        //}
 
         //[Fact]
         //public void CanAddTextToMessage()

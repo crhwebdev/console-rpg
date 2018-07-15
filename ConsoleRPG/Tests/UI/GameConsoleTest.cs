@@ -45,7 +45,7 @@ namespace ConsoleRPG.Tests.UI
         public void UpdateWritesListToConsole()
         {
             Console.SetOut(_out);
-            _gameConsole.SetDisplay(new List<string> { "Hello World!", "I am Here!" });
+            _gameConsole.SetDisplay(new DisplayText(new List<DisplayTextLine> { new DisplayTextLine("Hello World!"), new DisplayTextLine("I am Here!") }));
             _gameConsole.Update();
             Assert.Equal("Hello World!\r\nI am Here!\r\n", _out.ToString());
             ClearTest();

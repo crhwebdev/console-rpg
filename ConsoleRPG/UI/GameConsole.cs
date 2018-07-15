@@ -8,7 +8,7 @@ namespace ConsoleRPG.UI
 {
     public class GameConsole
     {
-        private List<string> _displayBuffer = null;
+        private DisplayText _displayBuffer = null;
         private IConsole _console;
         
         public GameConsole()
@@ -25,9 +25,9 @@ namespace ConsoleRPG.UI
         {
             if(_displayBuffer != null)
             {
-                foreach (string line in _displayBuffer)
+                foreach (DisplayTextLine line in _displayBuffer)
                 {
-                    _console.WriteLine(line);
+                    _console.WriteLine(line.Text);
                 }
 
                 ClearDisplay();
@@ -35,14 +35,14 @@ namespace ConsoleRPG.UI
             
         }
 
-        public void SetDisplay(List<string> contents)
+        public void SetDisplay(DisplayText contents)
         {
             _displayBuffer = contents;
         }
 
         public void SetDisplay(string contents)
         {
-            _displayBuffer = new List<string> { contents };
+            _displayBuffer = new DisplayText(contents);
         }
 
         public void ClearDisplay()
