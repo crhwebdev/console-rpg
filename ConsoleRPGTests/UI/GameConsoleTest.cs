@@ -20,7 +20,7 @@ namespace ConsoleRPGTests.UI
 
         public GameConsoleTest()
         {
-            _gameConsole = new GameConsole(new MockGameConsole());
+            _gameConsole = new GameConsole(new MockConsole());
             _out = new StringWriter();
             _standardOut = new StreamWriter(Console.OpenStandardOutput());
         }
@@ -31,23 +31,22 @@ namespace ConsoleRPGTests.UI
             Console.SetOut(_standardOut);
         }
 
-        [Fact]
-        public void UpdateWritesStringToConsole()
-        {
-            Console.SetOut(_out);
-            _gameConsole.SetDisplay("Hello World!");
-            _gameConsole.Update();
-            Assert.Equal("Hello World!\r\n", _out.ToString());
-            ClearTest();
-        }
+
+        //[Fact]
+        //public void UpdateWritesStringToConsole()
+        //{
+        //    Console.SetOut(_out);            
+        //    _gameConsole.Update("Hello World!");
+        //    Assert.Equal("Hello World!\r\n", _out.ToString());
+        //    ClearTest();
+        //}
 
         [Fact]
-        public void UpdateWritesListToConsole()
+        public void UpdateWritesDisplayTextLineToConsole()
         {
-            Console.SetOut(_out);
-            _gameConsole.SetDisplay(new DisplayText(new List<DisplayTextLine> { new DisplayTextLine("Hello World!"), new DisplayTextLine("I am Here!") }));
-            _gameConsole.Update();
-            Assert.Equal("Hello World!\r\nI am Here!\r\n", _out.ToString());
+            Console.SetOut(_out);            
+            _gameConsole.Update(new DisplayTextLine("Hello World!"));
+            Assert.Equal("Hello World!\r\n", _out.ToString());
             ClearTest();
         }
 

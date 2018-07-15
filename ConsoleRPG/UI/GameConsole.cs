@@ -21,42 +21,13 @@ namespace ConsoleRPG.UI
             _console = console;
         }
                         
-        public void Update()
-        {
-            if(_displayBuffer != null)
-            {
-                foreach (DisplayTextLine line in _displayBuffer)
-                {                    
-                    Console.ForegroundColor = line.Color;                    
-                    _console.WriteLine(line.Text);
-                    Console.ResetColor();
-                }
-
-                ClearDisplay();
-            }
-            
+        public void Update(DisplayTextLine line)
+        {                                            
+            //Console.ForegroundColor = line.Color;                    
+            _console.WriteLine(line.Text);
+            //Console.ResetColor();            
         }
-
-        public void SetDisplay(DisplayText contents)
-        {
-            _displayBuffer = contents;
-        }
-
-        public void SetDisplay(DisplayTextLine line)
-        {
-            _displayBuffer = new DisplayText(line);
-        }
-
-        public void SetDisplay(string contents)
-        {
-            _displayBuffer = new DisplayText(contents);
-        }
-
-        public void ClearDisplay()
-        {
-            _displayBuffer = null;
-        }
-
+        
         public string GetUserInput(string cursor)
         {
             _console.Write(cursor);

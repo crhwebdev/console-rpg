@@ -26,33 +26,36 @@ namespace ConsoleRPG.Game
         //Game Command List - add commads to this list to use in engine
         private List<ICommand> _commands = new List<ICommand>();
 
-
+        public GameEngine(GameConsole console)
+        {
+            _console = console;
+        }
 
         public GameEngine()
-        {
-            _gameIsRunning = false;
+        {            
             _console = new GameConsole();
-            _commandInterpreter = new CommandInterpreter();
-            _level = new Level();
-
+            //_commandInterpreter = new CommandInterpreter();
+            //_level = new Level();
 
         }
 
         public void Start()
         {
-            _gameIsRunning = true;
-            _console.SetDisplay(new DisplayTextLine("Game Engine starting....", ConsoleColor.Red));
+            _gameIsRunning = true;            
+            _console.Update(new DisplayTextLine("Game Engine starting....", ConsoleColor.Red));
 
             while (_gameIsRunning)
             {
-                _console.Update();
-                var input = _console.GetUserInput("What is your command?");
+                
+                var input = _console.GetUserInput("What is your command, Master?");
 
-                if(input == "q")
+                if(input == "quit")
                 {
                     Stop();
                 }
                 
+                _console.Update(new DisplayTextLine("Say what?"));                
+                                
             }
         }
 
