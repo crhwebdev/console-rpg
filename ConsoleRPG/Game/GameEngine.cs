@@ -1,4 +1,5 @@
-﻿using ConsoleRPG.System;
+﻿using ConsoleRPG.Game.Command;
+using ConsoleRPG.System;
 using ConsoleRPG.UI;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace ConsoleRPG.Game
         private bool _gameIsRunning = false;
 
         //Game Command List - add commads to this list to use in engine
-        private List<Command.Command> _commands = new List<Command.Command>();
+        private List<ICommand> _commands = new List<ICommand>();
 
 
 

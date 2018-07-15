@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <Folder Include="Game\Actor\" />
-    <Folder Include="Game\Area\" />
+    <Folder Include="Game\Location\" />
     <Folder Include="Game\Prop\" />
   </ItemGroup>
 
