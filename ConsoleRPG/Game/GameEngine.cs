@@ -6,33 +6,61 @@ using System.Text;
 
 namespace ConsoleRPG.Game
 {
-    public static class GameEngine
+    public class GameEngine
     {
         //This class does the following:
-        //1. Contains an instance of the GameConsole to which it outputs text and from which it recieves commands
-        //2. Contains an instance of a Level with which it interacts
-        //3. Starts up and loads level data, intializes values, and the main game loop
-        //4. Main game loop updates the GameConsole, updates the game, and then gets user input from the GameConsole and sends it to the CommandInterpreter
-        //5. The CommandInterpreter parses input and dispatches commands
-        //6. ScreenManager sets which mode the game is opperating (menu, dialogue, explorable)
-        private static GameConsole _console = new GameConsole();
-        
-        public static void Start()
+        // Instantiates all game components as private fields
+        // Start method runs game loop
+        // Stop method ends game loop and performs cleanup
+
+       
+        //Game Components
+        private readonly GameConsole _console;
+        private readonly CommandInterpreter _commandInterpreter;
+        private Level _level;
+
+        //Other Game Fields
+        private bool _gameIsRunning = false;
+
+        //Game Command List - add commads to this list to use in engine
+        private List<Command.Command> _commands = new List<Command.Command>();
+
+
+
+        public GameEngine()
         {
+            _gameIsRunning = false;
+            _console = new GameConsole();
+            _commandInterpreter = new CommandInterpreter();
+            _level = new Level();
+
+
+        }
+
+        public void Start()
+        {
+            _gameIsRunning = true;
             _console.SetDisplay(new DisplayTextLine("Game Engine starting....", ConsoleColor.Red));
 
-            while (true)
+            while (_gameIsRunning)
             {
                 _console.Update();
                 var input = _console.GetUserInput("What is your command?");
 
                 if(input == "q")
                 {
-                    break;
+                    Stop();
                 }
                 
             }
         }
+
+        private void Stop()
+        {
+            _gameIsRunning = false;
+        }
+
+        
 
         
     }

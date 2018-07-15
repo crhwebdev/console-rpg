@@ -8,9 +8,9 @@ namespace ConsoleRPG
     {
         static void Main(string[] args)
         {
-
+            var game = new GameEngine();
             //Start Game
-            GameEngine.Start();
+            game.Start();
         
             
         }
