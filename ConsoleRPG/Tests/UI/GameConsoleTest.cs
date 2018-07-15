@@ -56,7 +56,7 @@ namespace ConsoleRPG.Tests.UI
         {
             Console.SetOut(_out);
             var cursor = "What is your command?";
-            Message message = _gameConsole.GetUserInput(cursor);
+            var message = _gameConsole.GetUserInput(cursor);
             Assert.Equal(cursor, _out.ToString());
             ClearTest();
         }
@@ -64,7 +64,7 @@ namespace ConsoleRPG.Tests.UI
         [Fact]
         public void GetUserInputReturnsMessage()
         {
-            Message message = _gameConsole.GetUserInput("");
+            var message = _gameConsole.GetUserInput("");
             Assert.IsType<Message>(message);
         }
         
