@@ -37,6 +37,11 @@ namespace ConsoleRPG.System
             _content.Add(line);
         }
 
+        public void Add(List<DisplayTextLine> lines)
+        {
+            _content.AddRange(lines);
+        }
+
         public void Add(string line)
         {
             _content.Add(new DisplayTextLine(line));
