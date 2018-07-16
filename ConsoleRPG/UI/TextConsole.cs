@@ -10,6 +10,8 @@ namespace ConsoleRPG.UI
 
         public abstract void WriteDisplayTextLine(DisplayTextLine line);
 
+        public abstract void WriteDisplayText(DisplayText text);
+
         public virtual string GetUserInput()
         {
             return Console.ReadLine();

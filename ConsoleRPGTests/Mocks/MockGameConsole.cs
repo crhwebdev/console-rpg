@@ -15,5 +15,10 @@ namespace ConsoleRPGTests.Mocks
             Out = line.Text;            
         }
 
+        public override void WriteDisplayText(DisplayText text)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

@@ -65,39 +65,35 @@ namespace ConsoleRPG.System
             return null;
         }
 
-        // Implementation for the GetEnumerator method.
+        //Implementation for the GetEnumerator method
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator)GetEnumerator();
+            return (IEnumerator) GetEnumerator();
         }
 
         public DisplayTextEnum GetEnumerator()
         {
+            //throw new NotImplementedException();
             return new DisplayTextEnum(_content);
         }
-
-        
-
+                        
     }
 
-    // When you implement IEnumerable, you must also implement IEnumerator.
     public class DisplayTextEnum : IEnumerator
     {
-        public List<DisplayTextLine> _content;
+        public List<DisplayTextLine> Content;
 
-        // Enumerators are positioned before the first element
-        // until the first MoveNext() call.
         int position = -1;
 
-        public DisplayTextEnum(List<DisplayTextLine> list)
+        public DisplayTextEnum(List<DisplayTextLine> lines)
         {
-            _content = list;
+            Content = lines;
         }
-
+        
         public bool MoveNext()
         {
             position++;
-            return (position < _content.Count);
+            return (position < Content.Count);
         }
 
         public void Reset()
@@ -119,7 +115,7 @@ namespace ConsoleRPG.System
             {
                 try
                 {
-                    return _content[position];
+                    return Content[position];
                 }
                 catch (IndexOutOfRangeException)
                 {
@@ -128,4 +124,52 @@ namespace ConsoleRPG.System
             }
         }
     }
+
+    // When you implement IEnumerable, you must also implement IEnumerator.
+    //public class DisplayTextEnum : IEnumerator
+    //{
+    //    public List<DisplayTextLine> _content;
+
+    
+    //    int position = -1;
+
+    //    public DisplayTextEnum(List<DisplayTextLine> list)
+    //    {
+    //        _content = list;
+    //    }
+
+    //    public bool MoveNext()
+    //    {
+    //        position++;
+    //        return (position < _content.Count);
+    //    }
+
+    //    public void Reset()
+    //    {
+    //        position = -1;
+    //    }
+
+    //    object IEnumerator.Current
+    //    {
+    //        get
+    //        {
+    //            return Current;
+    //        }
+    //    }
+
+    //    public DisplayTextLine Current
+    //    {
+    //        get
+    //        {
+    //            try
+    //            {
+    //                return _content[position];
+    //            }
+    //            catch (IndexOutOfRangeException)
+    //            {
+    //                throw new InvalidOperationException();
+    //            }
+    //        }
+    //    }
+    //}
 }

@@ -7,8 +7,7 @@ using ConsoleRPG.Game;
 namespace ConsoleRPG.UI
 {
     public class GameConsole : TextConsole
-    {
-        private DisplayText _displayBuffer = null;
+    {        
         private IConsole _console;
         
         public GameConsole()
@@ -31,6 +30,14 @@ namespace ConsoleRPG.UI
             //Console.ForegroundColor = line.Color;                    
             _console.WriteLine(line.Text);
             //Console.ResetColor();            
+        }
+
+        public override void WriteDisplayText(DisplayText text)
+        {
+            foreach(var line in text)
+            {
+                WriteDisplayTextLine(line);
+            }
         }
 
         public override string GetUserInput()
