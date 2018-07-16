@@ -21,8 +21,8 @@ namespace ConsoleRPG.Game.Actions
         }
 
         public void Do()
-        {            
-            _actor.Location = _target;            
+        {
+            _actor.Move(_target); 
             Display = _target.Enter(_actor);            
         }
     }

@@ -19,5 +19,10 @@ namespace ConsoleRPG.Game.Actors
         {
             return Name + " sees stuff!";
         }
+
+        public override void Move(Room location)
+        {
+            Location = location;
+        }
     }
 }
