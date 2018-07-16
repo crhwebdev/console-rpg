@@ -10,7 +10,7 @@ namespace ConsoleRPGTests.Mocks
     {
         public string Out { get; private set; }
             
-        public override void Update(DisplayTextLine line)
+        public override void WriteDisplayTextLine(DisplayTextLine line)
         {            
             Out = line.Text;            
         }

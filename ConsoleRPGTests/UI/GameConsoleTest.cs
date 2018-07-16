@@ -45,25 +45,16 @@ namespace ConsoleRPGTests.UI
         public void UpdateWritesDisplayTextLineToConsole()
         {
             Console.SetOut(_out);            
-            _gameConsole.Update(new DisplayTextLine("Hello World!"));
+            _gameConsole.WriteDisplayTextLine(new DisplayTextLine("Hello World!"));
             Assert.Equal("Hello World!\r\n", _out.ToString());
             ClearTest();
         }
 
-        [Fact]
-        public void GetUserInputWritesCursorToConsole()
-        {
-            Console.SetOut(_out);
-            var cursor = "What is your command?";
-            var message = _gameConsole.GetUserInput(cursor);
-            Assert.Equal(cursor, _out.ToString());
-            ClearTest();
-        }
-
+        
         [Fact]
         public void GetUserInputReturnsString()
         {
-            var message = _gameConsole.GetUserInput("");
+            var message = _gameConsole.GetUserInput();
             Assert.IsType<string>(message);
         }
 
