@@ -12,6 +12,7 @@ namespace ConsoleRPG.System
         private List<DisplayTextLine> _content;
         public int LineCount => _content.Count;
                             
+        //Constructor methods that intializes _content with different types
         public DisplayText()
         {
             _content = new List<DisplayTextLine>();            
@@ -32,6 +33,12 @@ namespace ConsoleRPG.System
             _content = messages;
         }
 
+        //Various Add methods for different types
+        public void Add(string line)
+        {            
+            Add(new DisplayTextLine(line));
+        }
+
         public void Add(DisplayTextLine line)
         {
             _content.Add(line);
@@ -49,12 +56,7 @@ namespace ConsoleRPG.System
                 _content.Add(line);
             }
         }
-
-        public void Add(string line)
-        {
-            _content.Add(new DisplayTextLine(line));
-        }
-
+            
         public override string ToString()
         {
             if (LineCount == 1)

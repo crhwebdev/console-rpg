@@ -32,21 +32,28 @@ namespace ConsoleRPGTests.UI
         }
 
 
-        //[Fact]
-        //public void UpdateWritesStringToConsole()
-        //{
-        //    Console.SetOut(_out);            
-        //    _gameConsole.Update("Hello World!");
-        //    Assert.Equal("Hello World!\r\n", _out.ToString());
-        //    ClearTest();
-        //}
+     
 
         [Fact]
-        public void UpdateWritesDisplayTextLineToConsole()
+        public void WritesDisplayTextLineToConsole()
         {
             Console.SetOut(_out);            
             _gameConsole.WriteDisplayTextLine(new DisplayTextLine("Hello World!"));
             Assert.Equal("Hello World!\r\n", _out.ToString());
+            ClearTest();
+        }
+
+        [Fact]
+        public void WritesDisplayTextToConsole()
+        {
+            var displayText = new DisplayText(new List<DisplayTextLine>
+            {
+                new DisplayTextLine("Hello World!"),
+                new DisplayTextLine("Bye World!")
+            });
+            Console.SetOut(_out);
+            _gameConsole.WriteDisplayText(displayText);
+            Assert.Equal("Hello World!\r\nBye World!\r\n", _out.ToString());
             ClearTest();
         }
 
