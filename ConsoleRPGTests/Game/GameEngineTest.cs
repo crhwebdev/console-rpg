@@ -1,4 +1,5 @@
 ﻿using ConsoleRPG.Game;
+using ConsoleRPGTests.Mocks;
 using System;
 using System.Linq;
 using Xunit;
@@ -12,17 +13,19 @@ namespace ConsoleRPGTests.Game
         public GameEngineTest()
         {
             _game = new GameEngine();
+            _game.GameConsole = new MockGameConsole();
         }
 
+        //Game engine outputs text to console when started
         [Fact]
-        public void GameEngineStartRunsGame()
+        public void Game()
         {
             
             Assert.True(false);
         }
 
         [Fact]
-        public void GameEngineStopEndsGame()
+        public void GameEngineStartRunsGame()
         {
             Assert.True(false);
         }

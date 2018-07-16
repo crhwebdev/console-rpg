@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game
 {
-    class Level
+    public abstract class Level
     {
     }
 }

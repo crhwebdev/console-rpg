@@ -1,9 +1,11 @@
-﻿using ConsoleRPG.Game.Command;
+﻿using ConsoleRPG.Game.Actors;
+using ConsoleRPG.Game.Actions;
 using ConsoleRPG.System;
 using ConsoleRPG.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ConsoleRPG.Game.Locations;
 
 namespace ConsoleRPG.Game
 {
@@ -14,48 +16,59 @@ namespace ConsoleRPG.Game
         // Start method runs game loop
         // Stop method ends game loop and performs cleanup
 
-       
+        public Actor Player { get; set; } = new Player("Carl The Destroyer");
+        public Room Room { get; set; } = new Room("A dark dank chamber full of soft whisper voices...");
+
         //Game Components
-        private readonly GameConsole _console;
-        private readonly CommandInterpreter _commandInterpreter;
-        private Level _level;
+        public TextConsole GameConsole { get; set;}
+        //private readonly CommandInterpreter _commandInterpreter;
+        //private Level _level;
 
         //Other Game Fields
         private bool _gameIsRunning = false;
 
         //Game Command List - add commads to this list to use in engine
-        private List<ICommand> _commands = new List<ICommand>();
-
-        public GameEngine(GameConsole console)
-        {
-            _console = console;
-        }
+        private List<IAction> _commands = new List<IAction>();    
+        
 
         public GameEngine()
         {            
-            _console = new GameConsole();
-            //_commandInterpreter = new CommandInterpreter();
-            //_level = new Level();
-
+            GameConsole = new GameConsole();
+            
         }
-
+        
         public void Start()
         {
             _gameIsRunning = true;            
-            _console.Update(new DisplayTextLine("Game Engine starting....", ConsoleColor.Red));
+            
 
             while (_gameIsRunning)
             {
                 
-                var input = _console.GetUserInput("What is your command, Master?");
+                var input = GameConsole.GetUserInput();
 
                 if(input == "quit")
                 {
+                    GameConsole.WriteDisplayTextLine(new DisplayTextLine("Stopping..."));
                     Stop();
                 }
-                
-                _console.Update(new DisplayTextLine("Say what?"));                
-                                
+                else if(input == "look")
+                {
+                    var look = new Look(Player);
+                    look.Do();
+                    GameConsole.WriteDisplayTextLine(new DisplayTextLine(look.Display));
+                }
+                else if(input == "move")
+                {
+                    var move = new Move(Player, Room);
+                    move.Do();
+                    GameConsole.WriteDisplayTextLine(new DisplayTextLine(move.Display));
+                }
+                else
+                {
+                    GameConsole.WriteDisplayTextLine(new DisplayTextLine("Say what?"));
+                }
+                                                                
             }
         }
 
@@ -63,6 +76,17 @@ namespace ConsoleRPG.Game
         {
             _gameIsRunning = false;
         }
+
+        private void Update()
+        {
+            GameConsole.WriteDisplayTextLine(new DisplayTextLine("Game Engine starting...."));
+        }
+
+
+
+        
+
+        
 
         
 

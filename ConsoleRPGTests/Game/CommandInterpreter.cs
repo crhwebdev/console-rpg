@@ -13,6 +13,7 @@ namespace ConsoleRPGTests.Game
         [Fact]
         public void TestMethod1()
         {
+            Assert.True(false);
         }
     }
 }

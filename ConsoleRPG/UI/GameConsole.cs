@@ -6,7 +6,7 @@ using ConsoleRPG.Game;
 
 namespace ConsoleRPG.UI
 {
-    public class GameConsole
+    public class GameConsole : TextConsole
     {
         private DisplayText _displayBuffer = null;
         private IConsole _console;
@@ -20,20 +20,23 @@ namespace ConsoleRPG.UI
         {
             _console = console;
         }
-                        
-        public void Update(DisplayTextLine line)
+        
+        public void WriteDisplayTextLine(string line)
+        {
+            _console.WriteLine(line);
+        }
+
+        public override void WriteDisplayTextLine(DisplayTextLine line)
         {                                            
             //Console.ForegroundColor = line.Color;                    
             _console.WriteLine(line.Text);
             //Console.ResetColor();            
         }
-        
-        public string GetUserInput(string cursor)
+
+        public override string GetUserInput()
         {
-            _console.Write(cursor);
+            _console.Write("What is your command, Master?");
             return _console.ReadLine();
-            
-            
         }
      
     }
