@@ -12,6 +12,7 @@ namespace ConsoleRPG.Game.Actors
 
         //Has various methods that correspond to actions that can be executed with him as the reciever
         public abstract string Look();
+        public abstract string Say(string text);
         public abstract void Move(Room location);
        
     }

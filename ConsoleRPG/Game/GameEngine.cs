@@ -64,6 +64,12 @@ namespace ConsoleRPG.Game
                     move.Do();
                     GameConsole.WriteDisplayTextLine(new DisplayTextLine(move.Display));
                 }
+                else if(input == "say hello")
+                {
+                    var say = new Say(Player, "hello");
+                    say.Do();
+                    GameConsole.WriteDisplayTextLine(new DisplayTextLine(say.Display));
+                }
                 else
                 {
                     GameConsole.WriteDisplayTextLine(new DisplayTextLine("Say what?"));

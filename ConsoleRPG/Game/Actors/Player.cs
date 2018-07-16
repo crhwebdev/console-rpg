@@ -20,6 +20,11 @@ namespace ConsoleRPG.Game.Actors
             return Name + " sees stuff!";
         }
 
+        public override string Say(string text)
+        {
+            return Name + " says, '" + text + "'";
+        }
+
         public override void Move(Room location)
         {
             Location = location;
