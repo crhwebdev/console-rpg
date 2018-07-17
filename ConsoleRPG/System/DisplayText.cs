@@ -11,11 +11,11 @@ namespace ConsoleRPG.System
     {
         private List<DisplayTextLine> _content;
         public int LineCount => _content.Count;
-                            
+
         //Constructor methods that intializes _content with different types
         public DisplayText()
         {
-            _content = new List<DisplayTextLine>();            
+            _content = new List<DisplayTextLine>();
         }
 
         public DisplayText(string message)
