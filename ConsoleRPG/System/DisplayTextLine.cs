@@ -37,7 +37,7 @@ namespace ConsoleRPG.System
 
         public override string ToString()
         {
-            return Text;
+            return Text;            
         }
     }
 }
