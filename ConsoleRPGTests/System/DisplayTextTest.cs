@@ -1,5 +1,6 @@
 ﻿using ConsoleRPG.System;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -10,10 +11,8 @@ namespace ConsoleRPGTests.System
         //can instantiate with nothing and class is successfully formed
         [Fact]
         public void CanInstantiateWithNoArguments()
-        {
-            DisplayText displayText;
-            
-            displayText = new DisplayText();
+        {                        
+            var displayText = new DisplayText();
             Assert.Empty(displayText);                       
         }
 
@@ -21,51 +20,120 @@ namespace ConsoleRPGTests.System
         [Fact]
         public void CanInstantiateWithStringAndEnumerateOverValues()
         {
-            Assert.True(false);
+            var value = "Hello World!";
+            var displayText = new DisplayText(value);
+            foreach(var line in displayText)
+            {
+                Assert.Equal(value, line.ToString());
+            }
+            
         }
 
         //can instantiate class with a DisplayTextLine and enumerate over values
         [Fact]
         public void CanInstantiateWithDisplayTextLineAndEnumerateOverValues()
         {
-            Assert.True(false);
+            var value = "Hello World!";
+            var displayTextLine = new DisplayTextLine(value);
+            var displayText = new DisplayText(displayTextLine);
+            foreach(var line in displayText)
+            {
+                Assert.Equal(value, line.ToString());
+            }
+            
         }
         //can instantiate class with List<DisplayTextLine> and enumerate over values
         [Fact]
         public void CanInstantiateWithListAndEnumerateOverValues()
         {
-            Assert.True(false);
+            var value = "Hello World!";
+            var displayTextLineList = new List<DisplayTextLine>
+            {
+                new DisplayTextLine(value),
+                new DisplayTextLine(value)
+            };
+
+            var displayText = new DisplayText(displayTextLineList);
+
+            foreach(var line in displayText)
+            {
+                Assert.Equal(value, line.ToString());
+            }
+            
         }
         //can add a string and enumerate over values
         [Fact]
         public void CanAddStringAndEnumerateOverValues()
         {
-            Assert.True(false);
+            var value = "Hello World!";
+            var displayText = new DisplayText();
+            Assert.Empty(displayText);
+            displayText.Add(value);
+            foreach(var line in displayText)
+            {
+                Assert.Equal(value, line.ToString());
+            }            
         }
         //can add a DisplayTextLine and enumerate over values
         [Fact]
         public void CanAddDisplayTextLineAndEnumerateOverValues()
         {
-            Assert.True(false);
+            var value = "Hello World!";
+            var displayText = new DisplayText();
+            Assert.Empty(displayText);
+            displayText.Add(new DisplayTextLine(value));
+
+            foreach (var line in displayText)
+            {
+                Assert.Equal(value, line.ToString());
+            }
+            
         }
         //can add a List<DisplayTextLine> and enumerate over values
         [Fact]
         public void CanAddListAndEnumerateOverValues()
         {
-            Assert.True(false);
+            var value = "Hello World!";
+            var displayText = new DisplayText(value);            
+            var displayTextLineList = new List<DisplayTextLine>
+            {
+                new DisplayTextLine(value),
+                new DisplayTextLine(value)
+            };
+
+            displayText.Add(displayTextLineList);
+
+            Assert.Equal(3, displayText.LineCount);
+
+            foreach (var line in displayText)
+            {
+                Assert.Equal(value, line.ToString());
+            }
         }
         //can add another DisplayText and enumerate over values
         [Fact]
         public void CanAddDisplayTextAndEnumerateOverValues()
         {
-            Assert.True(false);
+            var value = "Hello World!";
+            var displayText = new DisplayText(value);            
+            var displayTextSecond = new DisplayText(value);
+
+            displayText.Add(displayTextSecond);
+            Assert.Equal(2, displayText.LineCount);
+
+            foreach (var line in displayText)
+            {
+                Assert.Equal(value, line.ToString());
+            }
+
+
         }
         //ToString method returns a single string value if only one item or a string divided by line breaks if multipel values
-        [Fact]
-        public void ToStringMethodWorksCorrectly()
-        {
-            Assert.True(false);
-        }
+        //[Fact]
+        //public void ToStringMethodWorksCorrectly()
+        //{
+        //    Assert.True(false);
+        //}
 
     }
 }
