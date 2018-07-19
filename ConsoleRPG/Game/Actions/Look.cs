@@ -8,7 +8,7 @@ namespace ConsoleRPG.Game.Actions
 {
     public class Look : IAction
     {
-        public string Display { get; set; }
+        
         private Actor _actor;
 
         //needs access to player (i.e. actor), portal (i.e. reciever), and then other stuff depending on Action
@@ -17,9 +17,9 @@ namespace ConsoleRPG.Game.Actions
             _actor = actor;
         }
 
-        public void Do()
+        public DisplayText Do()
         {
-            Display = _actor.Look(); 
+            return _actor.Look(); 
         }
     }
 }

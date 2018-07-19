@@ -1,4 +1,5 @@
 ﻿using ConsoleRPG.Game.Actors;
+using ConsoleRPG.System;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,9 +15,10 @@ namespace ConsoleRPG.Game.Locations
             Description = description;
         }
 
-        public string Enter(Actor actor)
+        public DisplayText Enter(Actor actor)
         {
-            return actor.Name + " enters " + Description;
+            actor.Location = this;
+            return new DisplayText(actor.Name + " enters " + Description);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ConsoleRPG.Game.Actors;
+using ConsoleRPG.System;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,9 +18,10 @@ namespace ConsoleRPG.Game.Actions
             _text = text;
         }
 
-        public void Do()
+        public DisplayText Do()
         {
-            Display = _actor.Say(_text);
+            var displayText = _actor.Say(_text);
+            return displayText;
         }
     }
 }

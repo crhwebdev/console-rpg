@@ -1,4 +1,5 @@
 ﻿using ConsoleRPG.Game.Locations;
+using ConsoleRPG.System;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,19 +16,22 @@ namespace ConsoleRPG.Game.Actors
             Name = name;
         }
 
-        public override string Look()
+        public override DisplayText Look()
         {
-            return Name + " sees stuff!";
+            return new DisplayText(Name + " sees stuff!");
         }
 
-        public override string Say(string text)
+        public override DisplayText Say(string text)
         {
-            return Name + " says, '" + text + "'";
+            return new DisplayText(Name + " says, '" + text + "'");
         }
 
-        public override void Move(Room location)
+        public override DisplayText Move(Room location)
         {
-            Location = location;
+            var moveDisplayText = new DisplayText(Name + " moves");
+            var enterDisplayText = location.Enter(this);            
+            moveDisplayText.Add(enterDisplayText);
+            return moveDisplayText;
         }
     }
 }

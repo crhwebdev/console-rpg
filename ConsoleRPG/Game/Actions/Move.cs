@@ -8,8 +8,7 @@ using System.Text;
 namespace ConsoleRPG.Game.Actions
 {
     public class Move : IAction
-    {
-        public string Display { get; set; }
+    {       
         private Actor _actor;
         private Room _target;
 
@@ -20,10 +19,10 @@ namespace ConsoleRPG.Game.Actions
             _target = target;
         }
 
-        public void Do()
+        public DisplayText Do()
         {
-            _actor.Move(_target); 
-            Display = _target.Enter(_actor);            
+            var moveDisplayText = _actor.Move(_target);            
+            return moveDisplayText;            
         }
     }
 }

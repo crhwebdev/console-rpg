@@ -6,9 +6,7 @@ using System.Text;
 namespace ConsoleRPG.Game.Actions
 {
     interface IAction
-    {   
-        string Display { get; set; }
-
-        void Do();
+    {           
+        DisplayText Do();
     }
 }

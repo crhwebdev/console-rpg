@@ -55,20 +55,19 @@ namespace ConsoleRPG.Game
                 else if(input == "look")
                 {
                     var look = new Look(Player);
-                    look.Do();
-                    GameConsole.WriteDisplayTextLine(new DisplayTextLine(look.Display));
+                    
+                    GameConsole.WriteDisplayText(look.Do());
                 }
                 else if(input == "move")
                 {
-                    var move = new Move(Player, Room);
-                    move.Do();
-                    GameConsole.WriteDisplayTextLine(new DisplayTextLine(move.Display));
+                    var move = new Move(Player, Room);                    
+                    GameConsole.WriteDisplayText(move.Do());
                 }
                 else if(input == "say hello")
                 {
                     var say = new Say(Player, "hello");
-                    say.Do();
-                    GameConsole.WriteDisplayTextLine(new DisplayTextLine(say.Display));
+                    
+                    GameConsole.WriteDisplayText(say.Do());
                 }
                 else
                 {
@@ -87,15 +86,6 @@ namespace ConsoleRPG.Game
         {
             GameConsole.WriteDisplayTextLine(new DisplayTextLine("Game Engine starting...."));
         }
-
-
-
-        
-
-        
-
-        
-
-        
+                                
     }
 }
