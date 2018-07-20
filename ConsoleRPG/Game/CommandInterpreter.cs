@@ -49,7 +49,8 @@ namespace ConsoleRPG.Game
             }
             else
             {
-                _gameConsole.WriteDisplayTextLine(new DisplayTextLine("Say what?"));
+                var message = new Message("Say what?");
+                _gameConsole.WriteDisplayText(message.Do());
             }
         }
     }
