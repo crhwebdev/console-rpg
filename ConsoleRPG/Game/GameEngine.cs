@@ -16,11 +16,11 @@ namespace ConsoleRPG.Game
         // Start method runs game loop
         // Stop method ends game loop and performs cleanup
 
-        public Actor Player { get; set; } = new Player("Carl The Destroyer");
-        public Room Room { get; set; } = new Room("A dark dank chamber full of soft whisper voices...");
+        public Actor Player { get; set; } = new Player("Carl The Destroyer");        
 
         //Game Components
-        public TextConsole GameConsole { get; set;}        
+        public TextConsole GameConsole { get; set;}
+        public CommandInterpreter CommandInterpreter { get; set; }
         //private Level _level;
 
         //Other Game Fields
@@ -33,7 +33,7 @@ namespace ConsoleRPG.Game
         public GameEngine()
         {            
             GameConsole = new GameConsole();
-            
+            CommandInterpreter = new CommandInterpreter(this);            
         }
         
         public void Start()
@@ -42,11 +42,9 @@ namespace ConsoleRPG.Game
             
 
             while (_gameIsRunning)
-            {
-                
+            {                
                 var input = GameConsole.GetUserInput();
-                CommandInterpreter.Interpret(input, this);
-                                                                                
+                CommandInterpreter.Interpret(input, Player);                                                                                
             }
         }
 

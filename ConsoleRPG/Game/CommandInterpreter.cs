@@ -9,39 +9,47 @@ using System.Text;
 
 namespace ConsoleRPG.Game
 {
-    public static class CommandInterpreter
+    public class CommandInterpreter
     {
-        public static void Interpret(string commandPhrase, GameEngine gameEngine)
-        {
-            var gameConsole = gameEngine.GameConsole;
-            var player = gameEngine.Player;
-            var room = gameEngine.Room;
+        private Room _testRoom;  
+        private GameEngine _gameEngine;
+        private TextConsole _gameConsole;
 
+        public CommandInterpreter(GameEngine gameEngine)
+        {
+            _gameEngine = gameEngine;
+            _gameConsole = gameEngine.GameConsole;
+            _testRoom = new Room("A dark dank chamber full of soft whisper voices...");
+        }
+
+        public void Interpret(string commandPhrase, Actor player)
+        {
+            
             if (commandPhrase == "quit")
             {
-                gameConsole.WriteDisplayTextLine(new DisplayTextLine("Stopping..."));
-                gameEngine.Stop();
+                _gameConsole.WriteDisplayTextLine(new DisplayTextLine("Stopping..."));
+                _gameEngine.Stop();
             }
             else if (commandPhrase == "look")
             {
                 var look = new Look(player);
 
-                gameConsole.WriteDisplayText(look.Do());
+                _gameConsole.WriteDisplayText(look.Do());
             }
             else if (commandPhrase == "move")
             {
-                var move = new Move(player, room);
-                gameConsole.WriteDisplayText(move.Do());
+                var move = new Move(player, _testRoom);
+                _gameConsole.WriteDisplayText(move.Do());
             }
             else if (commandPhrase == "say hello")
             {
                 var say = new Say(player, "hello");
 
-                gameConsole.WriteDisplayText(say.Do());
+                _gameConsole.WriteDisplayText(say.Do());
             }
             else
             {
-                gameConsole.WriteDisplayTextLine(new DisplayTextLine("Say what?"));
+                _gameConsole.WriteDisplayTextLine(new DisplayTextLine("Say what?"));
             }
         }
     }
