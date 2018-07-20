@@ -20,8 +20,7 @@ namespace ConsoleRPG.Game
         public Room Room { get; set; } = new Room("A dark dank chamber full of soft whisper voices...");
 
         //Game Components
-        public TextConsole GameConsole { get; set;}
-        //private readonly CommandInterpreter _commandInterpreter;
+        public TextConsole GameConsole { get; set;}        
         //private Level _level;
 
         //Other Game Fields
@@ -46,38 +45,12 @@ namespace ConsoleRPG.Game
             {
                 
                 var input = GameConsole.GetUserInput();
-
-                if(input == "quit")
-                {
-                    GameConsole.WriteDisplayTextLine(new DisplayTextLine("Stopping..."));
-                    Stop();
-                }
-                else if(input == "look")
-                {
-                    var look = new Look(Player);
-                    
-                    GameConsole.WriteDisplayText(look.Do());
-                }
-                else if(input == "move")
-                {
-                    var move = new Move(Player, Room);                    
-                    GameConsole.WriteDisplayText(move.Do());
-                }
-                else if(input == "say hello")
-                {
-                    var say = new Say(Player, "hello");
-                    
-                    GameConsole.WriteDisplayText(say.Do());
-                }
-                else
-                {
-                    GameConsole.WriteDisplayTextLine(new DisplayTextLine("Say what?"));
-                }
-                                                                
+                CommandInterpreter.Interpret(input, this);
+                                                                                
             }
         }
 
-        private void Stop()
+        public void Stop()
         {
             _gameIsRunning = false;
         }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actors
 {
-    class Player : Actor
+    public class Player : Actor
     {       
         //Name property inherieted from Actor
         //Location property inherieted from Actor
