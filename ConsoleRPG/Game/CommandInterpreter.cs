@@ -27,8 +27,8 @@ namespace ConsoleRPG.Game
             
             if (commandPhrase == "quit")
             {
-                _gameConsole.WriteDisplayTextLine(new DisplayTextLine("Stopping..."));
-                _gameEngine.Stop();
+                var quit = new Quit(_gameEngine);
+                _gameConsole.WriteDisplayText(quit.Do());
             }
             else if (commandPhrase == "look")
             {
