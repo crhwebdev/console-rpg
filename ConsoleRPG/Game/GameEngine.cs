@@ -44,8 +44,7 @@ namespace ConsoleRPG.Game
             while (_gameIsRunning)
             {                
                 var input = GameConsole.GetUserInput();
-                var action = CommandInterpreter.Interpret(input, Player);
-
+                var action = CommandInterpreter.GetAction(CommandInterpreter.ParseCommandString(input), Player);
                 GameConsole.WriteDisplayText(action.Do());
             }
         }

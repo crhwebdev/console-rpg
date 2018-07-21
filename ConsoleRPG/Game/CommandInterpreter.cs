@@ -27,22 +27,23 @@ namespace ConsoleRPG.Game
             _testRoom = new Room("A dark dank chamber full of soft whisper voices...");
         }
 
-        public IAction Interpret(string commandPhrase, Actor player)
+        public string[] ParseCommandString(string commandString)
         {
-
+            string[] parsedCommandList = new string[2];
             //check if commandPhrase is empty and dispatch appropriate message if it is
-            if (string.IsNullOrEmpty(commandPhrase.Trim()))
+            if (string.IsNullOrEmpty(commandString.Trim()))
             {
-                return new Message("You must enter a command!");
+                return null;
             }
 
-            string[] commandWords = commandPhrase.Split(' ');
+            
+            string[] commandWords = commandString.Split(' ');
 
             //get first command and set it to action
-            string commandAction = commandWords[0];            
+            string commandAction = commandWords[0];
             string target = "";
 
-            if(commandWords.Length >= 2)
+            if (commandWords.Length >= 2)
             {
                 var preposition = commandWords[1].ToLower();
                 //there may be a preposition in the second postion. If there is, add it to commandAction
@@ -52,29 +53,50 @@ namespace ConsoleRPG.Game
 
                     //return rest of commandWords as string - But of course the string.Join complains if beginning index and end index are the same
                     // so we have to do this clunky check
-                    try
+                    if(commandWords.Length > 2)
                     {
-                        target = string.Join(" ", commandWords, 2, commandWords.Length - 1);
+                        try
+                        {
+                            target = string.Join(" ", commandWords, 2, commandWords.Length - 1);
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            target = commandWords[2].ToString();
+                        }
                     }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        target = commandWords[2].ToString();
-                    }                                                                                          
+                    
                 }
                 else
                 {
                     try
                     {
-                        target = string.Join(" ", commandWords, 1, commandWords.Length - 1);                        
+                        target = string.Join(" ", commandWords, 1, commandWords.Length - 1);
                     }
-                    catch(ArgumentOutOfRangeException)
+                    catch (ArgumentOutOfRangeException)
                     {
                         target = commandWords[1].ToString();
-                    }                    
-                }
+                    }
+                }               
             }
-            
-            switch (commandAction)
+
+            parsedCommandList[0] = commandAction;
+            parsedCommandList[1] = target;
+
+            return parsedCommandList;
+        }
+
+        public IAction GetAction(string[] commandList, Actor player)
+        {
+
+            if(commandList == null)
+            {
+                return new Message("You must enter a command!");
+            }
+
+            var action = commandList[0];
+            var target = commandList[1];
+                        
+            switch (action)
             {
                 case "look":
                 case "look at":     
