@@ -6,6 +6,7 @@ using ConsoleRPG.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ConsoleRPG.Game
 {
@@ -38,15 +39,16 @@ namespace ConsoleRPG.Game
             string[] commandWords = commandPhrase.Split(' ');
 
             //get first command and set it to action
-            string commandAction = commandWords[0];
+            string commandAction = commandWords[0];            
             string target = "";
 
             if(commandWords.Length >= 2)
             {
+                var preposition = commandWords[1].ToLower();
                 //there may be a preposition in the second postion. If there is, add it to commandAction
-                if (_prepositions.ContainsKey(commandWords[1]))
+                if (_prepositions.ContainsKey(preposition))
                 {
-                    commandAction += " " + commandWords[1];
+                    commandAction += " " + preposition;
 
                     //return rest of commandWords as string - But of course the string.Join complains if beginning index and end index are the same
                     // so we have to do this clunky check
