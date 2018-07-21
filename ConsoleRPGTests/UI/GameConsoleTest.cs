@@ -14,13 +14,13 @@ namespace ConsoleRPGTests.UI
         //Console displays text passed as a message
         //Console gets user input 
         //Console Update shows current Display and then clears the Display. If Display is empty, it shows nothing
-        private output _gameConsole;
+        private GameConsole _gameConsole;
         private StringWriter _out;
         private StreamWriter _standardOut;
 
         public GameConsoleTest()
         {
-            _gameConsole = new output(new MockConsole());
+            _gameConsole = new GameConsole(new MockConsole());
             _out = new StringWriter();
             _standardOut = new StreamWriter(Console.OpenStandardOutput());
         }

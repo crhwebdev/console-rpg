@@ -11,8 +11,14 @@ namespace ConsoleRPG.Game
 {
     public class CommandInterpreter
     {
-        private Room _testRoom;  
-        private GameEngine _gameEngine;        
+        private Room _testRoom;
+        private GameEngine _gameEngine;
+        private Dictionary<string, string> _prepositions = new Dictionary<string, string>
+        {
+            {"at", "at" },
+            {"to", "to" },
+            {"in", "in" }
+        };
 
         public CommandInterpreter(GameEngine gameEngine)
         {
@@ -22,32 +28,67 @@ namespace ConsoleRPG.Game
 
         public IAction Interpret(string commandPhrase, Actor player)
         {
+
+            //check if commandPhrase is empty and dispatch appropriate message if it is
+            if (string.IsNullOrEmpty(commandPhrase.Trim()))
+            {
+                return new Message("You must enter a command!");
+            }
+
+            string[] commandWords = commandPhrase.Split(' ');
+
+            //get first command and set it to action
+            string commandAction = commandWords[0];
+            string target = "";
+
+            if(commandWords.Length >= 2)
+            {
+                //there may be a preposition in the second postion. If there is, add it to commandAction
+                if (_prepositions.ContainsKey(commandWords[1]))
+                {
+                    commandAction += " " + commandWords[1];
+
+                    //return rest of commandWords as string - But of course the string.Join complains if beginning index and end index are the same
+                    // so we have to do this clunky check
+                    try
+                    {
+                        target = string.Join(" ", commandWords, 2, commandWords.Length - 1);
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        target = commandWords[2].ToString();
+                    }                                                                                          
+                }
+                else
+                {
+                    try
+                    {
+                        target = string.Join(" ", commandWords, 1, commandWords.Length - 1);                        
+                    }
+                    catch(ArgumentOutOfRangeException)
+                    {
+                        target = commandWords[1].ToString();
+                    }                    
+                }
+            }
             
-            if (commandPhrase == "quit")
+            switch (commandAction)
             {
-                var quit = new Quit(_gameEngine);
-                return quit;
+                case "look":
+                case "look at":     
+                    return new Look(player, target);
+                case "move":
+                    return new Move(player, _testRoom);
+                case "quit":
+                    return new Quit(_gameEngine);
+                case "say":
+                    return new Say(player, target);
+                default:
+                    return new Message("Say what?");
             }
-            else if (commandPhrase == "look")
-            {
-                var look = new Look(player);
-                return look;                
-            }
-            else if (commandPhrase == "move")
-            {
-                var move = new Move(player, _testRoom);
-                return move;
-            }
-            else if (commandPhrase == "say hello")
-            {
-                var say = new Say(player, "hello");
-                return say;                
-            }
-            else
-            {
-                var message = new Message("Say what?");
-                return message;
-            }
+                                    
         }
+        
+      
     }
 }
