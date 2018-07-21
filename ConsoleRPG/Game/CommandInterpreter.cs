@@ -24,7 +24,7 @@ namespace ConsoleRPG.Game
         public CommandInterpreter(GameEngine gameEngine)
         {
             _gameEngine = gameEngine;
-            _testRoom = new Room("A dark dank chamber full of soft whisper voices...");
+            _testRoom = new Room("A dark dank chamber full of soft whispering voices...");
         }
 
         public string[] ParseCommandString(string commandString)
@@ -40,7 +40,7 @@ namespace ConsoleRPG.Game
             string[] commandWords = commandString.Split(' ');
 
             //get first command and set it to action
-            string commandAction = commandWords[0];
+            string commandAction = commandWords[0].ToLower();
             string target = "";
 
             if (commandWords.Length >= 2)
@@ -54,18 +54,14 @@ namespace ConsoleRPG.Game
                     //return rest of commandWords as string - But of course the string.Join complains if beginning index and end index are the same
                     // so we have to do this clunky check
                     if(commandWords.Length >= 3)
-                    {
-                        
-                        target = string.Join(" ", commandWords, 2, commandWords.Length - 2);
-                     
+                    {                        
+                        target = string.Join(" ", commandWords, 2, commandWords.Length - 2);                     
                     }
                     
                 }
                 else
-                {
-                    
-                    target = string.Join(" ", commandWords, 1, commandWords.Length - 1);
-                    
+                {                    
+                    target = string.Join(" ", commandWords, 1, commandWords.Length - 1);                    
                 }               
             }
 
@@ -99,10 +95,7 @@ namespace ConsoleRPG.Game
                     return new Say(player, target);
                 default:
                     return new Message("Say what?");
-            }
-                                    
-        }
-        
-      
+            }                                    
+        }              
     }
 }

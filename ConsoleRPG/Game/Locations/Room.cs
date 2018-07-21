@@ -6,16 +6,16 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Locations
 {
-    public class Room
+    public class Room : Location
     {
-        public string Description { get; private set; }
+        public override string Description { get; set; }
 
         public Room(string description)
         {
             Description = description;
         }
 
-        public DisplayText Enter(Actor actor)
+        public override DisplayText Enter(Actor actor)
         {
             actor.Location = this;
             return new DisplayText(actor.Name + " enters " + Description);

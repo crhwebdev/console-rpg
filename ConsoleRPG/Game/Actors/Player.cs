@@ -26,7 +26,7 @@ namespace ConsoleRPG.Game.Actors
             return new DisplayText(Name + " says, '" + text + "'");
         }
 
-        public override DisplayText Move(Room location)
+        public override DisplayText Move(Location location)
         {
             var moveDisplayText = new DisplayText(Name + " moves");
             var enterDisplayText = location.Enter(this);            
