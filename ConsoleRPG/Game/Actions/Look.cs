@@ -11,7 +11,7 @@ namespace ConsoleRPG.Game.Actions
         
         private Actor _actor;
         private string _target;
-        
+                
         //needs access to player (i.e. actor), portal (i.e. reciever), and then other stuff depending on Action
         public Look(Actor actor, string target)
         {
@@ -19,6 +19,7 @@ namespace ConsoleRPG.Game.Actions
             _target = target;
         }
         
+     
         public DisplayText Do()
         {
             var currentLocation = _actor.Location;

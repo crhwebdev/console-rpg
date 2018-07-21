@@ -8,6 +8,7 @@ namespace ConsoleRPG.Game.Locations
 {
     public class Room : Location
     {
+        public override string Name { get; set; }
         public override string Description { get; set; }
 
         public Room(string description)
