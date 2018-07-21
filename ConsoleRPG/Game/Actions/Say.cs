@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actions
 {
-    class Say : IAction
+    public class Say : IAction
     {
         public string Display { get; set; }
         private Actor _actor;

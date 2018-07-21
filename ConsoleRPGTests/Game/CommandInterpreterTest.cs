@@ -26,10 +26,40 @@ namespace ConsoleRPGTests.Game
         }
 
         [Fact]
-        public void ParseCommandToAppropriateAction()
+        public void ParseCommandIntoActionAndTargetStringArray()
         {
-            var returnAction = _commandInterpreter.Interpret("move", _player);
-            Assert.IsType<Move>(returnAction);
+            var commandString = "say at brown cow";
+            var returnParsed = _commandInterpreter.ParseCommandString(commandString);
+            Assert.Equal("say at", returnParsed[0]);
+            Assert.Equal("brown cow", returnParsed[1]);
+
+            commandString = "say brown cow";
+            returnParsed = _commandInterpreter.ParseCommandString(commandString);
+            Assert.Equal("say", returnParsed[0]);
+            Assert.Equal("brown cow", returnParsed[1]);
+
+            commandString = "say";
+            returnParsed = _commandInterpreter.ParseCommandString(commandString);
+            Assert.Equal("say", returnParsed[0]);
+            Assert.Equal("", returnParsed[1]);
+
+
+        }
+
+        [Fact]
+        public void ReturnNullWhenParseingEmptyString()
+        {            
+            var returnParsed = _commandInterpreter.ParseCommandString("");
+            Assert.Null(returnParsed);                        
+        }
+
+
+        [Fact]
+        public void GetCorrectActionFromCommandList()
+        {
+            string[] commandList = {"say", "hello world"};
+            var returnAction = _commandInterpreter.GetAction(commandList, _player);
+            Assert.IsType<Say>(returnAction);
         }
     }
 }

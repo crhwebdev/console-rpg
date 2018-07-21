@@ -53,29 +53,19 @@ namespace ConsoleRPG.Game
 
                     //return rest of commandWords as string - But of course the string.Join complains if beginning index and end index are the same
                     // so we have to do this clunky check
-                    if(commandWords.Length > 2)
+                    if(commandWords.Length >= 3)
                     {
-                        try
-                        {
-                            target = string.Join(" ", commandWords, 2, commandWords.Length - 1);
-                        }
-                        catch (ArgumentOutOfRangeException)
-                        {
-                            target = commandWords[2].ToString();
-                        }
+                        
+                        target = string.Join(" ", commandWords, 2, commandWords.Length - 2);
+                     
                     }
                     
                 }
                 else
                 {
-                    try
-                    {
-                        target = string.Join(" ", commandWords, 1, commandWords.Length - 1);
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        target = commandWords[1].ToString();
-                    }
+                    
+                    target = string.Join(" ", commandWords, 1, commandWords.Length - 1);
+                    
                 }               
             }
 
