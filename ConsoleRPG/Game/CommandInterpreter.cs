@@ -24,7 +24,7 @@ namespace ConsoleRPG.Game
         public CommandInterpreter(GameEngine gameEngine)
         {
             _gameEngine = gameEngine;
-            _testRoom = new Room("A dark dank chamber full of soft whispering voices...");
+            //_testRoom = new Room("A dark dank chamber full of soft whispering voices...");
         }
 
         public string[] ParseCommandString(string commandString)

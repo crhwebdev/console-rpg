@@ -7,9 +7,12 @@ using System.Text;
 namespace ConsoleRPG.Game.Actors
 {
     public class Player : Actor
-    {       
+    {
         //Name property inherieted from Actor
-        //Location property inherieted from Actor
+        
+
+        //for testing purposes 
+        public override Location Location { get; set; } = new Room("The Chamber", "A dark dank chamber full of soft whispering voices...");
 
         public Player(string name)
         {
@@ -23,7 +26,13 @@ namespace ConsoleRPG.Game.Actors
 
         public DisplayText Look(IViewable viewedTarget)
         {
-            return new DisplayText(Name + " looks at " + viewedTarget.Name);
+            DisplayText text = new DisplayText();
+            DisplayText viewedTargetText = viewedTarget.Viewed(this);
+
+            text.Add(new DisplayText(Name + " looks at " + viewedTarget.Name));            
+            text.Add(viewedTargetText);
+
+            return text;                                                
         }
 
         public override DisplayText Say(string text)
@@ -34,7 +43,7 @@ namespace ConsoleRPG.Game.Actors
         public override DisplayText Move(Location location)
         {
             var moveDisplayText = new DisplayText(Name + " moves");
-            var enterDisplayText = location.Enter(this);            
+            var enterDisplayText = Location.Enter(this);            
             moveDisplayText.Add(enterDisplayText);
             return moveDisplayText;
         }

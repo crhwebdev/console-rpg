@@ -11,8 +11,9 @@ namespace ConsoleRPG.Game.Locations
         public override string Name { get; set; }
         public override string Description { get; set; }
 
-        public Room(string description)
+        public Room(string name, string description)
         {
+            Name = name;
             Description = description;
         }
 
@@ -20,6 +21,11 @@ namespace ConsoleRPG.Game.Locations
         {
             actor.Location = this;
             return new DisplayText(actor.Name + " enters " + Description);
+        }
+
+        public override DisplayText Viewed(Actor viewer)
+        {
+            return new DisplayText(Description);
         }
     }
 }
