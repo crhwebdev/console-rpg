@@ -25,7 +25,7 @@ namespace ConsoleRPG.Game.Actions
             if(destination == null)
             {
                 return new DisplayText("You cannot move there!");
-            }
+            }            
             var moveDisplayText = _actor.Move(destination);            
             return moveDisplayText;            
         }

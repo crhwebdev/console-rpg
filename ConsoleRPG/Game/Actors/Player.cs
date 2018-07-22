@@ -27,9 +27,7 @@ namespace ConsoleRPG.Game.Actors
         public override DisplayText Look(IViewable viewedTarget)
         {
             DisplayText text = new DisplayText();
-            DisplayText viewedTargetText = viewedTarget.Viewed(this);
-
-            text.Add(new DisplayText(Name + " looks at " + viewedTarget.Name));            
+            DisplayText viewedTargetText = viewedTarget.Viewed(this);                        
             text.Add(viewedTargetText);
 
             return text;                                                
@@ -37,12 +35,12 @@ namespace ConsoleRPG.Game.Actors
 
         public override DisplayText Say(string text)
         {
-            return new DisplayText(Name + " says, '" + text + "'");
+            return new DisplayText("You say: '" + text + "'");
         }
 
         public override DisplayText Move(Location location)
-        {            
-            var moveDisplayText = location.Enter(this);                     
+        {
+            var moveDisplayText = location.Enter(this);            
             return moveDisplayText;
         }
     }
