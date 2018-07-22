@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actions
 {
-    public class Move : IAction
+    public class Move : Action
     {       
         private Actor _actor;
         private Location _target;
@@ -19,7 +19,7 @@ namespace ConsoleRPG.Game.Actions
             _target = target;
         }
 
-        public DisplayText Do()
+        public override DisplayText Do()
         {
                     
             var moveDisplayText = _actor.Move(_target);            

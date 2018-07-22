@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actions
 {
-    public class Say : IAction
+    public class Say : Action
     {
         public string Display { get; set; }
         private Actor _actor;
@@ -18,7 +18,7 @@ namespace ConsoleRPG.Game.Actions
             _text = text;
         }
 
-        public DisplayText Do()
+        public override DisplayText Do()
         {
             var displayText = _actor.Say(_text);
             return displayText;

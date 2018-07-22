@@ -27,7 +27,7 @@ namespace ConsoleRPG.Game
         private bool _gameIsRunning = false;
 
         //Game Command List - add commads to this list to use in engine
-        private List<IAction> _commands = new List<IAction>();    
+        private List<Actions.Action> _commands = new List<Actions.Action>();    
         
 
         public GameEngine()

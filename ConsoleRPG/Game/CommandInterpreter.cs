@@ -3,7 +3,6 @@ using ConsoleRPG.Game.Actors;
 using ConsoleRPG.Game.Locations;
 using ConsoleRPG.System;
 using ConsoleRPG.UI;
-using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
@@ -71,7 +70,7 @@ namespace ConsoleRPG.Game
             return parsedCommandList;
         }
 
-        public IAction GetAction(string[] commandList, Actor player)
+        public Action GetAction(string[] commandList, Actor player)
         {
 
             if(commandList == null)

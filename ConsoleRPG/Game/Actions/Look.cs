@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actions
 {
-    public class Look : IAction
+    public class Look : Action
     {
         
         private Actor _actor;
@@ -20,7 +20,7 @@ namespace ConsoleRPG.Game.Actions
         }
         
      
-        public DisplayText Do()
+        public override DisplayText Do()
         {
             
             return _actor.Look(GetTargetObject()); 

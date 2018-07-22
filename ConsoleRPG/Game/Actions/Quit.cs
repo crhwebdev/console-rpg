@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actions
 {
-    public class Quit : IAction
+    public class Quit : Action
     {       
         
         private GameEngine _gameEngine;
@@ -15,7 +15,7 @@ namespace ConsoleRPG.Game.Actions
             _gameEngine = gameEngine;
         }
 
-        public DisplayText Do()
+        public override DisplayText Do()
         {
             _gameEngine.Stop();
             return new DisplayText("Quiting game...");

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actions
 {
-    public interface IAction
+    public abstract class Action
     {           
-        DisplayText Do();
+        public abstract DisplayText Do();
     }
 }

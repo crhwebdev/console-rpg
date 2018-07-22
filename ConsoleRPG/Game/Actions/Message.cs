@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actions
 {
-    public class Message : IAction
+    public class Message : Action
     {
         private string _message;
 
@@ -14,7 +14,7 @@ namespace ConsoleRPG.Game.Actions
             _message = message;
         }
 
-        public DisplayText Do()
+        public override DisplayText Do()
         {
             return new DisplayText(_message);
         }
