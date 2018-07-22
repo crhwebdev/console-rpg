@@ -37,13 +37,17 @@ namespace ConsoleRPG.UI
             foreach(var line in text)
             {
                 WriteDisplayTextLine(line);
+                WriteDisplayTextLine("");
             }
         }
 
         public override string GetUserInput()
         {
+            WriteDisplayTextLine("");
             _console.Write("What is your command, Master?");
-            return _console.ReadLine();
+            var text = _console.ReadLine();
+            WriteDisplayTextLine("");
+            return text;
         }
      
     }
