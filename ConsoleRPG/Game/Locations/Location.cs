@@ -28,14 +28,43 @@ namespace ConsoleRPG.Game.Locations
 
         public virtual DisplayText Enter(Actor actor)
         {
+            //set location of actor entering location
             actor.Location = this;
 
-            return new DisplayText("You enter " + Description);
+            //get description of location and add to DisplayText to be returned
+            var enterDisplayText = new DisplayText("You enter " + Description);
+
+            //get list of npcs in room
+            var npcListDisplayText = new DisplayText();
+            foreach(var person in Actors)
+            {
+                var personDisplayTextLine = new DisplayTextLine(person.Name + " is here");
+                npcListDisplayText.Add(personDisplayTextLine);
+            }
+
+            //add list of npcs to DisplayText 
+            enterDisplayText.Add(npcListDisplayText);
+
+            return enterDisplayText;
         }
 
         public virtual DisplayText Viewed(Actor viewer)
         {
-            return new DisplayText("You see " + Description);
+            var viewedDisplayText = new DisplayText("You see " + Description);
+
+            //get list of npcs in room
+            var npcListDisplayText = new DisplayText();
+            foreach (var person in Actors)
+            {
+                var personDisplayTextLine = new DisplayTextLine(person.Name + " is here");
+                npcListDisplayText.Add(personDisplayTextLine);
+            }
+
+            viewedDisplayText.Add(npcListDisplayText);
+
+            return viewedDisplayText;
         }
+
+        
     }
 }
