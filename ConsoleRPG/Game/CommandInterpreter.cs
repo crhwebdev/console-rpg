@@ -85,7 +85,8 @@ namespace ConsoleRPG.Game
             switch (action)
             {
                 case "look":
-                case "look at":     
+                case "look at": 
+                    //TODO: Use Linq to search 1) actors list and then 2) props list
                     return new Look(player, target);
                 case "move":
                     if(target == "north" && player.Location.ExitNorth != null)

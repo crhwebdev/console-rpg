@@ -53,7 +53,7 @@ namespace ConsoleRPGTests.UI
             });
             Console.SetOut(_out);
             _gameConsole.WriteDisplayText(displayText);
-            Assert.Equal("Hello World!\r\nBye World!\r\n", _out.ToString());
+            Assert.Equal("Hello World!\r\n\r\nBye World!\r\n\r\n", _out.ToString());
             ClearTest();
         }
 
