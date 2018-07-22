@@ -12,6 +12,11 @@ namespace ConsoleRPG.Game.Actors
         public virtual string Description { get; set; }
         public virtual Location Location { get; set; }
 
+        public Actor(string name)
+        {
+            Name = name;
+        }
+
         //Has various methods that correspond to actions that can be executed with him as the reciever        
         public abstract DisplayText Look(IViewable viewedTarget);
         public abstract DisplayText Say(string text);

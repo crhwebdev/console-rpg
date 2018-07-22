@@ -8,10 +8,8 @@ namespace ConsoleRPG.Game.Locations
 {
     public class Room : Location
     {      
-        public Room(string name, string description)
-        {
-            Name = name;
-            Description = description;
+        public Room(string name) : base(name)
+        {            
         }
 
         public override DisplayText Enter(Actor actor)

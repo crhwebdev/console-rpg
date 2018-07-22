@@ -1,4 +1,5 @@
-﻿using ConsoleRPG.Game.Locations;
+﻿using ConsoleRPG.Game.Actors;
+using ConsoleRPG.Game.Locations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,22 +13,33 @@ namespace ConsoleRPG.Game
 
         public TestDungeon()
         {
-            var location = new Area("The Chamber")
+            //declare NPCs
+            var bob = new NPC("Bob")
             {
-                Description = "a dark dank chamber full of soft whispering voices... there is a small ornate door in the north wall."
+                Description = "a burly man in his mid 40s. He is smiling at you as if expecting you to say something."
             };
-            var location2 = new Area("The Antechamber")
+
+            //declare rooms
+            var theChamber = new Area("The Chamber")
+            {
+                Description = "a dark dank chamber full of soft whispering voices... there is a small ornate door in the north wall.",              
+            };
+
+            bob.Location = theChamber;
+            theChamber.Actors.Add(bob);
+
+            var theAntechamber = new Area("The Antechamber")
             {
                 Description = "a small, brightly lit room with a small ornate door leading to the south."
             };
 
-            location.ExitNorth = location2;
-            location2.ExitSouth = location;
+            theChamber.ExitNorth = theAntechamber;
+            theAntechamber.ExitSouth = theChamber;
 
-            Locations.Add(location);
-            Locations.Add(location2);
+            Locations.Add(theChamber);
+            Locations.Add(theAntechamber);
 
-            StartingArea = location;
+            StartingArea = theChamber;
         }
     }
 }

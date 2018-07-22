@@ -11,9 +11,9 @@ namespace ConsoleRPG.Game.Locations
         public override Location ExitEast { get; set; }
         public override Location ExitWest { get; set; }
 
-        public Area(string name)
+        public Area(string name) : base(name)
         {
-            Name = name;
+            
         }
     }
 }

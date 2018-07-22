@@ -14,9 +14,9 @@ namespace ConsoleRPG.Game.Actors
         //for testing purposes 
         public override Location Location { get; set; }
 
-        public Player(string name)
-        {
-            Name = name;
+        public Player(string name) : base(name)
+        {            
+
         }
       
         public override DisplayText Look(IViewable viewedTarget)

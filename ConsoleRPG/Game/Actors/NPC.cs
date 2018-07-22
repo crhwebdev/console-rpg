@@ -8,6 +8,11 @@ namespace ConsoleRPG.Game.Actors
 {
     class NPC : Actor
     {
+        public NPC(string name) : base(name)
+        {
+
+        }
+
         //Has various methods that correspond to actions that can be executed with him as the reciever
         public override DisplayText Look(IViewable viewedTarget)
         {
