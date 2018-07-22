@@ -24,7 +24,7 @@ namespace ConsoleRPG.Game.Actors
         
         public virtual DisplayText Viewed(Actor viewer)
         {
-            return new DisplayText(Description);
+            return new DisplayText("You see " + Description);
         }
     }
 }

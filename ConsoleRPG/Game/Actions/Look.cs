@@ -22,21 +22,38 @@ namespace ConsoleRPG.Game.Actions
      
         public override DisplayText Do()
         {
-            
-            return _actor.Look(GetViewableObject()); 
-        }
 
-        private IViewable GetViewableObject()
-        {
-            if(_target == "")
+            var viewedTarget = GetViewableObject(_target);
+            if(viewedTarget != null)
             {
-                return _actor.Location;
+                return _actor.Look(viewedTarget);
             }
 
-            //TODO: need to impliment algorithim to search through Locations Actors and Props lists (not implimented yet) for a match with target
-            // this search could potentially be added to utility class or we could change IAction to an abstract class and impliment a protected method
-            // that does the search.  Probably use LINQ
-            return _actor.Location;
+            return new DisplayText("I don't understand.");
+        }
+
+        private IViewable GetViewableObject(string target)
+        {
+            var currentLocation = _actor.Location;
+
+            if (target == "")
+            {
+                return currentLocation;
+            }
+
+           
+            //TODO: refactor using Linq maybe
+            foreach(var person in currentLocation.Actors)
+            {
+                //if target string equals this persons name, then we have a match
+                if (target.Equals(person.Name, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return person;
+                }
+            }
+
+
+            return null;
         }
 
 
