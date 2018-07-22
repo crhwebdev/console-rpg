@@ -10,10 +10,10 @@ namespace ConsoleRPG.Game.Actions
     public class Move : IAction
     {       
         private Actor _actor;
-        private Room _target;
+        private Location _target;
 
         //needs access to player (i.e. actor), portal (i.e. reciever), and then other stuff depending on Action
-        public Move(Actor actor, Room target)
+        public Move(Actor actor, Location target)
         {
             _actor = actor;
             _target = target;
@@ -21,6 +21,7 @@ namespace ConsoleRPG.Game.Actions
 
         public DisplayText Do()
         {
+                    
             var moveDisplayText = _actor.Move(_target);            
             return moveDisplayText;            
         }

@@ -88,7 +88,26 @@ namespace ConsoleRPG.Game
                 case "look at":     
                     return new Look(player, target);
                 case "move":
-                    return new Move(player, _testRoom);
+                    if(target == "north" && player.Location.ExitNorth != null)
+                    {
+                        return new Move(player, player.Location.ExitNorth);
+                    }
+
+                    if(target == "south" && player.Location.ExitSouth != null)
+                    {
+                        return new Move(player, player.Location.ExitSouth);
+                    }
+
+                    if (target == "east" && player.Location.ExitEast != null)
+                    {
+                        return new Move(player, player.Location.ExitEast);
+                    }
+
+                    if (target == "west" && player.Location.ExitWest != null)
+                    {
+                        return new Move(player, player.Location.ExitWest);
+                    }
+                    return new Message("Say what?");
                 case "quit":
                     return new Quit(_gameEngine);
                 case "say":
@@ -96,6 +115,8 @@ namespace ConsoleRPG.Game
                 default:
                     return new Message("Say what?");
             }                                    
-        }              
+        } 
+        
+        
     }
 }

@@ -41,10 +41,8 @@ namespace ConsoleRPG.Game.Actors
         }
 
         public override DisplayText Move(Location location)
-        {
-            var moveDisplayText = new DisplayText(Name + " moves");
-            var enterDisplayText = Location.Enter(this);            
-            moveDisplayText.Add(enterDisplayText);
+        {            
+            var moveDisplayText = location.Enter(this);                     
             return moveDisplayText;
         }
     }
