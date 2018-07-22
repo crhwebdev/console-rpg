@@ -18,12 +18,7 @@ namespace ConsoleRPG.Game.Actors
         {
             Name = name;
         }
-
-        public override DisplayText Look()
-        {
-            return new DisplayText(Name + " sees stuff!");
-        }
-
+      
         public override DisplayText Look(IViewable viewedTarget)
         {
             DisplayText text = new DisplayText();

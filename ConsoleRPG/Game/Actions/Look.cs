@@ -23,10 +23,10 @@ namespace ConsoleRPG.Game.Actions
         public override DisplayText Do()
         {
             
-            return _actor.Look(GetTargetObject()); 
+            return _actor.Look(GetViewableObject()); 
         }
 
-        private IViewable GetTargetObject()
+        private IViewable GetViewableObject()
         {
             if(_target == "")
             {
