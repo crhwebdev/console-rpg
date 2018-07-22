@@ -16,12 +16,12 @@ namespace ConsoleRPG.Game
         // Start method runs game loop
         // Stop method ends game loop and performs cleanup
 
-        public Actor Player { get; set; } = new Player("Carl The Destroyer");        
+        public Actor Player { get; set; }        
 
         //Game Components
         public TextConsole GameConsole { get; set;}
         public CommandInterpreter CommandInterpreter { get; set; }
-        //private Level _level;
+        public Level CurrentAdventure;
 
         //Other Game Fields
         private bool _gameIsRunning = false;
@@ -38,9 +38,13 @@ namespace ConsoleRPG.Game
         
         public void Start()
         {
-            _gameIsRunning = true;            
-            
+            _gameIsRunning = true;
+            CurrentAdventure = new TestDungeon();
+            Player = new Player("Carl The Destroyer");
+            Player.Location = CurrentAdventure.StartingArea;
 
+            GameConsole.WriteDisplayText(CurrentAdventure.StartingArea.Viewed(Player));
+            
             while (_gameIsRunning)
             {                
                 var input = GameConsole.GetUserInput();

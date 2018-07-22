@@ -12,10 +12,7 @@ namespace ConsoleRPG.Game.Actors
 
 
         //for testing purposes 
-        public override Location Location { get; set; } = new Area("The Chamber")
-        {
-            Description = "A dark dank chamber full of soft whispering voices..."
-        };
+        public override Location Location { get; set; }
 
         public Player(string name)
         {

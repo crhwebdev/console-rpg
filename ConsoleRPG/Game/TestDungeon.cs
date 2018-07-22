@@ -7,8 +7,9 @@ namespace ConsoleRPG.Game
 {
     class TestDungeon : Level
     {
-        public override List<Location> Locations { get; set; }
-        
+        public override List<Location> Locations { get; set; } = new List<Location>();
+        public override Location StartingArea { get; set; } 
+
         public TestDungeon()
         {
             var location = new Area("The Chamber")
@@ -25,6 +26,8 @@ namespace ConsoleRPG.Game
 
             Locations.Add(location);
             Locations.Add(location2);
+
+            StartingArea = location;
         }
     }
 }
