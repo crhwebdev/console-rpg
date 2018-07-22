@@ -9,10 +9,13 @@ namespace ConsoleRPG.Game.Actors
     public class Player : Actor
     {
         //Name property inherieted from Actor
-        
+
 
         //for testing purposes 
-        public override Location Location { get; set; } = new Room("The Chamber", "A dark dank chamber full of soft whispering voices...");
+        public override Location Location { get; set; } = new Area("The Chamber")
+        {
+            Description = "A dark dank chamber full of soft whispering voices..."
+        };
 
         public Player(string name)
         {
@@ -24,7 +27,7 @@ namespace ConsoleRPG.Game.Actors
             return new DisplayText(Name + " sees stuff!");
         }
 
-        public DisplayText Look(IViewable viewedTarget)
+        public override DisplayText Look(IViewable viewedTarget)
         {
             DisplayText text = new DisplayText();
             DisplayText viewedTargetText = viewedTarget.Viewed(this);

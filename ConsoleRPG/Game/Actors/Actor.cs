@@ -14,6 +14,7 @@ namespace ConsoleRPG.Game.Actors
 
         //Has various methods that correspond to actions that can be executed with him as the reciever
         public abstract DisplayText Look();
+        public abstract DisplayText Look(IViewable viewedTarget);
         public abstract DisplayText Say(string text);
         public abstract DisplayText Move(Location location); 
         

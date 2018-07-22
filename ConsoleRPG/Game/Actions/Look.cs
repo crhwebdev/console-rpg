@@ -22,8 +22,21 @@ namespace ConsoleRPG.Game.Actions
      
         public DisplayText Do()
         {
-            var currentLocation = _actor.Location;
-            return _actor.Look(); 
+            
+            return _actor.Look(GetTargetObject()); 
+        }
+
+        private IViewable GetTargetObject()
+        {
+            if(_target == "")
+            {
+                return _actor.Location;
+            }
+
+            //TODO: need to impliment algorithim to search through Locations Actors and Props lists (not implimented yet) for a match with target
+            // this search could potentially be added to utility class or we could change IAction to an abstract class and impliment a protected method
+            // that does the search.  Probably use LINQ
+            return _actor.Location;
         }
 
 
