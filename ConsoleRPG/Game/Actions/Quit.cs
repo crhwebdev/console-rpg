@@ -1,4 +1,5 @@
-﻿using ConsoleRPG.System;
+﻿using ConsoleRPG.Game.Actors;
+using ConsoleRPG.System;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,6 @@ namespace ConsoleRPG.Game.Actions
 {
     public class Quit : Action
     {       
-        
         private GameEngine _gameEngine;
 
         public Quit(GameEngine gameEngine)
@@ -19,6 +19,6 @@ namespace ConsoleRPG.Game.Actions
         {
             _gameEngine.Stop();
             return new DisplayText("Quiting game...");
-        }
+        }       
     }
 }

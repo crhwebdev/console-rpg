@@ -88,26 +88,7 @@ namespace ConsoleRPG.Game
                     //TODO: Use Linq to search 1) actors list and then 2) props list
                     return new Look(player, target);
                 case "move":
-                    if(target == "north" && player.Location.ExitNorth != null)
-                    {
-                        return new Move(player, player.Location.ExitNorth);
-                    }
-
-                    if(target == "south" && player.Location.ExitSouth != null)
-                    {
-                        return new Move(player, player.Location.ExitSouth);
-                    }
-
-                    if (target == "east" && player.Location.ExitEast != null)
-                    {
-                        return new Move(player, player.Location.ExitEast);
-                    }
-
-                    if (target == "west" && player.Location.ExitWest != null)
-                    {
-                        return new Move(player, player.Location.ExitWest);
-                    }
-                    return new Message("Say what?");
+                    return new Move(player, target);                    
                 case "quit":
                     return new Quit(_gameEngine);
                 case "say":
