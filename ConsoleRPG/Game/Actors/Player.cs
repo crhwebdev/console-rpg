@@ -28,15 +28,17 @@ namespace ConsoleRPG.Game.Actors
             return text;                                                
         }
 
+        public override DisplayText Move(Location location)
+        {
+            var moveDisplayText = location.Enter(this);
+            return moveDisplayText;
+        }
+
         public override DisplayText Say(string text)
         {
             return new DisplayText("You say: '" + text + "'");
         }
 
-        public override DisplayText Move(Location location)
-        {
-            var moveDisplayText = location.Enter(this);            
-            return moveDisplayText;
-        }
+     
     }
 }
