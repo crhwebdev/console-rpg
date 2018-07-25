@@ -36,7 +36,7 @@ namespace ConsoleRPG.UI
         {
             foreach(var line in text)
             {
-                WriteDisplayTextLine(line);
+                WriteDisplayTextLine(line.ToString());
                 WriteDisplayTextLine("");
             }
         }

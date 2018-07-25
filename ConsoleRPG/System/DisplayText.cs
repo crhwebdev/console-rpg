@@ -53,7 +53,7 @@ namespace ConsoleRPG.System
         {
             foreach(var line in displayText)
             {
-                _content.Add(line);
+                _content.Add((DisplayTextLine)line);
             }
         }
             
@@ -61,7 +61,7 @@ namespace ConsoleRPG.System
         {
             if (LineCount == 1)
             {
-                return _content[0].Text;
+                return _content[0].Text;                
             }
 
             return null;
@@ -70,80 +70,37 @@ namespace ConsoleRPG.System
         //Implementation for the GetEnumerator method
         IEnumerator IEnumerable.GetEnumerator()
         {
+
             return (IEnumerator) GetEnumerator();
+            
         }
 
-        public DisplayTextEnum GetEnumerator()
+        public IEnumerator GetEnumerator()
         {
-            //throw new NotImplementedException();
-            return new DisplayTextEnum(_content);
+            //return new DisplayTextEnum(_content);
+            foreach(var line in _content)
+            {
+                yield return line;
+            }
         }
                         
     }
 
-    public class DisplayTextEnum : IEnumerator
-    {
-        public List<DisplayTextLine> Content;
-
-        int position = -1;
-
-        public DisplayTextEnum(List<DisplayTextLine> lines)
-        {
-            Content = lines;
-        }
-        
-        public bool MoveNext()
-        {
-            position++;
-            return (position < Content.Count);
-        }
-
-        public void Reset()
-        {
-            position = -1;
-        }
-
-        object IEnumerator.Current
-        {
-            get
-            {
-                return Current;
-            }
-        }
-
-        public DisplayTextLine Current
-        {
-            get
-            {
-                try
-                {
-                    return Content[position];
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    throw new InvalidOperationException();
-                }
-            }
-        }
-    }
-
-    // When you implement IEnumerable, you must also implement IEnumerator.
     //public class DisplayTextEnum : IEnumerator
     //{
-    //    public List<DisplayTextLine> _content;
+    //    public List<DisplayTextLine> Content;
 
-    
     //    int position = -1;
 
-    //    public DisplayTextEnum(List<DisplayTextLine> list)
+    //    public DisplayTextEnum(List<DisplayTextLine> lines)
     //    {
-    //        _content = list;
+    //        Content = lines;
     //    }
 
     //    public bool MoveNext()
     //    {
     //        position++;
-    //        return (position < _content.Count);
+    //        return (position < Content.Count);
     //    }
 
     //    public void Reset()
@@ -165,7 +122,7 @@ namespace ConsoleRPG.System
     //        {
     //            try
     //            {
-    //                return _content[position];
+    //                return Content[position];
     //            }
     //            catch (IndexOutOfRangeException)
     //            {
@@ -174,4 +131,5 @@ namespace ConsoleRPG.System
     //        }
     //    }
     //}
+
 }
