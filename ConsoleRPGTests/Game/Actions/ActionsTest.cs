@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleRPG.Game.Actions;
+using System;
 using System.Linq;
 using Xunit;
 
@@ -15,7 +16,9 @@ namespace ConsoleRPGTests.Game.Actions
         [Fact]
         public void MessageActionReturnsCorrectDisplayText()
         {
-            Assert.True(false);
+            var text = "Hello World!";
+            var action = new Message(text);
+            Assert.Equal(text, action.Do().ToString());
         }
 
         [Fact]
