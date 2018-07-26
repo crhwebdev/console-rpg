@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actors
 {
-    class NPC : Actor
+    public class NPC : Actor
     {
         public NPC(string name) : base(name)
         {
