@@ -45,7 +45,7 @@ namespace ConsoleRPGTests.Game.Actions
             _testArea.Actors.Add(_testNPC);
         }
 
-        public void ResetPlayerLocation()
+        private void ResetPlayerLocation()
         {
             _testPlayer.Location = _testArea;
         }
