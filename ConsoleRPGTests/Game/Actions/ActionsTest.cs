@@ -55,7 +55,7 @@ namespace ConsoleRPGTests.Game.Actions
         {
 
             //var target = "";
-            //var action = new Look(new MockPlayer("The Test Dude"), target);
+            //var action = new Look(_testPlayer, target);
             //Look with empty target - should return location description
             Assert.True(false);
             //Look with actor target - should return actor description
@@ -73,8 +73,12 @@ namespace ConsoleRPGTests.Game.Actions
         public void MoveActionReturnsCorrectDisplayText()
         {
             //Move with wrong direction
-            Assert.True(false);
+            var moveWrongDirection = new Move(_testPlayer, "west");
+            Assert.Equal("You cannot move there!", moveWrongDirection.Do().ToString());
+            ResetPlayerLocation();
             //Move with correct direction
+            var moveRightDirection = new Move(_testPlayer, "north");
+            Assert.Equal("You move!", moveRightDirection.Do().ToString());
 
             ResetPlayerLocation();
         }
@@ -85,9 +89,8 @@ namespace ConsoleRPGTests.Game.Actions
         [Fact]
         public void SayActionReturnsCorrectDisplayText()
         {
-            var text = "Hello World!";
-            var mockPlayer = new MockPlayer("The Test Dude");
-            var action = new Say(mockPlayer, text);
+            var text = "Hello World!";            
+            var action = new Say(_testPlayer, text);
             Assert.Equal("You say: " + text, action.Do().ToString());
         }
     }
@@ -130,8 +133,7 @@ namespace ConsoleRPGTests.Game.Actions
         {
             return new DisplayText("You see " + Name);
         }
-    }
-
+    
         //Has various methods that correspond to actions that can be executed with him as the reciever
         public override DisplayText Look(IViewable viewedTarget)
         {
