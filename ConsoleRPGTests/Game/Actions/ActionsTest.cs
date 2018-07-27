@@ -50,6 +50,30 @@ namespace ConsoleRPGTests.Game.Actions
             _testPlayer.Location = _testArea;
         }
 
+        // TESTS
+
+        // GET ACTION
+        [Fact]
+        public void GetActionReturnsCorrectDisplayTextAndRemovesItemFromRoom()
+        {
+            Assert.True(false);
+        }
+
+        // DROP ACTION
+        [Fact]
+        public void DropActionReturnsCorrectDisplayTextAndAddsItemToRoomAndRemovesFromPlayerInventory()
+        {
+            Assert.True(false);
+        }
+
+        // INVENTORY ACTION
+        [Fact]
+        public void InventoryActionShowsItemsInPlayerInventory()
+        {
+            Assert.True(false);
+        }
+
+
         [Fact]
         public void LookActionReturnsCorrectDisplayText()
         {
