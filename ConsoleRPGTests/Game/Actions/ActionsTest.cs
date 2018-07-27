@@ -62,6 +62,10 @@ namespace ConsoleRPGTests.Game.Actions
             target = "Other Test Dude";
             action = new Look(_testPlayer, target);
             Assert.Equal("a very testy dude.", action.Do().ToString());
+            //Look with actor target and different case - should return actor description
+            target = "other test dude";
+            action = new Look(_testPlayer, target);
+            Assert.Equal("a very testy dude.", action.Do().ToString());
         }
 
         [Fact]
@@ -80,7 +84,10 @@ namespace ConsoleRPGTests.Game.Actions
             Assert.Equal("You cannot move there!", moveWrongDirection.Do().ToString());
             ResetPlayerLocation();
             //Move with correct direction
-            var moveRightDirection = new Move(_testPlayer, "north");
+            var moveRightDirection = new Move(_testPlayer, "North");
+            Assert.Equal("You move!", moveRightDirection.Do().ToString());
+            //Move with direction using different case
+            moveRightDirection = new Move(_testPlayer, "north");
             Assert.Equal("You move!", moveRightDirection.Do().ToString());
 
             ResetPlayerLocation();
