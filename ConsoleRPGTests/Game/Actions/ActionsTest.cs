@@ -54,11 +54,14 @@ namespace ConsoleRPGTests.Game.Actions
         public void LookActionReturnsCorrectDisplayText()
         {
 
-            //var target = "";
-            //var action = new Look(_testPlayer, target);
+            var target = "";
+            var action = new Look(_testPlayer, target);
             //Look with empty target - should return location description
-            Assert.True(false);
+            Assert.Equal("a very testing area indeed.", action.Do().ToString());
             //Look with actor target - should return actor description
+            target = "Other Test Dude";
+            action = new Look(_testPlayer, target);
+            Assert.Equal("a very testy dude.", action.Do().ToString());
         }
 
         [Fact]
@@ -105,7 +108,7 @@ namespace ConsoleRPGTests.Game.Actions
 
         public override DisplayText Look(IViewable viewedTarget)
         {
-            return new DisplayText("You see stuff.");
+            return viewedTarget.Viewed(this);
         }
         public override DisplayText Say(string text)
         {
@@ -123,6 +126,13 @@ namespace ConsoleRPGTests.Game.Actions
         {
 
         }
+
+        public override DisplayText Viewed(Actor viewer)
+        {
+            var viewedDisplayText = new DisplayText(Description);
+            
+            return viewedDisplayText;
+        }
     }
 
     class MockNPC : NPC
@@ -131,7 +141,7 @@ namespace ConsoleRPGTests.Game.Actions
 
         public override DisplayText Viewed(Actor viewer)
         {
-            return new DisplayText("You see " + Name);
+            return new DisplayText(Description);
         }
     
         //Has various methods that correspond to actions that can be executed with him as the reciever
