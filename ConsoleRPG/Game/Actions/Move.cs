@@ -31,23 +31,23 @@ namespace ConsoleRPG.Game.Actions
         }
 
         private Location getDestination(string destinationName)
-        {
-            if (destinationName == "north" && _actor.Location.ExitNorth != null)
+        {            
+            if (destinationName.Equals("north", StringComparison.CurrentCultureIgnoreCase) && _actor.Location.ExitNorth != null)
             {
                 return _actor.Location.ExitNorth;
             }
 
-            if (destinationName == "south" && _actor.Location.ExitSouth != null)
+            if (destinationName.Equals("south", StringComparison.CurrentCultureIgnoreCase) && _actor.Location.ExitSouth != null)
             {
                 return _actor.Location.ExitSouth;
             }
 
-            if (destinationName == "east" && _actor.Location.ExitEast != null)
+            if (destinationName.Equals("east", StringComparison.CurrentCultureIgnoreCase) && _actor.Location.ExitEast != null)
             {
                 return _actor.Location.ExitEast;
             }
 
-            if (destinationName == "west" && _actor.Location.ExitWest != null)
+            if (destinationName.Equals("west", StringComparison.CurrentCultureIgnoreCase) && _actor.Location.ExitWest != null)
             {
                 return _actor.Location.ExitWest;
             }
