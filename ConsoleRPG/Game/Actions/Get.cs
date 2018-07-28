@@ -5,9 +5,12 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actions
 {
-    public abstract class Action
+    public class Get : Action
     {           
-        public abstract DisplayText Do();
+        public override DisplayText Do()
+        {
+            throw new NotImplementedException;
+        }
       
     }
 

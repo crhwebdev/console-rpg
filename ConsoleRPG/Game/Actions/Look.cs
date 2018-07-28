@@ -12,7 +12,6 @@ namespace ConsoleRPG.Game.Actions
         private Actor _actor;
         private string _target;
                 
-        //needs access to player (i.e. actor), portal (i.e. reciever), and then other stuff depending on Action
         public Look(Actor actor, string target)
         {
             _actor = actor;
@@ -40,6 +39,8 @@ namespace ConsoleRPG.Game.Actions
             {
                 return currentLocation;
             }
+
+            //TODO: add another special case for looking at Inventory/Pack
 
            
             //TODO: refactor using Linq maybe

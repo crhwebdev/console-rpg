@@ -66,14 +66,8 @@ namespace ConsoleRPGTests.Game.Actions
             Assert.True(false);
         }
 
-        // INVENTORY ACTION
-        [Fact]
-        public void InventoryActionShowsItemsInPlayerInventory()
-        {
-            Assert.True(false);
-        }
 
-
+        //TODO Split test into 3 : looking at empty target, looing at inventory, and looking at object in location
         [Fact]
         public void LookActionReturnsCorrectDisplayText()
         {
