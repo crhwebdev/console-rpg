@@ -13,10 +13,15 @@ namespace ConsoleRPG.Game.Props
         public virtual string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public virtual Location Location { get; set; }
 
-        public abstract DisplayText Viewed(Actor viewer);
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public Prop(string name)
+        {
+            Name = name;
+        }
 
+        public virtual DisplayText Viewed(Actor viewer)
+        {
+            throw new NotImplementedException();
+        }
+    
     }
 }
