@@ -1,4 +1,5 @@
 ﻿using ConsoleRPG.Game.Locations;
+using ConsoleRPG.Game.Props;
 using ConsoleRPG.System;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace ConsoleRPG.Game.Actors
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
         public virtual Location Location { get; set; }
+        public virtual List<Item> Inventory { get; set; }
 
         public Actor(string name)
         {
