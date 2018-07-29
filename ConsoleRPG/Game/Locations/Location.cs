@@ -12,7 +12,7 @@ namespace ConsoleRPG.Game.Locations
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
         public virtual List<Actor> Actors { get; set; }
-        public virtual List<IProp> Props { get; set; }
+        public virtual List<Prop> Props { get; set; }
 
         public virtual Location ExitNorth { get; set; }
         public virtual Location ExitSouth { get; set; }
@@ -23,7 +23,7 @@ namespace ConsoleRPG.Game.Locations
         {
             Name = name;
             Actors = new List<Actor>();
-            Props = new List<IProp>();
+            Props = new List<Prop>();
         }
 
         public virtual DisplayText Enter(Actor actor)

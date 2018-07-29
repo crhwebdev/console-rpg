@@ -7,10 +7,14 @@ namespace ConsoleRPG.Game.Actions
 {
     public class Get : Action
     {
+        public Get()
+        {
+
+        }
 
         public override DisplayText Do()
         {
-            throw new NotImplementedException;
+            throw new NotImplementedException();
         }
       
     }

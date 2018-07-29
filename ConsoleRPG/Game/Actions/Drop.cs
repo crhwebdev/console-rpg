@@ -7,9 +7,14 @@ namespace ConsoleRPG.Game.Actions
 {
     public class Drop : Action
     {
+        public Drop()
+        {
+
+        }
+
         public override DisplayText Do()
         {
-            throw new NotImplementedException;
+            throw new NotImplementedException();
         }
 
     }
