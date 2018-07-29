@@ -55,7 +55,10 @@ namespace ConsoleRPGTests.Game.Actions
         // GET ACTION
         [Fact]
         public void GetActionReturnsCorrectDisplayTextAndRemovesItemFromRoom()
-        {
+        {   
+            //returns error message for object not in location
+
+            //removes target object from player's location and adds it to their inventory while displaying the correct text
             Assert.True(false);
         }
 
@@ -63,6 +66,9 @@ namespace ConsoleRPGTests.Game.Actions
         [Fact]
         public void DropActionReturnsCorrectDisplayTextAndAddsItemToRoomAndRemovesFromPlayerInventory()
         {
+            //returns error message for object not in player inventory
+
+            //removes target object from player's inventory and adds it to their current location; displays appropriate text
             Assert.True(false);
         }
 

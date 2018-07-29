@@ -55,11 +55,58 @@ namespace ConsoleRPGTests.Game
 
 
         [Fact]
-        public void GetCorrectActionFromCommandList()
+        public void ReturnsDropActionFromCommandList()
+        {
+            string[] commandList = { "drop", "thing" };
+            var returnAction = _commandInterpreter.GetAction(commandList, _player);
+            Assert.IsType<Drop>(returnAction);
+
+        }
+
+        [Fact]
+        public void ReturnsGetActionFromCommandList()
+        {
+            string[] commandList = { "get", "thing" };
+            var returnAction = _commandInterpreter.GetAction(commandList, _player);
+            Assert.IsType<Get>(returnAction);
+
+        }
+
+        [Fact]
+        public void ReturnsLookActionFromCommandList()
+        {
+            string[] commandList = { "look", "" };
+            var returnAction = _commandInterpreter.GetAction(commandList, _player);
+            Assert.IsType<Look>(returnAction);
+
+        }
+
+        
+        [Fact]
+        public void ReturnsMoveActionFromCommandList()
+        {
+            string[] commandList = { "move", "north" };
+            var returnAction = _commandInterpreter.GetAction(commandList, _player);
+            Assert.IsType<Move>(returnAction);
+
+        }
+
+        [Fact]
+        public void ReturnsQuitActionFromCommandList()
+        {
+            string[] commandList = { "quit", "" };
+            var returnAction = _commandInterpreter.GetAction(commandList, _player);
+            Assert.IsType<Quit>(returnAction);
+
+        }
+
+        [Fact]
+        public void ReturnsSayActionFromCommandList()
         {
             string[] commandList = {"say", "hello world"};
             var returnAction = _commandInterpreter.GetAction(commandList, _player);
             Assert.IsType<Say>(returnAction);
+            
         }
     }
 }

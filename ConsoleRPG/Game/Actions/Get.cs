@@ -6,7 +6,8 @@ using System.Text;
 namespace ConsoleRPG.Game.Actions
 {
     public class Get : Action
-    {           
+    {
+
         public override DisplayText Do()
         {
             throw new NotImplementedException;
