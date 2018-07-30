@@ -9,7 +9,7 @@ namespace ConsoleRPG.Game
     class TestDungeon : Level
     {
         public override List<Location> Locations { get; set; } = new List<Location>();
-        public override Location StartingArea { get; set; } 
+        public override Location StartingLocation { get; set; } 
 
         public TestDungeon()
         {
@@ -20,7 +20,7 @@ namespace ConsoleRPG.Game
             };
 
             //declare rooms
-            var theChamber = new Area("The Chamber")
+            var theChamber = new Location("The Chamber")
             {
                 Description = "a dark dank chamber full of soft whispering voices... there is a small ornate door in the north wall.",              
             };
@@ -28,7 +28,7 @@ namespace ConsoleRPG.Game
             bob.Location = theChamber;
             theChamber.Actors.Add(bob);
 
-            var theAntechamber = new Area("The Antechamber")
+            var theAntechamber = new Location("The Antechamber")
             {
                 Description = "a small, brightly lit room with a small ornate door leading to the south."
             };
@@ -39,7 +39,7 @@ namespace ConsoleRPG.Game
             Locations.Add(theChamber);
             Locations.Add(theAntechamber);
 
-            StartingArea = theChamber;
+            StartingLocation = theChamber;
         }
     }
 }

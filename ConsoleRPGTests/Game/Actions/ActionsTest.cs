@@ -168,7 +168,7 @@ namespace ConsoleRPGTests.Game.Actions
         }
     }
 
-    class MockArea : Area
+    class MockArea : Location
     {
         public MockArea(string name) : base(name)
         {

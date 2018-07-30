@@ -7,19 +7,25 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Locations
 {
-    public abstract class Location : IViewable
+    public class Location : IViewable
     {
-        public virtual string Name { get; set; }
-        public virtual string Description { get; set; }
-        public virtual List<Actor> Actors { get; set; }
-        public virtual List<Prop> Props { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public List<Actor> Actors { get; set; }
+        public List<Prop> Props { get; set; }
 
-        public virtual Location ExitNorth { get; set; }
-        public virtual Location ExitSouth { get; set; }
-        public virtual Location ExitEast { get; set; }
-        public virtual Location ExitWest { get; set; }
+        public Location ExitNorth { get; set; }
+        public Location ExitSouth { get; set; }
+        public Location ExitEast { get; set; }
+        public Location ExitWest { get; set; }
 
-   
+        public Location(string name)
+        {
+            Name = name;
+            Actors = new List<Actor>();
+            Props = new List<Prop>();
+        }
+
         public virtual DisplayText Enter(Actor actor)
         {
             //set location of actor entering location

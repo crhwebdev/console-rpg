@@ -41,9 +41,9 @@ namespace ConsoleRPG.Game
             _gameIsRunning = true;
             CurrentAdventure = new TestDungeon();
             Player = new Player("Carl The Destroyer");
-            Player.Location = CurrentAdventure.StartingArea;
+            Player.Location = CurrentAdventure.StartingLocation;
 
-            GameConsole.WriteDisplayText(CurrentAdventure.StartingArea.Viewed(Player));
+            GameConsole.WriteDisplayText(CurrentAdventure.StartingLocation.Viewed(Player));
             
             while (_gameIsRunning)
             {                
