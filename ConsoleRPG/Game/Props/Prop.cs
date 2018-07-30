@@ -9,8 +9,8 @@ namespace ConsoleRPG.Game.Props
 {
     public abstract class Prop : IViewable
     {
-        public virtual string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public virtual string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public virtual string Name { get; set; }
+        public virtual string Description { get; set; }
         public virtual Location Location { get; set; }
 
         public Prop(string name)
@@ -20,8 +20,8 @@ namespace ConsoleRPG.Game.Props
 
         public virtual DisplayText Viewed(Actor viewer)
         {
-            throw new NotImplementedException();
+            return new DisplayText(Description);
         }
-    
+            
     }
 }

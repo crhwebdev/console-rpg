@@ -22,7 +22,7 @@ namespace ConsoleRPG.Game.Actions
         {
             if(_target == "")
             {
-                return new DisplayText("You cannot get that");
+                return new DisplayText("You cannot get that!");
             }
 
             var itemTarget = GetItemTarget(_target);
@@ -32,14 +32,14 @@ namespace ConsoleRPG.Game.Actions
                 return _actor.Get(itemTarget);
             }
 
-            return new DisplayText("You cannot get that");
+            return new DisplayText("You cannot get that!");
         }
 
         private Item GetItemTarget(string target)
         {
             var currentLocation = _actor.Location;
 
-            foreach (var item in currentLocation.Props)
+            foreach (var item in currentLocation.Items)
             {
                 //if target string equals this persons name, then we have a match
                 if (target.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase))
