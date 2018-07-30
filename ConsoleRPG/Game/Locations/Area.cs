@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ConsoleRPG.Game.Actors;
+using ConsoleRPG.Game.Props;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,9 +13,11 @@ namespace ConsoleRPG.Game.Locations
         public override Location ExitEast { get; set; }
         public override Location ExitWest { get; set; }
 
-        public Area(string name) : base(name)
+        public Area(string name)
         {
-            
+            Name = name;
+            Actors = new List<Actor>();
+            Props = new List<Prop>();
         }
     }
 }

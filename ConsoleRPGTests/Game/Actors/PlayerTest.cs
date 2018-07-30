@@ -65,7 +65,7 @@ namespace ConsoleRPGTests.Game.Actors
         }
     }
 
-    public class MockLocation : Location
+    public class MockLocation : Area
     {
         
         public MockLocation(string name) : base(name)

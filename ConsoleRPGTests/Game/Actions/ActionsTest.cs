@@ -16,6 +16,7 @@ namespace ConsoleRPGTests.Game.Actions
         private MockArea   _testArea;
         private MockArea _testArea2;
         private MockNPC _testNPC;
+        private Item _testItem;
         
 
         public ActionsTest()
@@ -44,6 +45,9 @@ namespace ConsoleRPGTests.Game.Actions
             };
 
             _testArea.Actors.Add(_testNPC);
+
+            _testItem = new Item("Key");           
+            _testArea.Props.Add(_testItem);
         }
 
         private void ResetPlayerLocation()
@@ -55,18 +59,24 @@ namespace ConsoleRPGTests.Game.Actions
 
         // GET ACTION
         [Fact]
-        public void GetActionReturnsCorrectDisplayTextAndRemovesItemFromRoom()
-        {
-            //returns error message for object not in location
-            var target = "Not There";
+        public void GetActionReturnsCorrectDisplayText()
+        {                        
+            //returns error message if no target
+            var target = "";
             var action = new Get(_testPlayer, target);
+
+            Assert.Equal("You cannot get that!", action.Do().ToString());
+
+            //returns error message for object not in location
+            target = "Not There";
+            action = new Get(_testPlayer, target);
             Assert.Equal("You cannot get that!", action.Do().ToString());
             //removes target object from player's location and adds it to their inventory while displaying the correct text
             target = "Key";
             action = new Get(_testPlayer, target);
-            Assert.Equal("You get Key", action.Do().ToString());
+            Assert.Equal("You get the Key", action.Do().ToString());
             Assert.Empty(_testPlayer.Location.Props);
-            Assert.Contains<Prop>(_testPlayer.Inventory, p => p.Name == target);            
+            Assert.Contains<Prop>(_testPlayer.Inventory, p => p.Name == target);
         }
 
         // DROP ACTION

@@ -10,8 +10,7 @@ using System.Linq;
 namespace ConsoleRPG.Game
 {
     public class CommandInterpreter
-    {
-        private Room _testRoom;
+    {        
         private GameEngine _gameEngine;
         private Dictionary<string, string> _prepositions = new Dictionary<string, string>
         {

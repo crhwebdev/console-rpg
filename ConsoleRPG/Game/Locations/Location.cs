@@ -19,13 +19,7 @@ namespace ConsoleRPG.Game.Locations
         public virtual Location ExitEast { get; set; }
         public virtual Location ExitWest { get; set; }
 
-        public Location(string name)
-        {
-            Name = name;
-            Actors = new List<Actor>();
-            Props = new List<Prop>();
-        }
-
+   
         public virtual DisplayText Enter(Actor actor)
         {
             //set location of actor entering location

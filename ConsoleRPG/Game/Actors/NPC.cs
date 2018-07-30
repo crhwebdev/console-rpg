@@ -1,4 +1,5 @@
 ﻿using ConsoleRPG.Game.Locations;
+using ConsoleRPG.Game.Props;
 using ConsoleRPG.System;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,15 @@ namespace ConsoleRPG.Game.Actors
         {
             throw new NotImplementedException();
         }
-        
+
+        public override DisplayText Get(Item itemTarget)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override DisplayText Drop(Item itemTarget)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
