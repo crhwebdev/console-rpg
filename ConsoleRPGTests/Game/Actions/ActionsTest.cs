@@ -2,6 +2,7 @@
 using ConsoleRPG.Game.Actions;
 using ConsoleRPG.Game.Actors;
 using ConsoleRPG.Game.Locations;
+using ConsoleRPG.Game.Props;
 using ConsoleRPG.System;
 using System;
 using System.Linq;
@@ -55,11 +56,17 @@ namespace ConsoleRPGTests.Game.Actions
         // GET ACTION
         [Fact]
         public void GetActionReturnsCorrectDisplayTextAndRemovesItemFromRoom()
-        {   
+        {
             //returns error message for object not in location
-
+            var target = "Not There";
+            var action = new Get(_testPlayer, target);
+            Assert.Equal("You cannot get that!", action.Do().ToString());
             //removes target object from player's location and adds it to their inventory while displaying the correct text
-            Assert.True(false);
+            target = "Key";
+            action = new Get(_testPlayer, target);
+            Assert.Equal("You get Key", action.Do().ToString());
+            Assert.Empty(_testPlayer.Location.Props);
+            Assert.Contains<Prop>(_testPlayer.Inventory, p => p.Name == target);            
         }
 
         // DROP ACTION
