@@ -8,8 +8,6 @@ namespace ConsoleRPG.Game.Props
     public class Item : Prop
     {
 
-
-
         public Item(string name) : base(name)
         {
             
