@@ -36,6 +36,31 @@ namespace ConsoleRPG.System
             return null;
         }
 
+        public static Location GetExitMatchInLocation(Location location, string destinationName)
+        {
+            if (destinationName.Equals("north", StringComparison.CurrentCultureIgnoreCase) && location.ExitNorth != null)
+            {
+                return location.ExitNorth;
+            }
+
+            if (destinationName.Equals("south", StringComparison.CurrentCultureIgnoreCase) && location.ExitSouth != null)
+            {
+                return location.ExitSouth;
+            }
+
+            if (destinationName.Equals("east", StringComparison.CurrentCultureIgnoreCase) && location.ExitEast != null)
+            {
+                return location.ExitEast;
+            }
+
+            if (destinationName.Equals("west", StringComparison.CurrentCultureIgnoreCase) && location.ExitWest != null)
+            {
+                return location.ExitWest;
+            }
+
+            return null;
+        }
+
         public static Actor GetActorMatchInLocation(Location location, string targetName)
         {
             foreach (var person in location.Actors)

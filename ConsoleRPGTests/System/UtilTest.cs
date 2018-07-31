@@ -66,7 +66,18 @@ namespace ConsoleRPGTests.System
         [Fact]
         public void GetExitMatchInLocationReturnsCorrectMatch()
         {
-            Assert.True(false);
+            var locationName = "Testing Area";
+            var otherLocationName = "Another Place";
+            var exitName = "north";
+            var wrongExitName = "bob";
+
+            var location = new Location(locationName);
+            var otherLocation = new Location(otherLocationName);
+
+            location.ExitNorth = otherLocation;
+
+            Assert.Null(Util.GetExitMatchInLocation(location, wrongExitName));
+            Assert.Equal(otherLocationName, Util.GetExitMatchInLocation(location, exitName).Name);
         }
     }
 }

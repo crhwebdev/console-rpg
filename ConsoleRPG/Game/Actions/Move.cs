@@ -21,7 +21,7 @@ namespace ConsoleRPG.Game.Actions
 
         public override DisplayText Do()
         {
-            var destination = getDestination(_target);    
+            var destination = Util.GetExitMatchInLocation(_actor.Location, _target);    
             if(destination == null)
             {
                 return new DisplayText("You cannot move there!");
@@ -30,29 +30,6 @@ namespace ConsoleRPG.Game.Actions
             return moveDisplayText;            
         }
 
-        private Location getDestination(string destinationName)
-        {            
-            if (destinationName.Equals("north", StringComparison.CurrentCultureIgnoreCase) && _actor.Location.ExitNorth != null)
-            {
-                return _actor.Location.ExitNorth;
-            }
-
-            if (destinationName.Equals("south", StringComparison.CurrentCultureIgnoreCase) && _actor.Location.ExitSouth != null)
-            {
-                return _actor.Location.ExitSouth;
-            }
-
-            if (destinationName.Equals("east", StringComparison.CurrentCultureIgnoreCase) && _actor.Location.ExitEast != null)
-            {
-                return _actor.Location.ExitEast;
-            }
-
-            if (destinationName.Equals("west", StringComparison.CurrentCultureIgnoreCase) && _actor.Location.ExitWest != null)
-            {
-                return _actor.Location.ExitWest;
-            }
-
-            return null;
-        }
+        
     }
 }
