@@ -1,4 +1,5 @@
 ﻿using ConsoleRPG.Game;
+using ConsoleRPG.Game.Actors;
 using ConsoleRPG.Game.Locations;
 using ConsoleRPG.Game.Props;
 using System;
@@ -11,32 +12,43 @@ namespace ConsoleRPG.System
     {
         public static IViewable GetViewableMatchInLocation(Location location, string targetName)
         {
-            
+
+            IViewable viewableMatch = null;
 
             if (targetName == "")
             {
-                return location;
+                viewableMatch = location;
+                return viewableMatch;
             }
-                        
+                                                            
+            viewableMatch = GetItemMatchInLocation(location, targetName);
+            if (viewableMatch != null)
+            {
+                return viewableMatch;
+            }
+
+            viewableMatch = GetActorMatchInLocation(location, targetName);
+            if (viewableMatch != null)
+            {
+                return viewableMatch;
+            }
+      
+            return null;
+        }
+
+        public static Actor GetActorMatchInLocation(Location location, string targetName)
+        {
             foreach (var person in location.Actors)
             {
                 //if target string equals this persons name, then we have a match
                 if (targetName.Equals(person.Name, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    return person;
+                    return person as Actor;
                 }
             }
-
-            foreach(var item in location.Items)
-            {
-                if (targetName.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase))
-                {
-                    return item;
-                }
-            }
-
 
             return null;
+
         }
 
         public static Item GetItemMatchInLocation(Location location, string targetName)
