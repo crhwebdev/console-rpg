@@ -19,8 +19,8 @@ namespace ConsoleRPGTests.Game
 
         public CommandInterpreterTest()
         {
-            var gameEngine = new GameEngine();
-            _commandInterpreter = new CommandInterpreter(gameEngine);
+            var gameEngine = GameEngine.Instance();
+            _commandInterpreter = CommandInterpreter.Instance(gameEngine);
             _player = new Player("Testy Tess");
             
         }

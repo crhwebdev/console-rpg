@@ -10,7 +10,8 @@ using System.Linq;
 namespace ConsoleRPG.Game
 {
     public class CommandInterpreter
-    {        
+    {
+        private static CommandInterpreter _commandInterpreter = null;
         private GameEngine _gameEngine;
         private Dictionary<string, string> _prepositions = new Dictionary<string, string>
         {
@@ -19,10 +20,20 @@ namespace ConsoleRPG.Game
             {"in", "in" }
         };
 
-        public CommandInterpreter(GameEngine gameEngine)
+        protected CommandInterpreter(GameEngine gameEngine)
         {
             _gameEngine = gameEngine;
             //_testRoom = new Room("A dark dank chamber full of soft whispering voices...");
+        }
+
+        public static CommandInterpreter Instance(GameEngine gameEngine)
+        {
+            if(_commandInterpreter == null)
+            {
+                _commandInterpreter = new CommandInterpreter(gameEngine);
+            }
+
+            return _commandInterpreter;
         }
 
         public string[] ParseCommandString(string commandString)

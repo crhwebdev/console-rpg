@@ -12,7 +12,7 @@ namespace ConsoleRPGTests.Game
 
         public GameEngineTest()
         {
-            _game = new GameEngine();
+            _game = GameEngine.Instance();
             _game.GameConsole = new MockGameConsole();
         }
 

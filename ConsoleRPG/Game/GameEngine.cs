@@ -36,7 +36,7 @@ namespace ConsoleRPG.Game
         protected GameEngine()
         {            
             GameConsole = new GameConsole();
-            CommandInterpreter = new CommandInterpreter(this);            
+            CommandInterpreter = CommandInterpreter.Instance(this);            
         }
 
         public static GameEngine Instance()
