@@ -26,7 +26,7 @@ namespace ConsoleRPG.Game
 
 
         //Other Game Fields
-        private static GameEngine _gameEngine = null;
+        private static GameEngine _instance = null;
         private bool _gameIsRunning = false;
 
         //Game Command List - add commads to this list to use in engine
@@ -41,12 +41,12 @@ namespace ConsoleRPG.Game
 
         public static GameEngine Instance()
         {
-            if(_gameEngine == null)
+            if(_instance == null)
             {
-                _gameEngine = new GameEngine();
+                _instance = new GameEngine();
             }
 
-            return _gameEngine;
+            return _instance;
         }
         
         public void Start()

@@ -11,7 +11,7 @@ namespace ConsoleRPG.Game
 {
     public class CommandInterpreter
     {
-        private static CommandInterpreter _commandInterpreter = null;
+        private static CommandInterpreter _instance = null;
         private GameEngine _gameEngine;
         private Dictionary<string, string> _prepositions = new Dictionary<string, string>
         {
@@ -28,12 +28,12 @@ namespace ConsoleRPG.Game
 
         public static CommandInterpreter Instance(GameEngine gameEngine)
         {
-            if(_commandInterpreter == null)
+            if(_instance == null)
             {
-                _commandInterpreter = new CommandInterpreter(gameEngine);
+                _instance = new CommandInterpreter(gameEngine);
             }
 
-            return _commandInterpreter;
+            return _instance;
         }
 
         public string[] ParseCommandString(string commandString)
