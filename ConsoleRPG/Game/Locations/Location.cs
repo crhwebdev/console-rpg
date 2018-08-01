@@ -32,7 +32,17 @@ namespace ConsoleRPG.Game.Locations
             actor.Location = this;
 
             //get description of location and add to DisplayText to be returned
-            var enterDisplayText = new DisplayText("You enter " + Description);
+            DisplayText enterDisplayText;
+
+
+            if (actor is Player)
+            {
+                enterDisplayText = new DisplayText("You enter " + Description);
+            }
+            else
+            {
+                enterDisplayText = new DisplayText("");
+            }
 
             //get list of npcs in room
             var npcListDisplayText = new DisplayText();
