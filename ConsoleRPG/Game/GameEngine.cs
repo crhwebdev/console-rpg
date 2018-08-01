@@ -54,6 +54,7 @@ namespace ConsoleRPG.Game
             _gameIsRunning = true;
             CurrentAdventure = new TestDungeon();
             Player = new Player("Carl The Destroyer");
+            Player.Sex = Sexes.Male;
             Player.Location = CurrentAdventure.StartingLocation;
 
             GameConsole.WriteDisplayText(CurrentAdventure.StartingLocation.Viewed(Player));

@@ -27,12 +27,22 @@ namespace ConsoleRPG.Game.Actors
 
         public override DisplayText Get(Item itemTarget)
         {
-            return new DisplayText("You get the " + itemTarget.Name);
+            return new DisplayText(this.Name + " gets the " + itemTarget.Name);
         }
       
         public override DisplayText Look(IViewable viewedTarget)
         {
-            DisplayText text = new DisplayText();
+
+            var text = new DisplayText();
+            if(viewedTarget is Location)
+            {
+                text.Add(this.Name + " looks around...");
+            }
+            else
+            {
+                text.Add(this.Name + " looks at " + viewedTarget.Name);                
+            }
+           
             DisplayText viewedTargetText = viewedTarget.Viewed(this);                        
             text.Add(viewedTargetText);
 
@@ -41,13 +51,16 @@ namespace ConsoleRPG.Game.Actors
 
         public override DisplayText Move(Location location)
         {
-            var moveDisplayText = location.Enter(this);
+
+            var moveDisplayText = new DisplayText(this.Name + " moves...");
+            moveDisplayText.Add(location.Enter(this));
+
             return moveDisplayText;
         }
 
         public override DisplayText Say(string text)
         {
-            return new DisplayText("You say: '" + text + "'");
+            return new DisplayText(this.Name + " says: '" + text + "'");
         }
 
      

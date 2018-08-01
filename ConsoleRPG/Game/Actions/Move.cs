@@ -24,8 +24,9 @@ namespace ConsoleRPG.Game.Actions
             var destination = Util.GetExitMatchInLocation(_actor.Location, _target);    
             if(destination == null)
             {
-                return new DisplayText("You cannot move there!");
-            }            
+                return new DisplayText(_actor.Name + " cannot move there!");
+            } 
+            
             var moveDisplayText = _actor.Move(destination);            
             return moveDisplayText;            
         }

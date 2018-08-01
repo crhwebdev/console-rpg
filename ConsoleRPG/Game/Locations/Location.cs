@@ -30,14 +30,15 @@ namespace ConsoleRPG.Game.Locations
         {
             //set location of actor entering location
             actor.Location = this;
-
+            
             //get description of location and add to DisplayText to be returned
             DisplayText enterDisplayText;
 
 
             if (actor is Player)
             {
-                enterDisplayText = new DisplayText("You enter " + Description);
+                
+                enterDisplayText = new DisplayText(actor.GetPersonalPronoun() + " enters " + Description);
             }
             else
             {
@@ -60,7 +61,7 @@ namespace ConsoleRPG.Game.Locations
 
         public virtual DisplayText Viewed(Actor viewer)
         {
-            var viewedDisplayText = new DisplayText("You see " + Description);
+            var viewedDisplayText = new DisplayText(viewer.GetPersonalPronoun() + " sees " + Description);
 
             //get list of npcs in room
             var npcListDisplayText = new DisplayText();

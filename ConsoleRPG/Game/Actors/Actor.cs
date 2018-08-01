@@ -7,9 +7,12 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Actors
 {
+    public enum  Sexes { Neuter, Male, Female };
+
     public abstract class Actor : IViewable
     {        
         public virtual string Name { get; set; }
+        public virtual Sexes Sex { get; set; }
         public virtual string Description { get; set; }
         public virtual Location Location { get; set; }
         public virtual List<Item> Inventory { get; set; }
@@ -17,6 +20,7 @@ namespace ConsoleRPG.Game.Actors
         public Actor(string name)
         {
             Name = name;
+            Sex = Sexes.Neuter;            
         }
 
         //Has various methods that correspond to actions that can be executed with him as the reciever       
@@ -28,7 +32,26 @@ namespace ConsoleRPG.Game.Actors
         
         public virtual DisplayText Viewed(Actor viewer)
         {
-            return new DisplayText("You see " + Description);
+            return new DisplayText(viewer.GetPersonalPronoun() + " sees " + Description);
         }
+
+        public virtual string GetPersonalPronoun()
+        {
+            if(Sex == Sexes.Neuter)
+            {
+                return "It";
+            }
+            else if(Sex == Sexes.Male)
+            {
+                return "He";
+            }
+            else if(Sex == Sexes.Female)
+            {
+                return "She";
+            }
+
+            return "It";
+        }
+
     }
 }
