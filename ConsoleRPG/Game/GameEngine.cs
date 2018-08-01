@@ -16,6 +16,7 @@ namespace ConsoleRPG.Game
         // Start method runs game loop
         // Stop method ends game loop and performs cleanup
 
+
         public Actor Player { get; set; }        
 
         //Game Components
@@ -23,17 +24,29 @@ namespace ConsoleRPG.Game
         public CommandInterpreter CommandInterpreter { get; set; }
         public Level CurrentAdventure;
 
+
         //Other Game Fields
+        private static GameEngine _gameEngine = null;
         private bool _gameIsRunning = false;
 
         //Game Command List - add commads to this list to use in engine
         private List<Actions.Action> _commands = new List<Actions.Action>();    
         
 
-        public GameEngine()
+        protected GameEngine()
         {            
             GameConsole = new GameConsole();
             CommandInterpreter = new CommandInterpreter(this);            
+        }
+
+        public static GameEngine Instance()
+        {
+            if(_gameEngine == null)
+            {
+                _gameEngine = new GameEngine();
+            }
+
+            return _gameEngine;
         }
         
         public void Start()
