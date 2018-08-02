@@ -74,7 +74,7 @@ namespace ConsoleRPGTests.Game.Actions
             //removes target object from player's location and adds it to their inventory while displaying the correct text
             target = "Key";
             action = new Get(_testPlayer, target);
-            Assert.Equal("You get the Key", action.Do().ToString());
+            Assert.Equal(_testPlayer.Name + " gets the Key", action.Do().ToString());
             //Assert.Empty(_testPlayer.Location.Items);
             //Assert.Contains<Prop>(_testPlayer.Inventory, p => p.Name == target);            
         }
@@ -122,7 +122,7 @@ namespace ConsoleRPGTests.Game.Actions
         {
             //Move with wrong direction
             var moveWrongDirection = new Move(_testPlayer, "west");
-            Assert.Equal("You cannot move there!", moveWrongDirection.Do().ToString());
+            Assert.Equal(_testPlayer.Name + " cannot move there!", moveWrongDirection.Do().ToString());
             ResetPlayerLocation();
             //Move with correct direction
             var moveRightDirection = new Move(_testPlayer, "North");
