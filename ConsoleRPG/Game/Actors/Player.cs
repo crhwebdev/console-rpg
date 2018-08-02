@@ -89,7 +89,7 @@ namespace ConsoleRPG.Game.Actors
             }
 
             displayText.Add(this.Name + " moves...");
-            displayText.Add(this.Location.Enter(this));
+            displayText.Add(destination.Enter(this));
 
             return displayText;
         }
