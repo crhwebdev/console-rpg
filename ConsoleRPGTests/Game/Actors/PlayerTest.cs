@@ -20,6 +20,8 @@ namespace ConsoleRPGTests.Game.Actors
             Assert.Equal(name, player.Name);
         }
 
+
+        // DROP METHOD
         [Fact]
         public void PlayerDropMethodReturnsAppropriateText()
         {
@@ -29,6 +31,7 @@ namespace ConsoleRPGTests.Game.Actors
             Assert.True(false);
         }
 
+        //GET METHOD
         [Fact]
         public void PlayerGetMethodReturnsAppropriateText()
         {
@@ -38,6 +41,7 @@ namespace ConsoleRPGTests.Game.Actors
             Assert.True(false);
         }
 
+        // LOOK METHOD
         [Fact]
         public void PlayerLookMethodReturnsAppropriateText()
         {
@@ -45,27 +49,45 @@ namespace ConsoleRPGTests.Game.Actors
             var player = new Player(name);
             var viewedLocation = new MockLocation("Test Area");
             player.Location = viewedLocation;
-
+            
             //player displays correct text for location as view target
-            Assert.Equal(player.Name + " looks around...", player.Look(viewedLocation).ToString());
+            Assert.Equal(player.Name + " looks around...", player.Look("").ToString());
 
-            //player displays correct text when looking at a specific target
-            var viewedTarget = new MockViewTarget();
-            Assert.Equal(player.Name + " looks at " + viewedTarget.Name, player.Look(viewedTarget).ToString());
+            //player displays correct text when looking at an Actor as view target            
+            var viewedActorTargetName = "View Target";
+            var viewedActorTarget = new MockActorTarget(viewedActorTargetName);
+
+            player.Location.Actors.Add(viewedActorTarget);
+
+            Assert.Equal(player.Name + " looks at " + viewedActorTarget.Name, player.Look(viewedActorTargetName).ToString());
         }
 
         
-
+        // MOVE METHOD
         [Fact]
         public void PlayerMoveMethodReturnsAppropriateText()
         {
             var name = "Testy Tess";          
             var player = new Player(name);
-            var viewTarget = new MockLocation("Test Area");            
+            var startLocation = new MockLocation("Start Area");
+            var destinationLocation = new MockLocation("Destination Area");            
+            player.Location = startLocation;
+            startLocation.ExitNorth = destinationLocation;
 
-            Assert.Equal(player.Name + " moves...", player.Move(viewTarget).ToString());
+            //move to exit without link to new location
+            Assert.Equal(player.Name + " cannot move there!", player.Move("south").ToString());
+            player.Location = startLocation;
+
+            //no target given
+            Assert.Equal(player.Name + " cannot move there!", player.Move("").ToString());
+            player.Location = startLocation;
+
+            //move to exit with link to new location
+            Assert.Equal(player.Name + " moves...", player.Move("north").ToString());                        
         }
 
+
+        // SAY METHOD
         [Fact]
         public void PlayerSayMethodReturnsAppropriateText()
         {
@@ -77,12 +99,12 @@ namespace ConsoleRPGTests.Game.Actors
         }
     }
 
-    public class MockViewTarget : IViewable
+    public class MockActorTarget : Actor
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        
+        public MockActorTarget(string name) : base(name) {}
 
-        public DisplayText Viewed(Actor viewer)
+        public override DisplayText Viewed(Actor viewer)
         {
             return new DisplayText();
         }
@@ -90,10 +112,7 @@ namespace ConsoleRPGTests.Game.Actors
 
     public class MockItemTarget : Item
     {
-        MockItemTarget(string name) : base(name)
-        {
-
-        }
+        public MockItemTarget(string name) : base(name) {}
 
         public override DisplayText Taken()
         {
@@ -107,12 +126,8 @@ namespace ConsoleRPGTests.Game.Actors
     }
 
     public class MockLocation : Location
-    {
-        
-        public MockLocation(string name) : base(name)
-        {
-            
-        }
+    {        
+        public MockLocation(string name) : base(name) {}
 
         public override DisplayText Viewed(Actor viewer)
         {
@@ -120,8 +135,7 @@ namespace ConsoleRPGTests.Game.Actors
         }
 
         public override DisplayText Enter(Actor actor)
-        {
-            
+        {            
             //get description of location and add to DisplayText to be returned
             var enterDisplayText = new DisplayText();
             
