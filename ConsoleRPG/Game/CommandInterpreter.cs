@@ -93,6 +93,10 @@ namespace ConsoleRPG.Game
                         
             switch (action)
             {
+                case "drop":
+                    return new Drop(player, target);
+                case "get":
+                    return new Get(player, target);
                 case "look":
                 case "look at":    
                     return new Look(player, target);
