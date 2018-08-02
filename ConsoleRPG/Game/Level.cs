@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game
 {
-    public abstract class Level
+    public class Level
     {
         public virtual List<Location> Locations { get; set; }
         public virtual Location StartingLocation { get; set; }

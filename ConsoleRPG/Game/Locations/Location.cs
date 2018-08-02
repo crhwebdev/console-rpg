@@ -14,7 +14,7 @@ namespace ConsoleRPG.Game.Locations
         public List<Actor> Actors { get; set; }
         public List<Item> Items { get; set; }
 
-        public Location ExitNorth { get; set; }
+        public Location ExitNorth { get; set; }        
         public Location ExitSouth { get; set; }
         public Location ExitEast { get; set; }
         public Location ExitWest { get; set; }
