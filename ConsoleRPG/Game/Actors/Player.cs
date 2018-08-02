@@ -33,8 +33,9 @@ namespace ConsoleRPG.Game.Actors
 
             if (item != null)
             {
-                Inventory.Add(item);
-                Location.Items.Remove(item);
+                Location.Items.Add(item);
+                Inventory.Remove(item);
+                
                 displayText.Add(Name + " drops the " + item.Name);
                 return displayText;
             }

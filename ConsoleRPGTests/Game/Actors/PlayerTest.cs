@@ -35,11 +35,11 @@ namespace ConsoleRPGTests.Game.Actors
             player.Inventory.Add(itemTarget);
 
             // player displays correct error message when passing empty target string
-            var playerDropText = player.Get("").ToString();
+            var playerDropText = player.Drop("").ToString();
             Assert.Equal("There is nothing to drop!", playerDropText);
 
             //player displays correct error message when getting an item that doesn't exist
-            playerDropText = player.Get("wtf").ToString();
+            playerDropText = player.Drop("wtf").ToString();
             Assert.Equal("You don't have that item!", playerDropText);
 
             // player displays correct text when dropping item
