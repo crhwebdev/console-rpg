@@ -12,10 +12,10 @@ namespace ConsoleRPG.Game.Actions
         private Actor _actor;
         private string _target;
 
-        public Get(Actor actor, string target)
+        public Get(Actor actor, string commandClauseString)
         {
             _actor = actor;
-            _target = target;
+            _target = commandClauseString;
         }
 
         public override DisplayText Do()
