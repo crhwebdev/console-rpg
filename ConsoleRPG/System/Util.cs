@@ -36,6 +36,11 @@ namespace ConsoleRPG.System
             return null;
         }
 
+        public static Item GetItemMatchInInventory(Player player, string commandClauseString)
+        {
+            throw new NotImplementedException();
+        }
+
         public static Location GetExitMatchInLocation(Location location, string destinationName)
         {
             if (destinationName.Equals("north", StringComparison.CurrentCultureIgnoreCase) && location.ExitNorth != null)

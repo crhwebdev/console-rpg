@@ -20,7 +20,8 @@ namespace ConsoleRPG.Game.Actors
         public Actor(string name)
         {
             Name = name;
-            Sex = Sexes.Neuter;            
+            Sex = Sexes.Neuter;
+            Inventory = new List<Item>();
         }
 
         //Has various methods that correspond to actions that can be executed with him as the reciever               

@@ -34,8 +34,16 @@ namespace ConsoleRPGTests.Game.Actors
             player.Location = playerLocation;
             player.Inventory.Add(itemTarget);
 
+            // player displays correct error message when passing empty target string
+            var playerDropText = player.Get("").ToString();
+            Assert.Equal("There is nothing to drop!", playerDropText);
+
+            //player displays correct error message when getting an item that doesn't exist
+            playerDropText = player.Get("wtf").ToString();
+            Assert.Equal("You don't have that item!", playerDropText);
+
             // player displays correct text when dropping item
-            var playerDropText = player.Drop(itemTargetName).ToString();
+            playerDropText = player.Drop(itemTargetName).ToString();
             Assert.Equal(player.Name + " drops the " + itemTarget.Name, playerDropText);
 
             // player successfully removes item from inventory
@@ -59,8 +67,16 @@ namespace ConsoleRPGTests.Game.Actors
             player.Location = playerLocation;
             playerLocation.Items.Add(itemTarget);
 
+            // player displays correct error message when passing empty target string
+            var playerGetText = player.Get("").ToString();
+            Assert.Equal("There is nothing to get!", playerGetText);
+
+            //player displays correct error message when getting an item that doesn't exist
+            playerGetText = player.Get("wtf").ToString();
+            Assert.Equal("You cannot get that!", playerGetText);
+
             // player displays correct text when getting item 
-            var playerGetText = player.Get(itemTargetName).ToString();
+            playerGetText = player.Get(itemTargetName).ToString();
             Assert.Equal(player.Name + " gets the " + itemTarget.Name, playerGetText);
 
             // player successfully removed item from location

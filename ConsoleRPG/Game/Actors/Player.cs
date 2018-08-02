@@ -22,7 +22,24 @@ namespace ConsoleRPG.Game.Actors
 
         public override DisplayText Drop(string commandClauseString)
         {
-            throw new NotImplementedException();
+            var displayText = new DisplayText();
+
+            if (commandClauseString == "")
+            {
+                return new DisplayText("There is nothing to drop!");
+            }
+
+            var item = Util.GetItemMatchInInventory(this, commandClauseString);
+
+            if (item != null)
+            {
+                Inventory.Add(item);
+                Location.Items.Remove(item);
+                displayText.Add(Name + " drops the " + item.Name);
+                return displayText;
+            }
+
+            return new DisplayText("You don't have that item!");
         }
 
         public override DisplayText Get(string commandClauseString)
@@ -39,7 +56,9 @@ namespace ConsoleRPG.Game.Actors
 
             if (item != null)
             {
-                displayText.Add(this.Name + " gets the " + item.Name);
+                this.Inventory.Add(item);
+                this.Location.Items.Remove(item);                
+                displayText.Add(Name + " gets the " + item.Name);
                 return displayText;
             }
 
@@ -50,7 +69,7 @@ namespace ConsoleRPG.Game.Actors
         {
             var displayText = new DisplayText();
 
-            var viewed = Util.GetViewableMatchInLocation(this.Location, commandClauseString);
+            var viewed = Util.GetViewableMatchInLocation(Location, commandClauseString);
 
             if (viewed == null)
             {
@@ -60,11 +79,11 @@ namespace ConsoleRPG.Game.Actors
             
             if (viewed is Location)
             {
-                displayText.Add(this.Name + " looks around...");
+                displayText.Add(Name + " looks around...");
             }
             else
             {
-                displayText.Add(this.Name + " looks at " + viewed.Name);
+                displayText.Add(Name + " looks at " + viewed.Name);
             }
 
             displayText.Add(viewed.Viewed(this));
@@ -78,17 +97,17 @@ namespace ConsoleRPG.Game.Actors
 
             if(commandClauseString == "")
             {
-                return new DisplayText(this.Name + " cannot move there!");
+                return new DisplayText(Name + " cannot move there!");
             }
 
             var destination = Util.GetExitMatchInLocation(this.Location, commandClauseString);
 
             if (destination == null)
             {
-                return new DisplayText(this.Name + " cannot move there!");
+                return new DisplayText(Name + " cannot move there!");
             }
 
-            displayText.Add(this.Name + " moves...");
+            displayText.Add(Name + " moves...");
             displayText.Add(destination.Enter(this));
 
             return displayText;
@@ -96,7 +115,7 @@ namespace ConsoleRPG.Game.Actors
 
         public override DisplayText Say(string commandClauseString)
         {
-            return new DisplayText(this.Name + " says: '" + commandClauseString + "'");
+            return new DisplayText(Name + " says: '" + commandClauseString + "'");
         }
      
     }
