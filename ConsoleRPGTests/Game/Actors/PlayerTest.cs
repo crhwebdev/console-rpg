@@ -27,8 +27,23 @@ namespace ConsoleRPGTests.Game.Actors
         {
             var name = "Testy Tess";            
             var player = new Player(name);
+            var playerLocation = new MockLocation("Test Area");
+            var itemTargetName = "Thing";
+            var itemTarget = new MockItemTarget(itemTargetName);
 
-            Assert.True(false);
+            player.Location = playerLocation;
+            player.Inventory.Add(itemTarget);
+
+            // player displays correct text when dropping item
+            var playerDropText = player.Drop(itemTargetName).ToString();
+            Assert.Equal(player.Name + " drops the " + itemTarget.Name, playerDropText);
+
+            // player successfully removes item from inventory
+            Assert.Empty(player.Inventory);
+
+            // player succesfully adds item to Location.Items list
+            Assert.Single(playerLocation.Items, itemTarget);
+
         }
 
         //GET METHOD
@@ -37,8 +52,21 @@ namespace ConsoleRPGTests.Game.Actors
         {
             var name = "Testy Tess";            
             var player = new Player(name);
+            var playerLocation = new MockLocation("Test Area");
+            var itemTargetName = "Thing";
+            var itemTarget = new MockItemTarget(itemTargetName);
 
-            Assert.True(false);
+            player.Location = playerLocation;
+            playerLocation.Items.Add(itemTarget);
+
+            // player displays correct text when getting item 
+            var playerGetText = player.Get(itemTargetName).ToString();
+            Assert.Equal(player.Name + " gets the " + itemTarget.Name, playerGetText);
+
+            // player successfully removed item from location
+            Assert.Empty(playerLocation.Items);
+            // player succesfully added item to inventory
+            Assert.Single(player.Inventory, itemTarget);
         }
 
         // LOOK METHOD
