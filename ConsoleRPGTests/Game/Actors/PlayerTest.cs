@@ -1,6 +1,7 @@
 ﻿using ConsoleRPG.Game;
 using ConsoleRPG.Game.Actors;
 using ConsoleRPG.Game.Locations;
+using ConsoleRPG.Game.Props;
 using ConsoleRPG.System;
 using System;
 using System.Linq;
@@ -17,6 +18,24 @@ namespace ConsoleRPGTests.Game.Actors
             var player = new Player(name);
 
             Assert.Equal(name, player.Name);
+        }
+
+        [Fact]
+        public void PlayerDropMethodReturnsAppropriateText()
+        {
+            var name = "Testy Tess";            
+            var player = new Player(name);
+
+            Assert.True(false);
+        }
+
+        [Fact]
+        public void PlayerGetMethodReturnsAppropriateText()
+        {
+            var name = "Testy Tess";            
+            var player = new Player(name);
+
+            Assert.True(false);
         }
 
         [Fact]
@@ -64,6 +83,24 @@ namespace ConsoleRPGTests.Game.Actors
         public string Description { get; set; }
 
         public DisplayText Viewed(Actor viewer)
+        {
+            return new DisplayText();
+        }
+    }
+
+    public class MockItemTarget : Item
+    {
+        MockItemTarget(string name) : base(name)
+        {
+
+        }
+
+        public override DisplayText Taken()
+        {
+            return new DisplayText();
+        }
+
+        public override DisplayText Dropped()
         {
             return new DisplayText();
         }

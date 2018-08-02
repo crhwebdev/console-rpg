@@ -13,12 +13,12 @@ namespace ConsoleRPG.Game.Props
             
         }
 
-        public DisplayText Taken()
+        public virtual DisplayText Taken()
         {
             throw new NotImplementedException();
         }
 
-        public DisplayText Dropped()
+        public virtual DisplayText Dropped()
         {
             throw new NotImplementedException();
         }
