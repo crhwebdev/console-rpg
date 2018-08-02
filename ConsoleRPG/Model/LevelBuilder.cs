@@ -12,6 +12,11 @@ namespace ConsoleRPG.Model
         private LevelData _levelData;
         private Level _levelInstance;
 
+        protected LevelBuilder()
+        {
+
+        }
+
         public static LevelBuilder Instance()
         {
             if(_instance == null)
