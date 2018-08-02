@@ -23,18 +23,20 @@ namespace ConsoleRPG.Game.Actors
             Sex = Sexes.Neuter;            
         }
 
-        //Has various methods that correspond to actions that can be executed with him as the reciever       
-        public abstract DisplayText Get(Item itemTarget);
-        public abstract DisplayText Drop(Item itemTarget);
-        public abstract DisplayText Look(IViewable viewedTarget);
-        public abstract DisplayText Say(string text);
-        public abstract DisplayText Move(Location location); 
-        
+        //Has various methods that correspond to actions that can be executed with him as the reciever               
+        public virtual DisplayText Drop(string commandClauseString) { throw new NotImplementedException(); }
+        public virtual DisplayText Get(string commandClauseString) { throw new NotImplementedException(); }
+        public virtual DisplayText Move(string commandClauseString) { throw new NotImplementedException(); }
+        public virtual DisplayText Look(string commandClauseString) { throw new NotImplementedException(); }
+        public virtual DisplayText Say(string commandClauseString) { throw new NotImplementedException(); }
+
+        //IViewable implementation
         public virtual DisplayText Viewed(Actor viewer)
         {
             return new DisplayText(viewer.GetPersonalPronoun() + " sees " + Description);
         }
 
+        //utility methods
         public virtual string GetPersonalPronoun()
         {
             if(Sex == Sexes.Neuter)

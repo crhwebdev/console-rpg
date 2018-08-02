@@ -18,17 +18,9 @@ namespace ConsoleRPG.Game.Actions
             _target = target;
         }
         
-     
         public override DisplayText Do()
         {
-
-            var viewedTarget = Util.GetViewableMatchInLocation(_actor.Location, _target);
-            if(viewedTarget != null)
-            {
-                return _actor.Look(viewedTarget);
-            }
-
-            return new DisplayText("I don't understand.");
+            return _actor.Look(_target);            
         }
       
     }

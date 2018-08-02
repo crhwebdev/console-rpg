@@ -20,19 +20,7 @@ namespace ConsoleRPG.Game.Actions
 
         public override DisplayText Do()
         {
-            if(_target == "")
-            {
-                return new DisplayText("You cannot get that!");
-            }
-
-            var itemTarget = Util.GetItemMatchInLocation(_actor.Location, _target);
-
-            if (itemTarget != null)
-            {
-                return _actor.Get(itemTarget);
-            }
-
-            return new DisplayText("You cannot get that!");
+            return _actor.Get(_target);            
         }        
     }
 

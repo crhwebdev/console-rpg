@@ -20,49 +20,79 @@ namespace ConsoleRPG.Game.Actors
 
         }
 
-        public override DisplayText Drop(Item itemTarget)
+        public override DisplayText Drop(string commandClauseString)
         {
             throw new NotImplementedException();
         }
 
-        public override DisplayText Get(Item itemTarget)
-        {
-            return new DisplayText(this.Name + " gets the " + itemTarget.Name);
-        }
-      
-        public override DisplayText Look(IViewable viewedTarget)
+        public override DisplayText Get(string commandClauseString)
         {
 
-            var text = new DisplayText();
-            if(viewedTarget is Location)
+            var displayText = new DisplayText();
+
+            if (commandClauseString == "")
             {
-                text.Add(this.Name + " looks around...");
+                return new DisplayText("There is nothing to get!");
+            }
+
+            var item = Util.GetItemMatchInLocation(this.Location, commandClauseString);
+
+            if (item != null)
+            {
+                displayText.Add(this.Name + " gets the " + item.Name);
+                return displayText;
+            }
+
+            return new DisplayText("You cannot get that!");            
+        }
+      
+        public override DisplayText Look(string commandClauseString)
+        {
+            var displayText = new DisplayText();
+
+            var viewed = Util.GetViewableMatchInLocation(this.Location, commandClauseString);
+
+            if (viewed == null)
+            {
+                return new DisplayText("I don't understand.");
+                
+            }
+            
+            if (viewed is Location)
+            {
+                displayText.Add(this.Name + " looks around...");
             }
             else
             {
-                text.Add(this.Name + " looks at " + viewedTarget.Name);                
+                displayText.Add(this.Name + " looks at " + viewed.Name);
             }
-           
-            DisplayText viewedTargetText = viewedTarget.Viewed(this);                        
-            text.Add(viewedTargetText);
 
-            return text;                                                
+            displayText.Add(viewed.Viewed(this));
+
+            return displayText;                                                
         }
 
-        public override DisplayText Move(Location location)
+        public override DisplayText Move(string commandClauseString)
         {
+            var displayText = new DisplayText();
 
-            var moveDisplayText = new DisplayText(this.Name + " moves...");
-            moveDisplayText.Add(location.Enter(this));
+            var destination = Util.GetExitMatchInLocation(this.Location, commandClauseString);
 
-            return moveDisplayText;
+            if (destination == null)
+            {
+                return new DisplayText(this.Name + " cannot move there!");
+            }
+
+            displayText.Add(this.Name + " moves...");
+            displayText.Add(this.Location.Enter(this));
+
+            return displayText;
         }
 
-        public override DisplayText Say(string text)
+        public override DisplayText Say(string commandClauseString)
         {
-            return new DisplayText(this.Name + " says: '" + text + "'");
+            return new DisplayText(this.Name + " says: '" + commandClauseString + "'");
         }
-
      
     }
 }

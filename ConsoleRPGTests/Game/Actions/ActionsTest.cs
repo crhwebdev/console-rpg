@@ -59,29 +59,15 @@ namespace ConsoleRPGTests.Game.Actions
 
         // GET ACTION
         [Fact]
-        public void GetActionReturnsCorrectDisplayText()
+        public void GetActionCallsCorrectActorAction()
         {
-            //returns error message if no target
-            var target = "";
-            var action = new Get(_testPlayer, target);
 
-            Assert.Equal("You cannot get that!", action.Do().ToString());
-
-            //returns error message for object not in location
-            target = "Not There";
-            action = new Get(_testPlayer, target);
-            Assert.Equal("You cannot get that!", action.Do().ToString());
-            //removes target object from player's location and adds it to their inventory while displaying the correct text
-            target = "Key";
-            action = new Get(_testPlayer, target);
-            Assert.Equal(_testPlayer.Name + " gets the Key", action.Do().ToString());
-            //Assert.Empty(_testPlayer.Location.Items);
-            //Assert.Contains<Prop>(_testPlayer.Inventory, p => p.Name == target);            
+            Assert.True(false);                                                
         }
 
         // DROP ACTION
         [Fact]
-        public void DropActionReturnsCorrectDisplayTextAndAddsItemToRoomAndRemovesFromPlayerInventory()
+        public void DropActionCallsCorrectActorAction()
         {
             //returns error message for object not in player inventory
 
@@ -92,57 +78,26 @@ namespace ConsoleRPGTests.Game.Actions
 
         //TODO Split test into 3 : looking at empty target, looing at inventory, and looking at object in location
         [Fact]
-        public void LookActionReturnsCorrectDisplayText()
+        public void LookActionCallsCorrectActorAction()
         {
 
-            var target = "";
-            var action = new Look(_testPlayer, target);
-            //Look with empty target - should return location description
-            Assert.Equal("a very testing area indeed.", action.Do().ToString());
-            //Look with actor target - should return actor description
-            target = "Other Test Dude";
-            action = new Look(_testPlayer, target);
-            Assert.Equal("a very testy dude.", action.Do().ToString());
-            //Look with actor target and different case - should return actor description
-            target = "other test dude";
-            action = new Look(_testPlayer, target);
-            Assert.Equal("a very testy dude.", action.Do().ToString());
+            Assert.True(false);
         }
 
+        
         [Fact]
-        public void MessageActionReturnsCorrectDisplayText()
+        public void MoveActionCallsCorrectActorAction()
         {
-            var text = "Hello World!";
-            var action = new Message(text);
-            Assert.Equal(text, action.Do().ToString());
-        }
-
-        [Fact]
-        public void MoveActionReturnsCorrectDisplayText()
-        {
-            //Move with wrong direction
-            var moveWrongDirection = new Move(_testPlayer, "west");
-            Assert.Equal(_testPlayer.Name + " cannot move there!", moveWrongDirection.Do().ToString());
-            ResetPlayerLocation();
-            //Move with correct direction
-            var moveRightDirection = new Move(_testPlayer, "North");
-            Assert.Equal("You move!", moveRightDirection.Do().ToString());
-            //Move with direction using different case
-            moveRightDirection = new Move(_testPlayer, "north");
-            Assert.Equal("You move!", moveRightDirection.Do().ToString());
-
-            ResetPlayerLocation();
+            Assert.True(false);
         }
 
         //Skip testing Quit Action because it is a trivial implimentation and I don't want
         // to make private properties of GameEngine public just for testing
 
         [Fact]
-        public void SayActionReturnsCorrectDisplayText()
+        public void SayActionCallsCorrectActorAction()
         {
-            var text = "Hello World!";            
-            var action = new Say(_testPlayer, text);
-            Assert.Equal("You say: " + text, action.Do().ToString());
+            Assert.True(false);
         }
     }
 
@@ -154,18 +109,31 @@ namespace ConsoleRPGTests.Game.Actions
 
         }
 
+        public override DisplayText Drop(Item droppedItem)
+        {
+            return new DisplayText("drop");
+        }
+
+        public override DisplayText Get(Item takenItem)
+        {
+            return new DisplayText("get");
+        }
+
         public override DisplayText Look(IViewable viewedTarget)
         {
-            return viewedTarget.Viewed(this);
+            return new DisplayText("look");
         }
-        public override DisplayText Say(string text)
-        {
-            return new DisplayText("You say: " + text);
-        }
+
         public override DisplayText Move(Location location)
         {
-            return new DisplayText("You move!");
+            return new DisplayText("move");
         }
+
+        public override DisplayText Say(string text)
+        {
+            return new DisplayText("say");
+        }
+        
     }
 
     class MockArea : Location

@@ -20,17 +20,9 @@ namespace ConsoleRPG.Game.Actions
         }
 
         public override DisplayText Do()
-        {
-            var destination = Util.GetExitMatchInLocation(_actor.Location, _target);    
-            if(destination == null)
-            {
-                return new DisplayText(_actor.Name + " cannot move there!");
-            } 
-            
-            var moveDisplayText = _actor.Move(destination);            
-            return moveDisplayText;            
+        {                                     
+            return _actor.Move(_target); 
         }
-
         
     }
 }
