@@ -1,4 +1,5 @@
-﻿using ConsoleRPG.System;
+﻿using ConsoleRPG.Game.Actors;
+using ConsoleRPG.System;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ namespace ConsoleRPG.Game.Actions
 {
     public class Drop : Action
     {
-        public Drop()
+        public Drop(Actor actor, string commandClauseString)
         {
 
         }
