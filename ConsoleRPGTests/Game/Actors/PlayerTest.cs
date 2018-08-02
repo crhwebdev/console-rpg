@@ -22,25 +22,29 @@ namespace ConsoleRPGTests.Game.Actors
         [Fact]
         public void PlayerLookMethodReturnsAppropriateText()
         {
-            var name = "Testy Tess";
-            var viewTargetDescription = "You see a test area.";
+            var name = "Testy Tess";            
             var player = new Player(name);
-            var viewTarget = new MockViewTarget();
-            viewTarget.Description = viewTargetDescription;
+            var viewedLocation = new MockLocation("Test Area");
+            player.Location = viewedLocation;
 
-            Assert.Equal(viewTargetDescription, player.Look(viewTarget).ToString());
+            //player displays correct text for location as view target
+            Assert.Equal(player.Name + " looks around...", player.Look(viewedLocation).ToString());
+
+            //player displays correct text when looking at a specific target
+            var viewedTarget = new MockViewTarget();
+            Assert.Equal(player.Name + " looks at " + viewedTarget.Name, player.Look(viewedTarget).ToString());
         }
+
+        
 
         [Fact]
         public void PlayerMoveMethodReturnsAppropriateText()
         {
-            var name = "Testy Tess";
-            var viewTargetDescription = "You enter a test area.";
+            var name = "Testy Tess";          
             var player = new Player(name);
-            var viewTarget = new MockLocation("Test Area");
-            viewTarget.Description = viewTargetDescription;
+            var viewTarget = new MockLocation("Test Area");            
 
-            Assert.Equal(viewTargetDescription, player.Move(viewTarget).ToString());
+            Assert.Equal(player.Name + " moves...", player.Move(viewTarget).ToString());
         }
 
         [Fact]
@@ -50,7 +54,7 @@ namespace ConsoleRPGTests.Game.Actors
             var sayText = "Hello World!";
             var player = new Player(name);
 
-            Assert.Equal("You say: '" + sayText + "'", player.Say(sayText).ToString());
+            Assert.Equal(player.Name + " says: '" + sayText + "'", player.Say(sayText).ToString());
         }
     }
 
@@ -61,7 +65,7 @@ namespace ConsoleRPGTests.Game.Actors
 
         public DisplayText Viewed(Actor viewer)
         {
-            return new DisplayText(Description);
+            return new DisplayText();
         }
     }
 
@@ -73,11 +77,16 @@ namespace ConsoleRPGTests.Game.Actors
             
         }
 
+        public override DisplayText Viewed(Actor viewer)
+        {
+            return new DisplayText();
+        }
+
         public override DisplayText Enter(Actor actor)
         {
             
             //get description of location and add to DisplayText to be returned
-            var enterDisplayText = new DisplayText(Description);
+            var enterDisplayText = new DisplayText();
             
             return enterDisplayText;
         }
