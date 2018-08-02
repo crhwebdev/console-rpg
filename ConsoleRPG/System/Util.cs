@@ -36,9 +36,23 @@ namespace ConsoleRPG.System
             return null;
         }
 
-        public static Item GetItemMatchInInventory(Player player, string commandClauseString)
+        public static Item GetItemMatchInInventory(Player player, string targetName)
         {
-            throw new NotImplementedException();
+            
+            if (targetName == "")
+            {
+                return null;
+            }
+
+            foreach(var item in player.Inventory)
+            {
+                if(targetName.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return item as Item;
+                }
+            }
+            
+            return null;
         }
 
         public static Location GetExitMatchInLocation(Location location, string destinationName)
