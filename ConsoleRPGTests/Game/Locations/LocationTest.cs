@@ -37,7 +37,7 @@ namespace ConsoleRPGTests.Game.Locations
             var areaEnterResult = _location.Enter(_player).ToString();
 
             Assert.Equal(_player.Location, _location);
-            Assert.Equal("You enter " + _areaDescription, areaEnterResult);
+            Assert.Equal(_player.GetPersonalPronoun() + " enters " + _areaDescription, areaEnterResult);
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace ConsoleRPGTests.Game.Locations
         {
             var areaViewResult = _location.Viewed(_player).ToString();
 
-            Assert.Equal("You see " + _areaDescription, areaViewResult);
+            Assert.Equal(_player.GetPersonalPronoun() + " sees " + _areaDescription, areaViewResult);
         }
 
        
