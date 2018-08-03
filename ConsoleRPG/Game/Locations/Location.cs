@@ -35,30 +35,29 @@ namespace ConsoleRPG.Game.Locations
         {
             //set location of actor entering location
             actor.Location = this;
-            
+
             //get description of location and add to DisplayText to be returned
-            DisplayText enterDisplayText;
+
+            DisplayText enterDisplayText = new DisplayText();
 
 
             if (actor is Player)
             {
-                enterDisplayText = new DisplayText(new DisplayTextLine(Name, ConsoleColor.Red));
-                enterDisplayText += new DisplayText(actor.GetPersonalPronoun() + " enters " + Description);
+                enterDisplayText.Add(new DisplayTextLine(Name, ConsoleColor.Red));
+                enterDisplayText.Add(actor.GetPersonalPronoun() + " enters " + Description);
+                            
+                //add list of npcs to DisplayText 
+                enterDisplayText += GetListOfActorsDisplay();              
+
+                //add list of items to DisplayText
+                enterDisplayText += GetListOfItemsDisplay();                
+              
             }
             else
             {
                 enterDisplayText = new DisplayText("");
             }
-
-
-
-            //add list of npcs to DisplayText 
-            enterDisplayText += GetListOfActorsDisplay();
-
-            //add list of items to DisplayText
-            enterDisplayText += GetListOfItemsDisplay();
-
-
+            
             return enterDisplayText;
         }
 
@@ -101,23 +100,13 @@ namespace ConsoleRPG.Game.Locations
             //get list of items in room
 
             var itemListDisplayText = new DisplayText();
-
-            if(Items.Count > 0)
-            {
-                itemListDisplayText.Add("Items:");
-                
-            }
-            else
-            {
-                return itemListDisplayText;
-            }
-
+            
             foreach (var item in Items)
             {
-                var itemDisplayTextLine = new DisplayTextLine(item.Name);
+                var itemDisplayTextLine = new DisplayTextLine(item.Name + " is here");
                 itemListDisplayText.Add(itemDisplayTextLine);
             }
-
+                                    
             return itemListDisplayText;
         }
         
