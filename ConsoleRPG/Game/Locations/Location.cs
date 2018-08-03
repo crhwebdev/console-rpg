@@ -45,13 +45,13 @@ namespace ConsoleRPG.Game.Locations
                 enterDisplayText = new DisplayText("");
             }
 
-            
+
 
             //add list of npcs to DisplayText 
-            enterDisplayText.Add(GetListOfActorsDisplay());
+            enterDisplayText += GetListOfActorsDisplay();
 
             //add list of items to DisplayText
-            enterDisplayText.Add(GetListOfItemsDisplay());
+            enterDisplayText += GetListOfItemsDisplay();
 
 
             return enterDisplayText;
@@ -70,10 +70,10 @@ namespace ConsoleRPG.Game.Locations
             }
            
             //add list of npcs to DisplayText 
-            viewedDisplayText.Add(GetListOfActorsDisplay());
+            viewedDisplayText += GetListOfActorsDisplay();
 
             //add list of items to DisplayText
-            viewedDisplayText.Add(GetListOfItemsDisplay());
+            viewedDisplayText += GetListOfItemsDisplay();
 
             return viewedDisplayText;
         }

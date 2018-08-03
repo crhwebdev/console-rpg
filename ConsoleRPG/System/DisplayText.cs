@@ -83,6 +83,15 @@ namespace ConsoleRPG.System
                 yield return line;
             }
         }
+
+        //overload + operator
+
+        public static DisplayText operator +(DisplayText d1, DisplayText d2)
+        {
+            d1.Add(d2);
+
+            return d1;
+        }
                         
     }
 
