@@ -1,5 +1,6 @@
 ﻿using ConsoleRPG.Game.Actors;
 using ConsoleRPG.Game.Locations;
+using ConsoleRPG.Game.Props;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,12 @@ namespace ConsoleRPG.Game
                 Description = "a burly man in his mid 40s. He is smiling at you as if expecting you to say something."
             };
 
+            //declare Items
+            var sword = new Item("Rusty Sword")
+            {
+                Description = "a short sword with rust spotting the blade."
+            };
+
             //declare rooms
             var theChamber = new Location("The Chamber")
             {
@@ -27,6 +34,8 @@ namespace ConsoleRPG.Game
 
             bob.Location = theChamber;
             theChamber.Actors.Add(bob);
+            sword.Location = theChamber;
+            theChamber.Items.Add(sword);
 
             var theAntechamber = new Location("The Antechamber")
             {

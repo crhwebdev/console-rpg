@@ -45,16 +45,14 @@ namespace ConsoleRPG.Game.Locations
                 enterDisplayText = new DisplayText("");
             }
 
-            //get list of npcs in room
-            var npcListDisplayText = new DisplayText();
-            foreach(var person in Actors)
-            {
-                var personDisplayTextLine = new DisplayTextLine(person.Name + " is here");
-                npcListDisplayText.Add(personDisplayTextLine);
-            }
+            
 
             //add list of npcs to DisplayText 
-            enterDisplayText.Add(npcListDisplayText);
+            enterDisplayText.Add(GetListOfActorsDisplay());
+
+            //add list of items to DisplayText
+            enterDisplayText.Add(GetListOfItemsDisplay());
+
 
             return enterDisplayText;
         }
@@ -70,12 +68,53 @@ namespace ConsoleRPG.Game.Locations
                 var personDisplayTextLine = new DisplayTextLine(person.Name + " is here");
                 npcListDisplayText.Add(personDisplayTextLine);
             }
+           
+            //add list of npcs to DisplayText 
+            viewedDisplayText.Add(GetListOfActorsDisplay());
 
-            viewedDisplayText.Add(npcListDisplayText);
+            //add list of items to DisplayText
+            viewedDisplayText.Add(GetListOfItemsDisplay());
 
             return viewedDisplayText;
         }
 
+        private DisplayText GetListOfActorsDisplay()
+        {
+            //get list of npcs in room
+            var npcListDisplayText = new DisplayText();
+            foreach (var person in Actors)
+            {
+                var personDisplayTextLine = new DisplayTextLine(person.Name + " is here");
+                npcListDisplayText.Add(personDisplayTextLine);
+            }
+
+            return npcListDisplayText;
+        }
+
+        private DisplayText GetListOfItemsDisplay()
+        {
+            //get list of items in room
+
+            var itemListDisplayText = new DisplayText();
+
+            if(Items.Count > 0)
+            {
+                itemListDisplayText.Add("Items:");
+                
+            }
+            else
+            {
+                return itemListDisplayText;
+            }
+
+            foreach (var item in Items)
+            {
+                var itemDisplayTextLine = new DisplayTextLine(item.Name);
+                itemListDisplayText.Add(itemDisplayTextLine);
+            }
+
+            return itemListDisplayText;
+        }
         
     }
 }
