@@ -26,17 +26,17 @@ namespace ConsoleRPG.UI
         }
 
         public override void WriteDisplayTextLine(DisplayTextLine line)
-        {                                            
-            //Console.ForegroundColor = line.Color;                    
+        {
+            Console.ForegroundColor = line.Color;
             _console.WriteLine(line.Text);
-            //Console.ResetColor();            
+            Console.ResetColor();
         }
 
         public override void WriteDisplayText(DisplayText text)
         {
             foreach(var line in text)
-            {
-                WriteDisplayTextLine(line.ToString());
+            {                
+                WriteDisplayTextLine(line as DisplayTextLine);
                 WriteDisplayTextLine("");
             }
         }

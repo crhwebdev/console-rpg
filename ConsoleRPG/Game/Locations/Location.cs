@@ -42,8 +42,8 @@ namespace ConsoleRPG.Game.Locations
 
             if (actor is Player)
             {
-                
-                enterDisplayText = new DisplayText(actor.GetPersonalPronoun() + " enters " + Description);
+                enterDisplayText = new DisplayText(new DisplayTextLine(Name, ConsoleColor.Red));
+                enterDisplayText += new DisplayText(actor.GetPersonalPronoun() + " enters " + Description);
             }
             else
             {

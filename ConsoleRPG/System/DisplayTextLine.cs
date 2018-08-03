@@ -10,7 +10,7 @@ namespace ConsoleRPG.System
     public class DisplayTextLine
     {
         public string Text { get; set; }
-        public ConsoleColor Color { get; set; } = ConsoleColor.Black;
+        public ConsoleColor Color { get; set; } = ConsoleColor.White;
         /// <summary>
         /// Creates an object that wraps the text and can be accessed either by converting
         /// object ToString
