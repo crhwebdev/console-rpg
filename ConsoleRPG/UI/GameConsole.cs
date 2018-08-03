@@ -6,13 +6,17 @@ using ConsoleRPG.Game;
 
 namespace ConsoleRPG.UI
 {
+    
+
     public class GameConsole : TextConsole
     {        
         private IConsole _console;
-        
+        private const ConsoleColor DEFAULT_TEXT_COLOR = ConsoleColor.White;
+
         public GameConsole()
         {
             _console = new ConsoleWrapper();
+            Console.ForegroundColor = DEFAULT_TEXT_COLOR;
         }
 
         public GameConsole(IConsole console)
@@ -29,7 +33,7 @@ namespace ConsoleRPG.UI
         {
             Console.ForegroundColor = line.Color;
             _console.WriteLine(line.Text);
-            Console.ResetColor();
+            Console.ForegroundColor = DEFAULT_TEXT_COLOR;
         }
 
         public override void WriteDisplayText(DisplayText text)
