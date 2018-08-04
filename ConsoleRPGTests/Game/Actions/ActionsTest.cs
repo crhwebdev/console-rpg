@@ -43,7 +43,7 @@ namespace ConsoleRPGTests.Game.Actions
         [Fact]
         public void InventoryActionCallsCorrectActorAction()
         {
-            var action = new Inventory(_testPlayer, "");
+            var action = new Inventory(_testPlayer);
             Assert.Equal("showinventory", action.Do().ToString());
         }
 
@@ -106,7 +106,7 @@ namespace ConsoleRPGTests.Game.Actions
             return new DisplayText("say");
         }
 
-        public override DisplayText ShowInventory(string commandClauseString)
+        public override DisplayText ShowInventory()
         {
             return new DisplayText("showinventory");
         }

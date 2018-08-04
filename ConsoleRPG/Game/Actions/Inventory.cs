@@ -9,17 +9,15 @@ namespace ConsoleRPG.Game.Actions
     public class Inventory : Action
     {
         private Actor _actor;
-        private string _target;
-
-        public Inventory(Actor actor, string target)
+        
+        public Inventory(Actor actor)
         {
-            _actor = actor;
-            _target = target;
+            _actor = actor;    
         }
 
         public override DisplayText Do()
         {
-            return _actor.ShowInventory(_target);
+            return _actor.ShowInventory();
         }
     }
 }

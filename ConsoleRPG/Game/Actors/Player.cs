@@ -119,9 +119,43 @@ namespace ConsoleRPG.Game.Actors
             return new DisplayText(Name + " says: '" + commandClauseString + "'");
         }
 
-        public override DisplayText ShowInventory(string commandClauseString)
+        public override DisplayText ShowInventory()
         {
-            throw new NotImplementedException();
+            var inventoryDisplayText = new DisplayText();
+            var inventoryDisplayTextLine = new DisplayTextLine();  
+
+            if(Inventory.Count < 1)
+            {
+                inventoryDisplayTextLine.Add("You have nothing in your pack, Master.");
+            }
+            else if(Inventory.Count == 1)
+            {
+                inventoryDisplayTextLine.Add("Master, you have: " + Inventory[0].Name + ".");
+            }
+            else
+            {
+                inventoryDisplayTextLine.Add("Your Inventory, Master: ");
+
+                var index = 0;
+
+                foreach (var item in Inventory)
+                {
+                    if (index == Inventory.Count - 1)
+                    {
+                        inventoryDisplayTextLine.Add(item.Name + ".");
+                    }
+                    else
+                    {
+                        inventoryDisplayTextLine.Add(item.Name + ", ");
+                    }
+
+                    index++;
+                }
+            }
+
+            inventoryDisplayText.Add(inventoryDisplayTextLine);
+
+            return inventoryDisplayText;
         }
      
     }

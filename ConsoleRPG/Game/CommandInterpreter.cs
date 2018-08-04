@@ -98,7 +98,7 @@ namespace ConsoleRPG.Game
                 case "get":
                     return new Get(player, target);
                 case "inventory":
-                    return new Inventory(player, "");
+                    return new Inventory(player);
                 case "look":
                 case "look at":    
                     return new Look(player, target);

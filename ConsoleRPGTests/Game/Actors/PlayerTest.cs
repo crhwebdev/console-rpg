@@ -4,6 +4,7 @@ using ConsoleRPG.Game.Locations;
 using ConsoleRPG.Game.Props;
 using ConsoleRPG.System;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -84,6 +85,42 @@ namespace ConsoleRPGTests.Game.Actors
             // player succesfully added item to inventory
             Assert.Single(player.Inventory, itemTarget);
         }
+
+        //SHOWINVENTORY METHOD
+        [Fact]
+        public void PlayerShowInventoryMethodReturnsAppropriateText()
+        {
+            var playerName = "Testy Tess";
+            var player = new Player(playerName);
+            var inventoryItemNames = new List<string>
+            {
+                "Thing",
+                "Other Thing"
+            };
+
+            var inventoryItems = new List<MockItemTarget>();
+
+            foreach(var name in inventoryItemNames)
+            {
+                inventoryItems.Add(new MockItemTarget(name));
+            }
+
+            //show player's inventory with no items
+            var playerInventoryText = player.ShowInventory().ToString();
+            Assert.Equal("You have nothing in your pack, Master.", playerInventoryText);
+
+            //show player's inventory with one item
+            player.Inventory.Add(inventoryItems[0]);
+            playerInventoryText = player.ShowInventory().ToString(); 
+            Assert.Equal("Master, you have: " + inventoryItems[0].Name + ".", playerInventoryText);
+
+
+            //show player's inventory with more than one item
+            player.Inventory.Add(inventoryItems[1]);
+            playerInventoryText = player.ShowInventory().ToString();
+            Assert.Equal("Your Inventory, Master: " + inventoryItems[0].Name + ", " + inventoryItems[1].Name + ".", playerInventoryText);
+        }
+
 
         // LOOK METHOD
         [Fact]

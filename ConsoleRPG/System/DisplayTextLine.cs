@@ -11,12 +11,19 @@ namespace ConsoleRPG.System
     {
         public string Text { get; set; }
         public ConsoleColor Color { get; set; } = ConsoleColor.White;
+       
+        public DisplayTextLine()
+        {
+            Text = "";
+        }
+
         /// <summary>
         /// Creates an object that wraps the text and can be accessed either by converting
         /// object ToString
         /// Or by accessing public Text property
         /// </summary>
         /// <param name="text"></param>
+        /// 
         public DisplayTextLine(string text)
         {
             Text = text;
@@ -33,6 +40,12 @@ namespace ConsoleRPG.System
         {
             Text = text;
             Color = color;
+        }
+
+
+        public void Add(string text)
+        {
+            Text += text;
         }
 
         public override string ToString()
