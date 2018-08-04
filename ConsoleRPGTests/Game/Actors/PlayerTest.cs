@@ -50,6 +50,9 @@ namespace ConsoleRPGTests.Game.Actors
             // player successfully removes item from inventory
             Assert.Empty(player.Inventory);
 
+            // Item Location is set to area Location
+            Assert.Equal(playerLocation, itemTarget.Location);
+
             // player succesfully adds item to Location.Items list
             Assert.Single(playerLocation.Items, itemTarget);
 
@@ -64,6 +67,7 @@ namespace ConsoleRPGTests.Game.Actors
             var playerLocation = new MockLocation("Test Area");
             var itemTargetName = "Thing";
             var itemTarget = new MockItemTarget(itemTargetName);
+            itemTarget.Location = playerLocation;
 
             player.Location = playerLocation;
             playerLocation.Items.Add(itemTarget);
@@ -82,6 +86,10 @@ namespace ConsoleRPGTests.Game.Actors
 
             // player successfully removed item from location
             Assert.Empty(playerLocation.Items);
+
+            // item's Location is set to null
+            Assert.Null(itemTarget.Location);
+
             // player succesfully added item to inventory
             Assert.Single(player.Inventory, itemTarget);
         }

@@ -34,6 +34,7 @@ namespace ConsoleRPG.Game.Actors
             if (item != null)
             {
                 Location.Items.Add(item);
+                item.Location = Location;
                 Inventory.Remove(item);
                 
                 displayText.Add(Name + " drops the " + item.Name);
@@ -57,8 +58,9 @@ namespace ConsoleRPG.Game.Actors
 
             if (item != null)
             {
-                this.Inventory.Add(item);
-                this.Location.Items.Remove(item);                
+                Inventory.Add(item);
+                item.Location = null;
+                Location.Items.Remove(item);                
                 displayText.Add(Name + " gets the " + item.Name);
                 return displayText;
             }
