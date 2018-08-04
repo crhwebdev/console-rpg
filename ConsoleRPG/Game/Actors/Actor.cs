@@ -27,6 +27,7 @@ namespace ConsoleRPG.Game.Actors
         //Has various methods that correspond to actions that can be executed with him as the reciever               
         public virtual DisplayText Drop(string commandClauseString) { throw new NotImplementedException(); }
         public virtual DisplayText Get(string commandClauseString) { throw new NotImplementedException(); }
+        public virtual DisplayText ShowInventory(string commandClauseString) { throw new NotImplementedException(); }
         public virtual DisplayText Move(string commandClauseString) { throw new NotImplementedException(); }
         public virtual DisplayText Look(string commandClauseString) { throw new NotImplementedException(); }
         public virtual DisplayText Say(string commandClauseString) { throw new NotImplementedException(); }

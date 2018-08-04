@@ -38,7 +38,15 @@ namespace ConsoleRPGTests.Game.Actions
             Assert.Equal("get", action.Do().ToString());                                      
         }
 
-        
+
+        // INVENTORY ACTION
+        [Fact]
+        public void InventoryActionCallsCorrectActorAction()
+        {
+            var action = new Inventory(_testPlayer, "");
+            Assert.Equal("showinventory", action.Do().ToString());
+        }
+
         // LOOK ACTION
         [Fact]
         public void LookActionCallsCorrectActorAction()
@@ -81,6 +89,8 @@ namespace ConsoleRPGTests.Game.Actions
             return new DisplayText("get");
         }
 
+
+
         public override DisplayText Look(string commandClauseString)
         {
             return new DisplayText("look");
@@ -94,6 +104,11 @@ namespace ConsoleRPGTests.Game.Actions
         public override DisplayText Say(string commandClauseString)
         {
             return new DisplayText("say");
-        }       
+        }
+
+        public override DisplayText ShowInventory(string commandClauseString)
+        {
+            return new DisplayText("showinventory");
+        }
     }    
 }

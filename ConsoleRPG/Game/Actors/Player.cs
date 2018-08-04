@@ -118,6 +118,11 @@ namespace ConsoleRPG.Game.Actors
         {
             return new DisplayText(Name + " says: '" + commandClauseString + "'");
         }
+
+        public override DisplayText ShowInventory(string commandClauseString)
+        {
+            throw new NotImplementedException();
+        }
      
     }
 }
