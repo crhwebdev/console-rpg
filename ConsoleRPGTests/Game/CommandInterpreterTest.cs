@@ -73,6 +73,15 @@ namespace ConsoleRPGTests.Game
         }
 
         [Fact]
+        public void ReturnsInventoryActionFromCommandList()
+        {
+            string[] commandList = { "inventory", "" };
+            var returnAction = _commandInterpreter.GetAction(commandList, _player);
+            Assert.IsType<Inventory>(returnAction);
+
+        }
+
+        [Fact]
         public void ReturnsLookActionFromCommandList()
         {
             string[] commandList = { "look", "" };
