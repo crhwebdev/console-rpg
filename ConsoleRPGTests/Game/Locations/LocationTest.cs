@@ -37,7 +37,7 @@ namespace ConsoleRPGTests.Game.Locations
             var areaEnterResult = _location.Enter(_player).ToString();
 
             Assert.Equal(_player.Location, _location);
-            Assert.Equal(_player.GetPersonalPronoun() + " enters " + _areaDescription, areaEnterResult);
+            Assert.Equal(_areaName + "/r/n" + _player.GetPersonalPronoun() + " enters " + _areaDescription, areaEnterResult);
         }
 
         [Fact]

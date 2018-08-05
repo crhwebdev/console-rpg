@@ -59,12 +59,27 @@ namespace ConsoleRPG.System
             
         public override string ToString()
         {
-            if (LineCount == 1)
-            {
-                return _content[0].Text;                
-            }
+            string displayTextAsString = null;
 
-            return null;
+            if (LineCount > 0)
+            {
+                
+                for (var i = 0; i < _content.Count; i++)
+                {
+                    if(i == _content.Count - 1)
+                    {
+                        displayTextAsString += _content[i].Text;
+                    }
+                    else
+                    {
+                        displayTextAsString += _content[i].Text + "/r/n";
+                    }
+                    
+                }
+            }
+            
+
+            return displayTextAsString; 
         }
 
         //Implementation for the GetEnumerator method
