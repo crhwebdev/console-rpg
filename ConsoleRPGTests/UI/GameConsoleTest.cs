@@ -39,7 +39,7 @@ namespace ConsoleRPGTests.UI
         {
             Console.SetOut(_out);            
             _gameConsole.WriteDisplayTextLine(new DisplayTextLine("Hello World!"));
-            Assert.Equal("Hello World!\r\n", _out.ToString());
+            Assert.Equal("Hello World!\r\n\r\n", _out.ToString());
             ClearTest();
         }
 
