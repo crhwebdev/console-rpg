@@ -50,7 +50,7 @@ namespace ConsoleRPG.Game
 
             //get first command and set it to action
             string commandAction = commandWords[0].ToLower();
-            string target = "";
+            string commandClauseString = "";
 
             if (commandWords.Length >= 2)
             {
@@ -64,18 +64,18 @@ namespace ConsoleRPG.Game
                     // so we have to do this clunky check
                     if(commandWords.Length >= 3)
                     {                        
-                        target = string.Join(" ", commandWords, 2, commandWords.Length - 2);                     
+                        commandClauseString = string.Join(" ", commandWords, 2, commandWords.Length - 2);                     
                     }
                     
                 }
                 else
                 {                    
-                    target = string.Join(" ", commandWords, 1, commandWords.Length - 1);                    
+                    commandClauseString = string.Join(" ", commandWords, 1, commandWords.Length - 1);                    
                 }               
             }
 
             parsedCommandList[0] = commandAction;
-            parsedCommandList[1] = target;
+            parsedCommandList[1] = commandClauseString;
 
             return parsedCommandList;
         }
@@ -89,25 +89,25 @@ namespace ConsoleRPG.Game
             }
 
             var action = commandList[0];
-            var target = commandList[1];
+            var commandClauseString = commandList[1];
                         
             switch (action)
             {
                 case "drop":
-                    return new Drop(player, target);
+                    return new Drop(player, commandClauseString);
                 case "get":
-                    return new Get(player, target);
+                    return new Get(player, commandClauseString);
                 case "inventory":
                     return new Inventory(player);
                 case "look":
                 case "look at":    
-                    return new Look(player, target);
+                    return new Look(player, commandClauseString);
                 case "move":
-                    return new Move(player, target);                    
+                    return new Move(player, commandClauseString);                    
                 case "quit":
                     return new Quit(_gameEngine);
                 case "say":
-                    return new Say(player, target);
+                    return new Say(player, commandClauseString);
                 default:
                     return new Message("Say what?");
             }                                    
