@@ -129,11 +129,25 @@ namespace ConsoleRPGTests.System
 
         }
         //ToString method returns a single string value if only one item or a string divided by line breaks if multipel values
-        //[Fact]
-        //public void ToStringMethodWorksCorrectly()
-        //{
-        //    Assert.True(false);
-        //}
+        [Fact]
+        public void ToStringMethodWorksCorrectly()
+        {
+            
+            var displayText = new DisplayText();
+
+            //return empty string if it contains nothing
+            Assert.Equal("", displayText.ToString());
+
+            //returns single line if it has only one line
+            var value = "Hello World!";
+            displayText.Add(value);
+            Assert.Equal(value, displayText.ToString());
+
+            //returns multiple lines seperated by '/r/n' if it has multiple lines
+            displayText.Add(value);
+            Assert.Equal(value + "/r/n" + value, displayText.ToString());
+
+        }
 
     }
 }

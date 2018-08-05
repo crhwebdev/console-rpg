@@ -59,7 +59,7 @@ namespace ConsoleRPG.System
             
         public override string ToString()
         {
-            string displayTextAsString = null;
+            var displayTextAsString = "";
 
             if (LineCount > 0)
             {
