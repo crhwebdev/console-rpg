@@ -14,8 +14,14 @@ namespace ConsoleRPG.Game.Actors
         public virtual string Name { get; set; }
         public virtual Sexes Sex { get; set; }
         public virtual string Description { get; set; }
-        public virtual Location Location { get; set; }            
+        public virtual Location Location { get; set; }
+
         public virtual List<Item> Inventory { get; set; }
+        public virtual Item EquipSlotMainWeapon { get; set; }
+        public virtual Item EquipSlotHead { get; set; }
+        public virtual Item EquipSlotHands { get; set; }       
+        public virtual Item EquipSlotBody { get; set; }
+        public virtual Item EquipSlotFeet { get; set; }        
 
         public Actor(string name)
         {
