@@ -30,6 +30,15 @@ namespace ConsoleRPGTests.Game.Actions
             Assert.Equal("drop", action.Do().ToString());
         }
 
+        // TESTS
+        // EQUIP ACTION
+        [Fact]
+        public void EquipActionCallsCorrectActorAction()
+        {
+            var action = new Equip(_testPlayer, "");            
+            Assert.Equal("equip", action.Do().ToString());
+        }
+
         // GET ACTION
         [Fact]
         public void GetActionCallsCorrectActorAction()
@@ -73,6 +82,15 @@ namespace ConsoleRPGTests.Game.Actions
             var action = new Say(_testPlayer, "");
             Assert.Equal("say", action.Do().ToString());
         }
+
+        // TESTS
+        // UNEQUIP ACTION
+        [Fact]
+        public void UnequipActionCallsCorrectActorAction()
+        {
+            var action = new Unequip(_testPlayer, "");
+            Assert.Equal("unequip", action.Do().ToString());
+        }
     }
 
     class MockPlayer : Player
@@ -84,12 +102,15 @@ namespace ConsoleRPGTests.Game.Actions
             return new DisplayText("drop");
         }
 
+        public override DisplayText Equip(string commandClauseString)
+        {
+            return new DisplayText("equip");
+        }
+
         public override DisplayText Get(string commandClauseString)
         {
             return new DisplayText("get");
         }
-
-
 
         public override DisplayText Look(string commandClauseString)
         {
@@ -109,6 +130,11 @@ namespace ConsoleRPGTests.Game.Actions
         public override DisplayText ShowInventory()
         {
             return new DisplayText("showinventory");
+        }
+
+        public override DisplayText Unequip(string commandClauseString)
+        {
+            return new DisplayText("unequip");
         }
     }    
 }
