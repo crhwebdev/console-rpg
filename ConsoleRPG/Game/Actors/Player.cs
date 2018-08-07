@@ -47,6 +47,25 @@ namespace ConsoleRPG.Game.Actors
         public override DisplayText Equip(string commandClauseString)
         {
             var equipDisplayText = new DisplayText();
+             if(commandClauseString == "")
+            {
+                return new DisplayText("There is nothing to equip!");
+            }
+
+            var item = Util.GetItemMatchInInventory(this, commandClauseString);
+
+            if(item != null)
+            {
+                // For now we equip everything to and from Weapon slot - 
+                // TODO add slot property equipable items that can be tested for to see where it goes
+                EquipSlotMainWeapon = item;
+                Inventory.Remove(item);
+
+                equipDisplayText.Add(Name + " equips the " + item.Name);
+                return equipDisplayText;
+            }
+
+            equipDisplayText.Add("That does not exist in your inventory!");
 
             return equipDisplayText;
         }

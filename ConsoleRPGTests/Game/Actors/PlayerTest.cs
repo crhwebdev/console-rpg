@@ -70,7 +70,16 @@ namespace ConsoleRPGTests.Game.Actors
 
             player.Inventory.Add(itemTarget);
 
-            var playerEquipText = player.Equip(itemTargetName).ToString();
+
+
+            var playerEquipText = player.Equip("").ToString();
+            Assert.Equal("There is nothing to equip!", playerEquipText);
+
+            playerEquipText = player.Equip("Not A Thing").ToString();
+            Assert.Equal("That does not exist in your inventory!", playerEquipText);
+
+
+            playerEquipText = player.Equip(itemTargetName).ToString();
             Assert.Equal(player.Name + " equips the " + itemTarget.Name, playerEquipText);
 
             Assert.Empty(player.Inventory);
