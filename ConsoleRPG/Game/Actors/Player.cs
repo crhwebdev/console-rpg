@@ -44,6 +44,13 @@ namespace ConsoleRPG.Game.Actors
             return new DisplayText("You don't have that item!");
         }
 
+        public override DisplayText Equip(string commandClauseString)
+        {
+            var equipDisplayText = new DisplayText();
+
+            return equipDisplayText;
+        }
+
         public override DisplayText Get(string commandClauseString)
         {
 

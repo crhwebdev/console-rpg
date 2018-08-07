@@ -58,6 +58,26 @@ namespace ConsoleRPGTests.Game.Actors
 
         }
 
+        //EQUIP METHOD
+        [Fact]
+        public void PlayerEquipMethodReturnsAppropriateText()
+        {
+            var name = "Testy Tess";
+            var player = new Player(name);
+            var itemTargetName = "Thing";
+            var itemTarget = new MockItemTarget(itemTargetName);
+            itemTarget.Location = null;
+
+            player.Inventory.Add(itemTarget);
+
+            var playerEquipText = player.Equip(itemTargetName).ToString();
+            Assert.Equal(player.Name + " equips the " + itemTarget.Name, playerEquipText);
+
+            Assert.Empty(player.Inventory);
+            Assert.Equal(itemTarget, player.EquipSlotMainWeapon);
+            
+        }
+
         //GET METHOD
         [Fact]
         public void PlayerGetMethodReturnsAppropriateText()
@@ -185,6 +205,13 @@ namespace ConsoleRPGTests.Game.Actors
             var player = new Player(name);
 
             Assert.Equal(player.Name + " says: '" + sayText + "'", player.Say(sayText).ToString());
+        }
+
+        // UNEQUIP METHOD
+        [Fact]
+        public void PlayerUnequipMethodReturnsAppropriateText()
+        {
+            Assert.True(false);
         }
     }
 
