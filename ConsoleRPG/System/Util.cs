@@ -36,7 +36,7 @@ namespace ConsoleRPG.System
             return null;
         }
 
-        public static Item GetItemMatchInInventory(Player player, string targetName)
+        public static Item GetItemMatchInInventory(Actor actor, string targetName)
         {
             
             if (targetName == "")
@@ -44,7 +44,7 @@ namespace ConsoleRPG.System
                 return null;
             }
 
-            foreach(var item in player.Inventory)
+            foreach(var item in actor.Inventory)
             {
                 if(targetName.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase))
                 {
@@ -55,24 +55,24 @@ namespace ConsoleRPG.System
             return null;
         }
 
-        public static Item GetEquipSlotWithMatch(Player player, string targetName)
+        public static Item GetEquipSlotWithMatch(Actor actor, string targetName)
         {
             
             //Go through all Equip slots
-            if(player.EquipSlotMainWeapon != null && targetName.Equals(player.EquipSlotMainWeapon.Name, StringComparison.CurrentCultureIgnoreCase)){
-                return player.EquipSlotMainWeapon;
+            if(actor.EquipSlotMainWeapon != null && targetName.Equals(actor.EquipSlotMainWeapon.Name, StringComparison.CurrentCultureIgnoreCase)){
+                return actor.EquipSlotMainWeapon;
             }
-            if (player.EquipSlotHead != null && targetName.Equals(player.EquipSlotHead.Name, StringComparison.CurrentCultureIgnoreCase)){
-                return player.EquipSlotHead;
+            if (actor.EquipSlotHead != null && targetName.Equals(actor.EquipSlotHead.Name, StringComparison.CurrentCultureIgnoreCase)){
+                return actor.EquipSlotHead;
             }
-            if (player.EquipSlotHands != null && targetName.Equals(player.EquipSlotHands.Name, StringComparison.CurrentCultureIgnoreCase)){
-                return player.EquipSlotHands;
+            if (actor.EquipSlotHands != null && targetName.Equals(actor.EquipSlotHands.Name, StringComparison.CurrentCultureIgnoreCase)){
+                return actor.EquipSlotHands;
             }
-            if (player.EquipSlotBody != null && targetName.Equals(player.EquipSlotBody.Name, StringComparison.CurrentCultureIgnoreCase)){
-                return player.EquipSlotBody;
+            if (actor.EquipSlotBody != null && targetName.Equals(actor.EquipSlotBody.Name, StringComparison.CurrentCultureIgnoreCase)){
+                return actor.EquipSlotBody;
             }
-            if (player.EquipSlotFeet != null && targetName.Equals(player.EquipSlotFeet.Name, StringComparison.CurrentCultureIgnoreCase)){
-                return player.EquipSlotFeet;
+            if (actor.EquipSlotFeet != null && targetName.Equals(actor.EquipSlotFeet.Name, StringComparison.CurrentCultureIgnoreCase)){
+                return actor.EquipSlotFeet;
             }
 
             return null;                                    
