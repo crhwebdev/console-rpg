@@ -220,7 +220,27 @@ namespace ConsoleRPGTests.Game.Actors
         [Fact]
         public void PlayerUnequipMethodReturnsAppropriateText()
         {
-            Assert.True(false);
+            var name = "Testy Tess";
+            var player = new Player(name);
+            var itemTargetName = "Thing";
+            var itemTarget = new MockItemTarget(itemTargetName);
+            itemTarget.Location = null;
+
+            player.EquipSlotMainWeapon = itemTarget;
+
+
+            var playerUnequipText = player.Unequip("").ToString();
+            Assert.Equal("There is nothing to Unequip!", playerUnequipText);
+
+            playerUnequipText = player.Unequip("Not A Thing").ToString();
+            Assert.Equal("That is not equiped!", playerUnequipText);
+
+
+            playerUnequipText = player.Unequip(itemTargetName).ToString();
+            Assert.Equal(player.Name + " unequips the " + itemTarget.Name, playerUnequipText);
+
+            Assert.Null(player.EquipSlotMainWeapon);
+            Assert.Single(player.Inventory, itemTarget);            
         }
     }
 
