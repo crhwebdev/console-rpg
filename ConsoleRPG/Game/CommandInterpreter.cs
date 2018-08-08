@@ -95,6 +95,8 @@ namespace ConsoleRPG.Game
             {
                 case "drop":
                     return new Drop(player, commandClauseString);
+                case "equip":
+                    return new Equip(player, commandClauseString);
                 case "get":
                     return new Get(player, commandClauseString);
                 case "inventory":
@@ -108,11 +110,11 @@ namespace ConsoleRPG.Game
                     return new Quit(_gameEngine);
                 case "say":
                     return new Say(player, commandClauseString);
+                case "unequip":
+                    return new Unequip(player, commandClauseString);
                 default:
                     return new Message("Say what?");
             }                                    
-        } 
-        
-        
+        }                 
     }
 }
