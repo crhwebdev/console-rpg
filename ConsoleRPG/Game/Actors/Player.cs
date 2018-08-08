@@ -185,6 +185,44 @@ namespace ConsoleRPG.Game.Actors
 
             return inventoryDisplayText;
         }
-     
+
+        public override DisplayText Unequip(string commandClauseString)
+        {
+            var unequipDisplayText = new DisplayText();
+            if (commandClauseString == "")
+            {
+                return new DisplayText("There is nothing to unequip!");
+            }
+
+            //search for item in equipment slots
+            Item itemMatch = null;
+            Item itemTest = EquipSlotMainWeapon;
+            if(itemTest != null)
+            {
+                if (commandClauseString.Equals(itemTest.Name, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    itemMatch = itemTest;
+                    
+                }
+            }
+            
+            
+
+            if (itemMatch != null)
+            {
+                // For now we equip everything to and from Weapon slot - 
+                // TODO add slot property equipable items that can be tested for to see where it goes
+                EquipSlotMainWeapon = null;
+                Inventory.Add(itemMatch);
+
+                unequipDisplayText.Add(Name + " unequips the " + itemMatch.Name);
+                return unequipDisplayText;
+            }
+
+            unequipDisplayText.Add("That is not equiped!");
+
+            return unequipDisplayText;
+        }
+
     }
 }

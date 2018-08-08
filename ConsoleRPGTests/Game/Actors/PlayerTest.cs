@@ -230,7 +230,7 @@ namespace ConsoleRPGTests.Game.Actors
 
 
             var playerUnequipText = player.Unequip("").ToString();
-            Assert.Equal("There is nothing to Unequip!", playerUnequipText);
+            Assert.Equal("There is nothing to unequip!", playerUnequipText);
 
             playerUnequipText = player.Unequip("Not A Thing").ToString();
             Assert.Equal("That is not equiped!", playerUnequipText);
