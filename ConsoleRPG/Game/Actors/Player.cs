@@ -195,27 +195,16 @@ namespace ConsoleRPG.Game.Actors
             }
 
             //search for item in equipment slots
-            Item itemMatch = null;
-            Item itemTest = EquipSlotMainWeapon;
-            if(itemTest != null)
-            {
-                if (commandClauseString.Equals(itemTest.Name, StringComparison.CurrentCultureIgnoreCase))
-                {
-                    itemMatch = itemTest;
-                    
-                }
-            }
-            
-            
-
-            if (itemMatch != null)
+            var item = Util.GetEquipSlotWithMatch(this, commandClauseString);
+                                    
+            if (item != null)
             {
                 // For now we equip everything to and from Weapon slot - 
                 // TODO add slot property equipable items that can be tested for to see where it goes
+                Inventory.Add(item);
                 EquipSlotMainWeapon = null;
-                Inventory.Add(itemMatch);
-
-                unequipDisplayText.Add(Name + " unequips the " + itemMatch.Name);
+                
+                unequipDisplayText.Add(Name + " unequips the " + item.Name);
                 return unequipDisplayText;
             }
 
@@ -223,6 +212,8 @@ namespace ConsoleRPG.Game.Actors
 
             return unequipDisplayText;
         }
+
+        
 
     }
 }

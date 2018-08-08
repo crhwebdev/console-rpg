@@ -55,6 +55,29 @@ namespace ConsoleRPG.System
             return null;
         }
 
+        public static Item GetEquipSlotWithMatch(Player player, string targetName)
+        {
+            
+            //Go through all Equip slots
+            if(player.EquipSlotMainWeapon != null && targetName.Equals(player.EquipSlotMainWeapon.Name, StringComparison.CurrentCultureIgnoreCase)){
+                return player.EquipSlotMainWeapon;
+            }
+            if (player.EquipSlotHead != null && targetName.Equals(player.EquipSlotHead.Name, StringComparison.CurrentCultureIgnoreCase)){
+                return player.EquipSlotHead;
+            }
+            if (player.EquipSlotHands != null && targetName.Equals(player.EquipSlotHands.Name, StringComparison.CurrentCultureIgnoreCase)){
+                return player.EquipSlotHands;
+            }
+            if (player.EquipSlotBody != null && targetName.Equals(player.EquipSlotBody.Name, StringComparison.CurrentCultureIgnoreCase)){
+                return player.EquipSlotBody;
+            }
+            if (player.EquipSlotFeet != null && targetName.Equals(player.EquipSlotFeet.Name, StringComparison.CurrentCultureIgnoreCase)){
+                return player.EquipSlotFeet;
+            }
+
+            return null;                                    
+    }
+
         public static Location GetExitMatchInLocation(Location location, string destinationName)
         {
             if (destinationName.Equals("north", StringComparison.CurrentCultureIgnoreCase) && location.ExitNorth != null)
