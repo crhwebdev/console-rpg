@@ -64,6 +64,14 @@ namespace ConsoleRPGTests.Game
         }
 
         [Fact]
+        public void ReturnsEquipActionFromCommandList()
+        {
+            string[] commandList = { "equip", "thing" };
+            var returnAction = _commandInterpreter.GetAction(commandList, _player);
+            Assert.IsType<Equip>(returnAction);
+        }
+
+        [Fact]
         public void ReturnsGetActionFromCommandList()
         {
             string[] commandList = { "get", "thing" };
@@ -116,6 +124,14 @@ namespace ConsoleRPGTests.Game
             var returnAction = _commandInterpreter.GetAction(commandList, _player);
             Assert.IsType<Say>(returnAction);
             
+        }
+
+        [Fact]
+        public void ReturnsUnequipActionFromCommandList()
+        {
+            string[] commandList = { "unequip", "thing" };
+            var returnAction = _commandInterpreter.GetAction(commandList, _player);
+            Assert.IsType<Unequip>(returnAction);
         }
     }
 }
