@@ -56,6 +56,13 @@ namespace ConsoleRPGTests.Game.Actors
             // player succesfully adds item to Location.Items list
             Assert.Single(playerLocation.Items, itemTarget);
 
+            // sends correct error message if player tries to drop an item that is equiped
+            player.EquipSlotMainWeapon = itemTarget;
+
+            playerDropText = player.Drop(itemTargetName).ToString();
+
+            Assert.Equal("You cannot drop an equiped item!", playerDropText);
+
         }
 
         //EQUIP METHOD

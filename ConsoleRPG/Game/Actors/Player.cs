@@ -40,6 +40,14 @@ namespace ConsoleRPG.Game.Actors
                 displayText.Add(Name + " drops the " + item.Name);
                 return displayText;
             }
+            else
+            {
+                item = Util.GetEquipSlotWithMatch(this, commandClauseString);
+                if(item != null)
+                {
+                    return new DisplayText("You cannot drop an equiped item!");
+                }
+            }
 
             return new DisplayText("You don't have that item!");
         }
