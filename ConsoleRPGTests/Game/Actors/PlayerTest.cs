@@ -151,18 +151,25 @@ namespace ConsoleRPGTests.Game.Actors
 
             //show player's inventory with no items
             var playerInventoryText = player.ShowInventory().ToString();
-            Assert.Equal("You have nothing in your pack, Master.", playerInventoryText);
+            Assert.Equal("You have nothing in your pack, Master./r/nYour equiped items: (head) Empty, (main weapon) Empty, (body) Empty, (hands) Empty, (feet) Empty", playerInventoryText);
 
             //show player's inventory with one item
             player.Inventory.Add(inventoryItems[0]);
             playerInventoryText = player.ShowInventory().ToString(); 
-            Assert.Equal("Master, you have: " + inventoryItems[0].Name + ".", playerInventoryText);
+            Assert.Equal("Master, you have: " + inventoryItems[0].Name + "./r/nYour equiped items: (head) Empty, (main weapon) Empty, (body) Empty, (hands) Empty, (feet) Empty", playerInventoryText);
 
 
             //show player's inventory with more than one item
             player.Inventory.Add(inventoryItems[1]);
             playerInventoryText = player.ShowInventory().ToString();
-            Assert.Equal("Your Inventory, Master: " + inventoryItems[0].Name + ", " + inventoryItems[1].Name + ".", playerInventoryText);
+            Assert.Equal("Your Inventory, Master: " + inventoryItems[0].Name + ", " + inventoryItems[1].Name + "./r/nYour equiped items: (head) Empty, (main weapon) Empty, (body) Empty, (hands) Empty, (feet) Empty", playerInventoryText);
+
+            //show player's inventory with an equiped item
+            player.EquipSlotMainWeapon = inventoryItems[1];
+            player.Inventory.Remove(inventoryItems[1]);
+            player.Inventory.Remove(inventoryItems[1]);
+            playerInventoryText = player.ShowInventory().ToString();
+            Assert.Equal("Master, you have: " + inventoryItems[0].Name + "./r/nYour equiped items: (head) Empty, (main weapon) " + inventoryItems[1].Name + ", (body) Empty, (hands) Empty, (feet) Empty", playerInventoryText);
         }
 
 
