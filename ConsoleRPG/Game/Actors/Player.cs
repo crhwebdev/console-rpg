@@ -191,6 +191,13 @@ namespace ConsoleRPG.Game.Actors
 
             inventoryDisplayText.Add(inventoryDisplayTextLine);
 
+            //now show equiped items
+            inventoryDisplayText.Add("Your equiped items: (head) " + (EquipSlotHead != null ? EquipSlotHead.Name : "Empty") + ", " +
+                "(main weapon) " + (EquipSlotMainWeapon != null ? EquipSlotMainWeapon.Name : "Empty") + ", " +                
+                "(body) " + (EquipSlotBody != null ? EquipSlotBody.Name : "Empty") + ", " +
+                "(hands) " + (EquipSlotHands != null ? EquipSlotHands.Name : "Empty") + ", " +
+                "(feet) " + (EquipSlotFeet != null ? EquipSlotFeet.Name : "Empty"));
+            
             return inventoryDisplayText;
         }
 
@@ -220,6 +227,7 @@ namespace ConsoleRPG.Game.Actors
 
             return unequipDisplayText;
         }
+
 
         
 
