@@ -5,13 +5,13 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Props
 {
-    public class Item : Prop
+    public abstract class Item : Prop
     {
 
-        public Item(string name) : base(name)
-        {
-            
-        }
+        public Item(string name) : base(name){}
+
+        public double Value { get; set; }
+        public double Weight { get; set; }
 
         public virtual DisplayText Taken()
         {
