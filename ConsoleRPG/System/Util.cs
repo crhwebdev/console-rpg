@@ -46,7 +46,7 @@ namespace ConsoleRPG.System
 
             foreach(var item in actor.Inventory)
             {
-                if(targetName.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase))
+                if(targetName.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase) && item is Item)
                 {
                     return item as Item;
                 }
@@ -124,7 +124,7 @@ namespace ConsoleRPG.System
             foreach (var item in location.Items)
             {
                 //if target string equals this persons name, then we have a match
-                if (targetName.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase))
+                if (targetName.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase) && item is Item)
                 {
                     return item as Item;
                 }
