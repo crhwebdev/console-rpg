@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleRPG.Game
+namespace ConsoleRPG.Game.Interfaces
 {
     public interface IViewable
     {

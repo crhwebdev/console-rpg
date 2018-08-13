@@ -1,4 +1,5 @@
 ﻿using ConsoleRPG.Game.Actors;
+using ConsoleRPG.Game.Interfaces;
 using ConsoleRPG.Game.Props;
 using ConsoleRPG.System;
 using System;

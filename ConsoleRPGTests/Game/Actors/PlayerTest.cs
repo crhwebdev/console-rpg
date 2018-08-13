@@ -272,16 +272,7 @@ namespace ConsoleRPGTests.Game.Actors
     public class MockItemTarget : Item
     {
         public MockItemTarget(string name) : base(name) {}
-
-        public override DisplayText Taken()
-        {
-            return new DisplayText();
-        }
-
-        public override DisplayText Dropped()
-        {
-            return new DisplayText();
-        }
+       
     }
 
     public class MockLocation : Location

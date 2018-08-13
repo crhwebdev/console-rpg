@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using ConsoleRPG.Game.Actors;
+using ConsoleRPG.Game.Interfaces;
 using ConsoleRPG.Game.Locations;
 using ConsoleRPG.System;
 

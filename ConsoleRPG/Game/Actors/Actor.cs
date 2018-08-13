@@ -1,4 +1,5 @@
-﻿using ConsoleRPG.Game.Locations;
+﻿using ConsoleRPG.Game.Interfaces;
+using ConsoleRPG.Game.Locations;
 using ConsoleRPG.Game.Props;
 using ConsoleRPG.System;
 using System;
