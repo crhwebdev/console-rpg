@@ -21,7 +21,7 @@ namespace ConsoleRPG.Game
             };
 
             //declare Items
-            var sword = new Item("Rusty Sword")
+            var sword = new Weapon("Rusty Sword")
             {
                 Description = "a short sword with rust spotting the blade."
             };

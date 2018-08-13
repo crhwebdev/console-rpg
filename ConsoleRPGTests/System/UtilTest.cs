@@ -18,7 +18,7 @@ namespace ConsoleRPGTests.System
             var npcName = "Test Dude";
 
             var location = new Location(locationName);
-            var viewItem = new Item(itemName);
+            var viewItem = new Weapon(itemName);
             var viewNPC = new NPC(npcName);
 
             location.Items.Add(viewItem);
@@ -37,7 +37,7 @@ namespace ConsoleRPGTests.System
         {
             var player = new Player("Test Dude");
             var itemName = "Thing";
-            var item = new Item(itemName);
+            var item = new Weapon(itemName);
             player.Inventory.Add(item);
 
             Assert.Null(Util.GetItemMatchInInventory(player, "wrong stuff"));
@@ -69,7 +69,7 @@ namespace ConsoleRPGTests.System
             var itemName = "Test Item";
 
             var location = new Location(locationName);
-            var viewItem = new Item(itemName);
+            var viewItem = new Weapon(itemName);
             location.Items.Add(viewItem);
 
             Assert.Null(Util.GetItemMatchInLocation(location, "Wrong Thing"));

@@ -7,10 +7,9 @@ namespace ConsoleRPG.Game.Props
     public class Weapon : Item
     {
 
-        Weapon(string name) : base(name) { }
+        public Weapon(string name) : base(name) { }
 
         public int AttackRating { get; set; }
-
 
     }
 }
