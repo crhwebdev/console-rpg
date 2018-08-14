@@ -23,8 +23,7 @@ namespace ConsoleRPG.Game.Actors
 
         public override DisplayText Drop(string commandClauseString)
         {
-            var displayText = new DisplayText();
-
+            
             if (commandClauseString == "")
             {
                 return new DisplayText("There is nothing to drop!");
@@ -37,9 +36,8 @@ namespace ConsoleRPG.Game.Actors
                 Location.Items.Add(item);
                 item.Location = Location;
                 Inventory.Remove(item);
-                
-                displayText.Add(Name + " drops the " + item.Name);
-                return displayText;
+                                
+                return new DisplayText(Name + " drops the " + item.Name);
             }
             else
             {
@@ -54,8 +52,7 @@ namespace ConsoleRPG.Game.Actors
         }
 
         public override DisplayText Equip(string commandClauseString)
-        {
-            var equipDisplayText = new DisplayText();
+        {            
              if(commandClauseString == "")
             {
                 return new DisplayText("There is nothing to equip!");
@@ -90,33 +87,23 @@ namespace ConsoleRPG.Game.Actors
                             EquipSlotMainWeapon = item as Weapon;
                             Inventory.Remove(item);
                             break;                        
-                        default:
-                            equipDisplayText.Add("You cannot equip that!");
-                            return equipDisplayText;                           
+                        default:                            
+                            return new DisplayText("You cannot equip that!");                           
                     }
-                                       
-                    equipDisplayText.Add(Name + " equips the " + item.Name);
-                    return equipDisplayText;
+                                                           
+                    return new DisplayText(Name + " equips the " + item.Name);
                 }
                 else
-                {
-                    equipDisplayText.Add("You cannot equip that!");
-                    return equipDisplayText;
-                }
-                
-                
+                {                    
+                    return new DisplayText("You cannot equip that!");
+                }                                
             }
-
-            equipDisplayText.Add("That does not exist in your inventory!");
-
-            return equipDisplayText;
+            
+            return new DisplayText("That does not exist in your inventory!");
         }
 
         public override DisplayText Get(string commandClauseString)
-        {
-
-            var displayText = new DisplayText();
-
+        {            
             if (commandClauseString == "")
             {
                 return new DisplayText("There is nothing to get!");
@@ -128,9 +115,8 @@ namespace ConsoleRPG.Game.Actors
             {
                 Inventory.Add(item);
                 item.Location = null;
-                Location.Items.Remove(item);                
-                displayText.Add(Name + " gets the " + item.Name);
-                return displayText;
+                Location.Items.Remove(item);                                
+                return new DisplayText(Name + " gets the " + item.Name);
             }
 
             return new DisplayText("You cannot get that!");            
@@ -283,9 +269,6 @@ namespace ConsoleRPG.Game.Actors
 
             return unequipDisplayText;
         }
-
-
         
-
     }
 }

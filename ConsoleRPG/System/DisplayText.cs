@@ -107,7 +107,7 @@ namespace ConsoleRPG.System
 
             return d1;
         }
-                        
+                               
     }
 
     //public class DisplayTextEnum : IEnumerator
