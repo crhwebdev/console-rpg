@@ -4,8 +4,10 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Props.Interfaces
 {
+    public enum EquipmentSlots { Head, Body, Hands, Feet, MainWeapon, SecondaryWeapon };
+
     public interface IEquipable
     {
-        string EquipableSlot { get; set; }
+        EquipmentSlots EquipableSlot { get; set; }
     }
 }
