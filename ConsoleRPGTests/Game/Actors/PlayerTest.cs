@@ -71,8 +71,8 @@ namespace ConsoleRPGTests.Game.Actors
         {
             var name = "Testy Tess";
             var player = new Player(name);
-            var itemTargetName = "Thing";
-            var itemTarget = new MockItemTarget(itemTargetName);
+            var itemTargetName = "Test Sword";
+            var itemTarget = new Weapon(itemTargetName);
             itemTarget.Location = null;
 
             player.Inventory.Add(itemTarget);
@@ -236,8 +236,8 @@ namespace ConsoleRPGTests.Game.Actors
         {
             var name = "Testy Tess";
             var player = new Player(name);
-            var itemTargetName = "Thing";
-            var itemTarget = new MockItemTarget(itemTargetName);
+            var itemTargetName = "Test Sword";
+            var itemTarget = new Weapon(itemTargetName);
             itemTarget.Location = null;
 
             player.EquipSlotMainWeapon = itemTarget;
