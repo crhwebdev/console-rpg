@@ -244,16 +244,38 @@ namespace ConsoleRPG.Game.Actors
             }
 
             //search for item in equipment slots
-            var slotWithItem = Util.GetEquipSlotWithMatch(this, commandClauseString);
+            var item = Util.GetEquipSlotWithMatch(this, commandClauseString);
                                     
-            if (slotWithItem != null)
+            if (item != null)
             {
                 // For now we equip everything to and from Weapon slot - 
                 // TODO add slot property equipable items that can be tested for to see where it goes
-                Inventory.Add(slotWithItem);
-                slotWithItem = null;
+                Inventory.Add(item);
+                var equipableItem = item as IEquipable;
+
+                switch (equipableItem.EquipableSlot)
+                {
+                    case EquipmentSlots.Head:
+                        EquipSlotHead = null;                        
+                        break;
+                    case EquipmentSlots.Body:
+                        EquipSlotBody = null;                        
+                        break;
+                    case EquipmentSlots.Hands:
+                        EquipSlotHands = null;                        
+                        break;
+                    case EquipmentSlots.Feet:
+                        EquipSlotFeet = null;                        
+                        break;
+                    case EquipmentSlots.MainWeapon:
+                        EquipSlotMainWeapon = null;                        
+                        break;
+                    default:
+                        throw new Exception("Equiped item has no EquipableSlot");
+                }
+
                 
-                unequipDisplayText.Add(Name + " unequips the " + slotWithItem.Name);
+                unequipDisplayText.Add(Name + " unequips the " + item.Name);
                 return unequipDisplayText;
             }
 
