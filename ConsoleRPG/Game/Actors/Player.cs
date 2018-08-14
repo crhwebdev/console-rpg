@@ -1,5 +1,6 @@
 ﻿using ConsoleRPG.Game.Locations;
 using ConsoleRPG.Game.Props;
+using ConsoleRPG.Game.Props.Interfaces;
 using ConsoleRPG.System;
 using System;
 using System.Collections.Generic;
@@ -64,13 +65,46 @@ namespace ConsoleRPG.Game.Actors
 
             if(item != null)
             {
-                // For now we equip everything to and from Weapon slot - 
-                // TODO add slot property equipable items that can be tested for to see where it goes
-                EquipSlotMainWeapon = item;
-                Inventory.Remove(item);
-
-                equipDisplayText.Add(Name + " equips the " + item.Name);
-                return equipDisplayText;
+                if(item is IEquipable)
+                {
+                    var equipableItem = item as IEquipable;
+                    switch (equipableItem.EquipableSlot)
+                    {
+                        case EquipmentSlots.Head:
+                            EquipSlotHead = item;
+                            Inventory.Remove(item);
+                            break;
+                        case EquipmentSlots.Body:
+                            EquipSlotBody = item;
+                            Inventory.Remove(item);
+                            break;
+                        case EquipmentSlots.Hands:
+                            EquipSlotHands = item;
+                            Inventory.Remove(item);
+                            break;
+                        case EquipmentSlots.Feet:
+                            EquipSlotFeet = item;
+                            Inventory.Remove(item);
+                            break;
+                        case EquipmentSlots.MainWeapon:
+                            EquipSlotMainWeapon = item as Weapon;
+                            Inventory.Remove(item);
+                            break;                        
+                        default:
+                            equipDisplayText.Add("You cannot equip that!");
+                            return equipDisplayText;                           
+                    }
+                                       
+                    equipDisplayText.Add(Name + " equips the " + item.Name);
+                    return equipDisplayText;
+                }
+                else
+                {
+                    equipDisplayText.Add("You cannot equip that!");
+                    return equipDisplayText;
+                }
+                
+                
             }
 
             equipDisplayText.Add("That does not exist in your inventory!");
@@ -210,16 +244,16 @@ namespace ConsoleRPG.Game.Actors
             }
 
             //search for item in equipment slots
-            var item = Util.GetEquipSlotWithMatch(this, commandClauseString);
+            var slotWithItem = Util.GetEquipSlotWithMatch(this, commandClauseString);
                                     
-            if (item != null)
+            if (slotWithItem != null)
             {
                 // For now we equip everything to and from Weapon slot - 
                 // TODO add slot property equipable items that can be tested for to see where it goes
-                Inventory.Add(item);
-                EquipSlotMainWeapon = null;
+                Inventory.Add(slotWithItem);
+                slotWithItem = null;
                 
-                unequipDisplayText.Add(Name + " unequips the " + item.Name);
+                unequipDisplayText.Add(Name + " unequips the " + slotWithItem.Name);
                 return unequipDisplayText;
             }
 

@@ -8,7 +8,12 @@ namespace ConsoleRPG.Game.Props
     public class Weapon : Item, IEquipable
     {
 
-        public Weapon(string name) : base(name) { }
+        public Weapon(string name) : base(name)
+        {
+            //for now, we set slot to MainWeapon.
+            EquipableSlot = EquipmentSlots.MainWeapon;
+            
+        }
 
         public EquipmentSlots EquipableSlot { get; set; }
         public int AttackRating { get; set; }
