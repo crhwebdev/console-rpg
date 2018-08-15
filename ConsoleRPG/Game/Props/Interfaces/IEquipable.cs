@@ -9,5 +9,7 @@ namespace ConsoleRPG.Game.Props.Interfaces
     public interface IEquipable
     {
         EquipmentSlots EquipableSlot { get; set; }
+        int AttackBonus { get; set; }
+        int DefenseBonus { get; set; }
     }
 }
