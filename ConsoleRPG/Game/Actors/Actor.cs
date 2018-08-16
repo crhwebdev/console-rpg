@@ -17,6 +17,11 @@ namespace ConsoleRPG.Game.Actors
         public virtual string Description { get; set; }
         public virtual Location Location { get; set; }
 
+        public virtual int Defense { get; set; }
+        public virtual int Attack { get; set; }
+        public virtual int Hardiness { get; set; }
+        public virtual int Strength { get; set; }
+
         //Actor Inventory
         public virtual List<Item> Inventory { get; set; }
 
