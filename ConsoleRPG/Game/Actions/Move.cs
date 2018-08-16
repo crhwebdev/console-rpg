@@ -20,7 +20,7 @@ namespace ConsoleRPG.Game.Actions
         }
 
         public override DisplayText Do()
-        {                                     
+        {              
             return _actor.Move(_target); 
         }
         

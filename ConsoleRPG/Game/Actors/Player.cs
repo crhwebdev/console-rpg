@@ -164,9 +164,16 @@ namespace ConsoleRPG.Game.Actors
                 return new DisplayText(Name + " cannot move there!");
             }
 
-            displayText.Add(Name + " moves...");            
-            displayText.Add(destination.Enter(this));
-
+            if (ConsoleRPG.Program.Game.CombatMode)
+            {
+                displayText.Add("You cannot move while in combat!");
+            }
+            else
+            {
+                displayText.Add(Name + " moves...");
+                displayText.Add(destination.Enter(this));
+            }
+            
             return displayText;
         }
 

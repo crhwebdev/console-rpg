@@ -7,8 +7,10 @@ using System.Text.RegularExpressions;
 
 namespace ConsoleRPG
 {
-    class Program
-    {                
+    public class Program
+    {        
+        public static GameEngine Game = GameEngine.Instance();
+
         static void Main(string[] args)
         {
             var game = GameEngine.Instance();
