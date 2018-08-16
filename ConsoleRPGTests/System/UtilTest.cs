@@ -3,6 +3,7 @@ using ConsoleRPG.Game.Locations;
 using ConsoleRPG.Game.Props;
 using ConsoleRPG.System;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -10,6 +11,7 @@ namespace ConsoleRPGTests.System
 {
     public class UtilTest
     {
+        
         [Fact]
         public void GetViewableMatchInLocationReturnsCorrectMatch()
         {

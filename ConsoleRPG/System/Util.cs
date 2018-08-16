@@ -11,6 +11,45 @@ namespace ConsoleRPG.System
 {
     public static class Util
     {
+        public static int RollMultipleDice(int numberOfDice = 4)
+        {
+            var sum = 0;
+
+            for(var i = 1; i <= numberOfDice; i++)
+            {
+                sum += RollSingleDie();
+            }
+
+            return sum;
+        }
+
+        public static int RollSingleDie()
+        {
+            //generate random number between 1 and 6
+            var random = new Random();
+            var dieRoll = random.Next(1, 7);
+            //translate random number to FUD dice results
+            var dieResult = 0;
+            if(dieRoll == 1 || dieRoll == 2)
+            {
+                dieResult = -1;
+            }
+            else if(dieRoll == 3 || dieRoll == 4)
+            {
+                dieResult = 0;
+            }
+            else if(dieRoll == 5 || dieRoll == 6)
+            {
+                dieResult = 1;
+            }
+            else
+            {
+                dieResult = 100;
+            }
+            
+            return dieResult;
+        }
+
         public static IViewable GetViewableMatchInLocation(Location location, string targetName)
         {
 
