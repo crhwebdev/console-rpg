@@ -32,12 +32,17 @@ namespace ConsoleRPG.Game.Actors
         public virtual Item EquipSlotBody { get; set; }
         public virtual Item EquipSlotFeet { get; set; }        
 
+        //Actor State
+        public virtual bool IsHostile { get; set; }
+
 
         public Actor(string name)
         {
             Name = name;
+            Description = "an entity";
             Sex = Sexes.Neuter;
             Inventory = new List<Item>();
+            IsHostile = false;
         }
 
         //Has various methods that correspond to actions that can be executed with him as the reciever               

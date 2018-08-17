@@ -11,15 +11,11 @@ namespace ConsoleRPG.Game.Actors
     public class Player : Actor
     {
         //Name property inherieted from Actor
-
-
-        //for testing purposes 
+        
+        //for testing?
         public override Location Location { get; set; }
 
-        public Player(string name) : base(name)
-        {            
-
-        }
+        public Player(string name) : base(name){}
 
         public override DisplayText Drop(string commandClauseString)
         {
@@ -164,7 +160,7 @@ namespace ConsoleRPG.Game.Actors
                 return new DisplayText(Name + " cannot move there!");
             }
 
-            if (ConsoleRPG.Program.Game.CombatMode)
+            if (IsHostile)
             {
                 displayText.Add("You cannot move while in combat!");
             }

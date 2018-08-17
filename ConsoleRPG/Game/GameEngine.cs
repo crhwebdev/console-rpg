@@ -27,7 +27,7 @@ namespace ConsoleRPG.Game
         //Other Game Fields
         private static GameEngine _instance = null;
         private bool _gameIsRunning;
-        private Queue<Actions.Action> _actionQueue; 
+        public Queue<Actions.Action> ActionQueue; 
 
         //Game Command List - add commads to this list to use in engine
         //private List<Actions.Action> _commands = new List<Actions.Action>();    
@@ -38,7 +38,7 @@ namespace ConsoleRPG.Game
             GameConsole = new GameConsole();
             CommandInterpreter = CommandInterpreter.Instance(this);
             _gameIsRunning = false;         
-            _actionQueue = new Queue<Actions.Action>();
+            ActionQueue = new Queue<Actions.Action>();
         }
 
         public static GameEngine Instance()
@@ -65,7 +65,7 @@ namespace ConsoleRPG.Game
             {                
                 var input = GameConsole.GetUserInput();
                 var action = CommandInterpreter.GetAction(CommandInterpreter.ParseCommandString(input), Player);
-                _actionQueue.Enqueue(action);
+                ActionQueue.Enqueue(action);
                 Update();                
             }
         }
@@ -78,9 +78,9 @@ namespace ConsoleRPG.Game
         private void Update()
         {
 
-            while (_actionQueue.Count > 0)
+            while (ActionQueue.Count > 0)
             {
-                var currentAction = _actionQueue.Dequeue();
+                var currentAction = ActionQueue.Dequeue();
                 GameConsole.WriteDisplayText(currentAction.Do());
             }           
                                                    
