@@ -22,8 +22,7 @@ namespace ConsoleRPG.Game
         //Game Components
         public TextConsole GameConsole { get; set;}
         public CommandInterpreter CommandInterpreter { get; set; }
-        public Level CurrentAdventure { get; set; }
-        public bool CombatMode { get; set; }
+        public Level CurrentAdventure { get; set; }        
 
         //Other Game Fields
         private static GameEngine _instance = null;
@@ -38,8 +37,7 @@ namespace ConsoleRPG.Game
         {            
             GameConsole = new GameConsole();
             CommandInterpreter = CommandInterpreter.Instance(this);
-            _gameIsRunning = false;
-            CombatMode = false;
+            _gameIsRunning = false;         
             _actionQueue = new Queue<Actions.Action>();
         }
 
