@@ -79,11 +79,13 @@ namespace ConsoleRPG.Game
 
         private void Update()
         {
-            var action = _actionQueue.Dequeue();
-            if(action != null)
+
+            while (_actionQueue.Count > 0)
             {
-                GameConsole.WriteDisplayText(action.Do());
-            }            
+                var currentAction = _actionQueue.Dequeue();
+                GameConsole.WriteDisplayText(currentAction.Do());
+            }           
+                                                   
         }                                
     }
 }
