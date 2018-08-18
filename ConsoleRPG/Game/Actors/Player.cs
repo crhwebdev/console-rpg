@@ -10,13 +10,25 @@ namespace ConsoleRPG.Game.Actors
 {
     public class Player : Actor
     {
-        //Name property inherieted from Actor
-        
-        //for testing?
+
+        public Player(string name) : base(name) { }
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC PROPS                          
+        ////////////////////////////////////////////////////////////////////////////////////////        
+
         public override Location Location { get; set; }
 
-        public Player(string name) : base(name){}
+                
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC METHODS                          
+        ////////////////////////////////////////////////////////////////////////////////////////        
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commandClauseString"></param>
+        /// <returns></returns>
         public override DisplayText Drop(string commandClauseString)
         {
             
@@ -47,6 +59,11 @@ namespace ConsoleRPG.Game.Actors
             return new DisplayText("You don't have that item!");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commandClauseString"></param>
+        /// <returns></returns>
         public override DisplayText Equip(string commandClauseString)
         {            
              if(commandClauseString == "")
@@ -86,7 +103,9 @@ namespace ConsoleRPG.Game.Actors
                         default:                            
                             return new DisplayText("You cannot equip that!");                           
                     }
-                                                           
+                    
+                    AddItemBonusesToStats(equipableItem);
+
                     return new DisplayText(Name + " equips the " + item.Name);
                 }
                 else
@@ -98,6 +117,11 @@ namespace ConsoleRPG.Game.Actors
             return new DisplayText("That does not exist in your inventory!");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commandClauseString"></param>
+        /// <returns></returns>
         public override DisplayText Get(string commandClauseString)
         {            
             if (commandClauseString == "")
@@ -117,7 +141,12 @@ namespace ConsoleRPG.Game.Actors
 
             return new DisplayText("You cannot get that!");            
         }
-      
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commandClauseString"></param>
+        /// <returns></returns>        
         public override DisplayText Look(string commandClauseString)
         {
             var displayText = new DisplayText();
@@ -144,6 +173,11 @@ namespace ConsoleRPG.Game.Actors
             return displayText;                                                
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commandClauseString"></param>
+        /// <returns></returns>
         public override DisplayText Move(string commandClauseString)
         {
             var displayText = new DisplayText();
@@ -178,6 +212,10 @@ namespace ConsoleRPG.Game.Actors
             return new DisplayText(Name + " says: '" + commandClauseString + "'");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override DisplayText ShowInventory()
         {
             var inventoryDisplayText = new DisplayText();
@@ -224,6 +262,11 @@ namespace ConsoleRPG.Game.Actors
             return inventoryDisplayText;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="commandClauseString"></param>
+        /// <returns></returns>
         public override DisplayText Unequip(string commandClauseString)
         {
             var unequipDisplayText = new DisplayText();
@@ -263,6 +306,7 @@ namespace ConsoleRPG.Game.Actors
                         throw new Exception("Equiped item has no EquipableSlot");
                 }
 
+                RemoveItemBonusesFromStats(equipableItem);
                 
                 unequipDisplayText.Add(Name + " unequips the " + item.Name);
                 return unequipDisplayText;
@@ -272,6 +316,21 @@ namespace ConsoleRPG.Game.Actors
 
             return unequipDisplayText;
         }
-        
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PRIVATE METHODS                          
+        ////////////////////////////////////////////////////////////////////////////////////////
+        private void AddItemBonusesToStats(IEquipable item)
+        {            
+            Defense += item.DefenseBonus;                        
+            Attack += item.AttackBonus;            
+        }
+
+        private void RemoveItemBonusesFromStats(IEquipable item)
+        {                        
+            Defense -= item.DefenseBonus;
+            Attack -= item.AttackBonus;                        
+        }
+
     }
 }
