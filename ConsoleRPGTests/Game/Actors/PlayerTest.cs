@@ -77,8 +77,6 @@ namespace ConsoleRPGTests.Game.Actors
 
             player.Inventory.Add(itemTarget);
 
-
-
             var playerEquipText = player.Equip("").ToString();
             Assert.Equal("There is nothing to equip!", playerEquipText);
 
@@ -93,6 +91,27 @@ namespace ConsoleRPGTests.Game.Actors
             Assert.Equal(itemTarget, player.EquipSlotMainWeapon);
             
         }
+
+        [Fact]
+        public void PlayerEquipMethodUpdatesPlayerStats()
+        {
+            var name = "Testy Tess";
+            var player = new Player(name);
+            var itemTargetName = "Test Sword";
+            var itemTarget = new Weapon(itemTargetName)
+            {
+                AttackBonus = 5
+            };
+
+            Assert.Equal(0, player.Attack);
+
+            itemTarget.Location = null;
+            player.Inventory.Add(itemTarget);
+            player.Equip(itemTargetName);
+
+            Assert.Equal(5, player.Attack);            
+        }
+
 
         //GET METHOD
         [Fact]
@@ -255,6 +274,30 @@ namespace ConsoleRPGTests.Game.Actors
 
             Assert.Null(player.EquipSlotMainWeapon);
             Assert.Single(player.Inventory, itemTarget);            
+        }
+
+        [Fact]
+        public void PlayerUnequipMethodUpdatesPlayerStats()
+        {
+            var name = "Testy Tess";
+            var player = new Player(name)
+            {
+                Attack = 5
+            };
+
+            var itemTargetName = "Test Sword";
+            var itemTarget = new Weapon(itemTargetName)
+            {
+                AttackBonus = 5
+            };
+
+            Assert.Equal(5, player.Attack);
+
+            itemTarget.Location = null;
+            player.EquipSlotMainWeapon = itemTarget;
+            player.Unequip(itemTargetName);
+
+            Assert.Equal(0, player.Attack);
         }
     }
 
