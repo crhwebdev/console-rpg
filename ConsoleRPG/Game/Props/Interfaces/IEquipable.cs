@@ -11,5 +11,6 @@ namespace ConsoleRPG.Game.Props.Interfaces
         EquipmentSlots EquipableSlot { get; set; }
         int AttackBonus { get; set; }
         int DefenseBonus { get; set; }
+        int AttackPowerBonus { get; set; }
     }
 }

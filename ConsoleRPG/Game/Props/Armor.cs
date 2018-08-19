@@ -13,10 +13,12 @@ namespace ConsoleRPG.Game.Props
             EquipableSlot = EquipmentSlots.Body;
             DefenseBonus = defenseBonus;
             AttackBonus = 0;
+            AttackPowerBonus = 0;
         }
 
         public EquipmentSlots EquipableSlot { get; set; }
         public int AttackBonus { get; set; }
         public int DefenseBonus { get; set; }
+        public int AttackPowerBonus { get; set; }
     }
 }

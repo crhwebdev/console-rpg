@@ -323,13 +323,15 @@ namespace ConsoleRPG.Game.Actors
         private void AddItemBonusesToStats(IEquipable item)
         {            
             Defense += item.DefenseBonus;                        
-            Attack += item.AttackBonus;            
+            Attack += item.AttackBonus;
+            AttackPower += item.AttackPowerBonus;
         }
 
         private void RemoveItemBonusesFromStats(IEquipable item)
         {                        
             Defense -= item.DefenseBonus;
-            Attack -= item.AttackBonus;                        
+            Attack -= item.AttackBonus;
+            AttackPower -= item.AttackPowerBonus;
         }
 
     }

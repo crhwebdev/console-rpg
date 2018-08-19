@@ -17,9 +17,15 @@ namespace ConsoleRPG.Game.Actors
         public virtual string Description { get; set; }
         public virtual Location Location { get; set; }
 
+        //primary attribute that determines ability to absorb blows
         public virtual int Defense { get; set; }
+        //primary skill that determines chance to hit a target and avoid being  hit
         public virtual int Attack { get; set; }
+        //effects damage and is modified by Strength and Weapon AttackPowerBonus
+        public virtual int AttackPower { get; set; }  
+        //how much damage target can take
         public virtual int Hardiness { get; set; }
+        //modifies AttackPower
         public virtual int Strength { get; set; }
 
         //Actor Inventory
