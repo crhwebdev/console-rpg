@@ -98,18 +98,15 @@ namespace ConsoleRPGTests.Game.Actors
             var name = "Testy Tess";
             var player = new Player(name);
             var itemTargetName = "Test Sword";
-            var itemTarget = new Weapon(itemTargetName)
-            {
-                AttackBonus = 5
-            };
+            var itemTarget = new Weapon(itemTargetName, 5);
 
-            Assert.Equal(0, player.Attack);
+            Assert.Equal(0, player.AttackPower);
 
             itemTarget.Location = null;
             player.Inventory.Add(itemTarget);
             player.Equip(itemTargetName);
 
-            Assert.Equal(5, player.Attack);            
+            Assert.Equal(5, player.AttackPower);            
         }
 
 
@@ -282,22 +279,19 @@ namespace ConsoleRPGTests.Game.Actors
             var name = "Testy Tess";
             var player = new Player(name)
             {
-                Attack = 5
+                AttackPower = 5
             };
 
             var itemTargetName = "Test Sword";
-            var itemTarget = new Weapon(itemTargetName)
-            {
-                AttackBonus = 5
-            };
+            var itemTarget = new Weapon(itemTargetName, 5);
 
-            Assert.Equal(5, player.Attack);
+            Assert.Equal(5, player.AttackPower);
 
             itemTarget.Location = null;
             player.EquipSlotMainWeapon = itemTarget;
             player.Unequip(itemTargetName);
 
-            Assert.Equal(0, player.Attack);
+            Assert.Equal(0, player.AttackPower);
         }
     }
 
