@@ -11,7 +11,21 @@ namespace ConsoleRPG.Game.Actors
     public enum  Sexes { Neuter, Male, Female };
 
     public abstract class Actor : IViewable
-    {        
+    {
+        //Constructor 
+        public Actor(string name)
+        {
+            Name = name;
+            Description = "an entity";
+            Sex = Sexes.Neuter;
+            Inventory = new List<Item>();
+            IsHostile = false;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC PROPERTIES                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
         public virtual string Name { get; set; }
         public virtual Sexes Sex { get; set; }
         public virtual string Description { get; set; }
@@ -40,16 +54,11 @@ namespace ConsoleRPG.Game.Actors
 
         //Actor State
         public virtual bool IsHostile { get; set; }
+               
 
-
-        public Actor(string name)
-        {
-            Name = name;
-            Description = "an entity";
-            Sex = Sexes.Neuter;
-            Inventory = new List<Item>();
-            IsHostile = false;
-        }
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC METHODS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
 
         //Has various methods that correspond to actions that can be executed with him as the reciever               
         public virtual DisplayText Drop(string commandClauseString) { throw new NotImplementedException(); }
@@ -61,13 +70,20 @@ namespace ConsoleRPG.Game.Actors
         public virtual DisplayText Say(string commandClauseString) { throw new NotImplementedException(); }
         public virtual DisplayText Unequip(string commandClauseString) { throw new NotImplementedException(); }
 
-        //IViewable implementation
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewer"></param>
+        /// <returns></returns>
         public virtual DisplayText Viewed(Actor viewer)
         {
             return new DisplayText(viewer.GetPersonalPronoun() + " sees " + Description);
         }
 
-        //utility methods
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public virtual string GetPersonalPronoun()
         {
             if(Sex == Sexes.Neuter)
@@ -84,6 +100,58 @@ namespace ConsoleRPG.Game.Actors
             }
 
             return "It";
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PROTECTED METHODS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numberOfDice"></param>
+        /// <returns></returns>
+        protected int RollMultipleDice(int numberOfDice = 4)
+        {
+            var sum = 0;
+
+            for (var i = 1; i <= numberOfDice; i++)
+            {
+                sum += RollSingleDie();
+            }
+
+            return sum;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        protected int RollSingleDie()
+        {
+            //generate random number between 1 and 6
+            var random = new Random();
+            var dieRoll = random.Next(1, 7);
+            //translate random number to FUD dice results
+            var dieResult = 0;
+            if (dieRoll == 1 || dieRoll == 2)
+            {
+                dieResult = -1;
+            }
+            else if (dieRoll == 3 || dieRoll == 4)
+            {
+                dieResult = 0;
+            }
+            else if (dieRoll == 5 || dieRoll == 6)
+            {
+                dieResult = 1;
+            }
+            else
+            {
+                dieResult = 100;
+            }
+
+            return dieResult;
         }
 
     }

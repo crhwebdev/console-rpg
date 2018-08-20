@@ -11,6 +11,7 @@ namespace ConsoleRPG.Game.Actors
     public class Player : Actor
     {
 
+        //Constructor
         public Player(string name) : base(name) { }
 
         ////////////////////////////////////////////////////////////////////////////////////////
