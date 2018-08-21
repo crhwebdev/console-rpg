@@ -102,6 +102,8 @@ namespace ConsoleRPG.Game.Actors
             return "It";
         }
 
+        
+
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PROTECTED METHODS                          
         //////////////////////////////////////////////////////////////////////////////////////// 
@@ -152,6 +154,39 @@ namespace ConsoleRPG.Game.Actors
             }
 
             return dieResult;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="targetName"></param>
+        /// <returns></returns>
+        protected Item GetEquipSlotWithMatch(string targetName)
+        {
+
+            //Go through all Equip slots
+            if (EquipSlotMainWeapon != null && targetName.Equals(EquipSlotMainWeapon.Name, StringComparison.CurrentCultureIgnoreCase))
+            {
+                return EquipSlotMainWeapon;
+            }
+            if (EquipSlotHead != null && targetName.Equals(EquipSlotHead.Name, StringComparison.CurrentCultureIgnoreCase))
+            {
+                return EquipSlotHead;
+            }
+            if (EquipSlotHands != null && targetName.Equals(EquipSlotHands.Name, StringComparison.CurrentCultureIgnoreCase))
+            {
+                return EquipSlotHands;
+            }
+            if (EquipSlotBody != null && targetName.Equals(EquipSlotBody.Name, StringComparison.CurrentCultureIgnoreCase))
+            {
+                return EquipSlotBody;
+            }
+            if (EquipSlotFeet != null && targetName.Equals(EquipSlotFeet.Name, StringComparison.CurrentCultureIgnoreCase))
+            {
+                return EquipSlotFeet;
+            }
+
+            return null;
         }
 
     }

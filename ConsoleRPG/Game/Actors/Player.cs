@@ -50,7 +50,7 @@ namespace ConsoleRPG.Game.Actors
             }
             else
             {
-                item = Util.GetEquipSlotWithMatch(this, commandClauseString);
+                item = GetEquipSlotWithMatch(commandClauseString);
                 if(item != null)
                 {
                     return new DisplayText("You cannot drop an equiped item!");
@@ -277,7 +277,7 @@ namespace ConsoleRPG.Game.Actors
             }
 
             //search for item in equipment slots
-            var item = Util.GetEquipSlotWithMatch(this, commandClauseString);
+            var item = GetEquipSlotWithMatch(commandClauseString);
                                     
             if (item != null)
             {
