@@ -156,6 +156,7 @@ namespace ConsoleRPG.Game.Actors
             return dieResult;
         }
 
+
         /// <summary>
         /// 
         /// </summary>
@@ -184,6 +185,25 @@ namespace ConsoleRPG.Game.Actors
             if (EquipSlotFeet != null && targetName.Equals(EquipSlotFeet.Name, StringComparison.CurrentCultureIgnoreCase))
             {
                 return EquipSlotFeet;
+            }
+
+            return null;
+        }
+
+        protected Item GetItemMatchInInventory(string targetName)
+        {
+
+            if (targetName == "")
+            {
+                return null;
+            }
+
+            foreach (var item in Inventory)
+            {
+                if (targetName.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase) && item is Item)
+                {
+                    return item as Item;
+                }
             }
 
             return null;

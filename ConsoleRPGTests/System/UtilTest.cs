@@ -35,20 +35,6 @@ namespace ConsoleRPGTests.System
         }
 
         [Fact]
-        public void GetItemMatchInInventoryReturnsCorrectMatch()
-        {
-            var player = new Player("Test Dude");
-            var itemName = "Thing";
-            var item = new Weapon(itemName);
-            player.Inventory.Add(item);
-
-            Assert.Null(Util.GetItemMatchInInventory(player, "wrong stuff"));
-            Assert.Equal(itemName, Util.GetItemMatchInInventory(player, itemName).Name);
-            Assert.Equal(itemName, Util.GetItemMatchInInventory(player, itemName.ToLower()).Name);
-
-        }
-
-        [Fact]
         public void GetActorMatchInLocationnReturnsCorrectMatch()
         {
             var locationName = "Testing Area";

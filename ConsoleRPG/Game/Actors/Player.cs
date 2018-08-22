@@ -38,7 +38,7 @@ namespace ConsoleRPG.Game.Actors
                 return new DisplayText("There is nothing to drop!");
             }
 
-            var item = Util.GetItemMatchInInventory(this, commandClauseString);
+            var item = GetItemMatchInInventory(commandClauseString);
 
             if (item != null)
             {
@@ -72,7 +72,7 @@ namespace ConsoleRPG.Game.Actors
                 return new DisplayText("There is nothing to equip!");
             }
 
-            var item = Util.GetItemMatchInInventory(this, commandClauseString);
+            var item = GetItemMatchInInventory(commandClauseString);
 
             if(item != null)
             {

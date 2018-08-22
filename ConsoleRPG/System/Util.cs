@@ -37,28 +37,7 @@ namespace ConsoleRPG.System
       
             return null;
         }
-
-        public static Item GetItemMatchInInventory(Actor actor, string targetName)
-        {
-            
-            if (targetName == "")
-            {
-                return null;
-            }
-
-            foreach(var item in actor.Inventory)
-            {
-                if(targetName.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase) && item is Item)
-                {
-                    return item as Item;
-                }
-            }
-            
-            return null;
-        }
-
-      
-
+             
         public static Location GetExitMatchInLocation(Location location, string destinationName)
         {
             if (destinationName.Equals("north", StringComparison.CurrentCultureIgnoreCase) && location.ExitNorth != null)
