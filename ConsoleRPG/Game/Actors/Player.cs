@@ -130,7 +130,7 @@ namespace ConsoleRPG.Game.Actors
                 return new DisplayText("There is nothing to get!");
             }
 
-            var item = Util.GetItemMatchInLocation(this.Location, commandClauseString);
+            var item = Location.GetItemMatchInLocation(commandClauseString);
 
             if (item != null)
             {
@@ -152,7 +152,7 @@ namespace ConsoleRPG.Game.Actors
         {
             var displayText = new DisplayText();
 
-            var viewed = Util.GetViewableMatchInLocation(Location, commandClauseString);
+            var viewed = Location.GetViewableMatchInLocation(commandClauseString);
 
             if (viewed == null)
             {

@@ -32,6 +32,77 @@ namespace ConsoleRPG.Game.Locations
             Items = new List<Item>();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="targetName"></param>
+        /// <returns></returns>
+        public IViewable GetViewableMatchInLocation(string targetName)
+        {
+
+            IViewable viewableMatch = null;
+
+            if (targetName == "")
+            {
+                viewableMatch = this;
+                return viewableMatch;
+            }
+
+            viewableMatch = GetItemMatchInLocation(targetName);
+            if (viewableMatch != null)
+            {
+                return viewableMatch;
+            }
+
+            viewableMatch = GetActorMatchInLocation(targetName);
+            if (viewableMatch != null)
+            {
+                return viewableMatch;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="targetName"></param>
+        /// <returns></returns>
+        public Actor GetActorMatchInLocation(string targetName)
+        {
+            foreach (var person in Actors)
+            {
+                //if target string equals this persons name, then we have a match
+                if (targetName.Equals(person.Name, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return person as Actor;
+                }
+            }
+
+            return null;
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="targetName"></param>
+        /// <returns></returns>
+        public Item GetItemMatchInLocation(string targetName)
+        {
+
+            foreach (var item in Items)
+            {
+                //if target string equals this persons name, then we have a match
+                if (targetName.Equals(item.Name, StringComparison.CurrentCultureIgnoreCase) && item is Item)
+                {
+                    return item as Item;
+                }
+            }
+
+            return null;
+        }
+
         public virtual DisplayText Enter(Actor actor)
         {
             //set location of actor entering location
@@ -83,6 +154,10 @@ namespace ConsoleRPG.Game.Locations
             return viewedDisplayText;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private DisplayText GetListOfActorsDisplay()
         {
             //get list of npcs in room
@@ -96,6 +171,10 @@ namespace ConsoleRPG.Game.Locations
             return npcListDisplayText;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private DisplayText GetListOfItemsDisplay()
         {
             //get list of items in room
@@ -110,6 +189,7 @@ namespace ConsoleRPG.Game.Locations
                                     
             return itemListDisplayText;
         }
+
         
     }
 }
