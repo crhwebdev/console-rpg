@@ -103,6 +103,36 @@ namespace ConsoleRPG.Game.Locations
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="destinationName"></param>
+        /// <returns></returns>
+        public Location GetExitMatchInLocation(string destinationName)
+        {
+            if (destinationName.Equals("north", StringComparison.CurrentCultureIgnoreCase) && ExitNorth != null)
+            {
+                return ExitNorth;
+            }
+
+            if (destinationName.Equals("south", StringComparison.CurrentCultureIgnoreCase) && ExitSouth != null)
+            {
+                return ExitSouth;
+            }
+
+            if (destinationName.Equals("east", StringComparison.CurrentCultureIgnoreCase) && ExitEast != null)
+            {
+                return ExitEast;
+            }
+
+            if (destinationName.Equals("west", StringComparison.CurrentCultureIgnoreCase) && ExitWest != null)
+            {
+                return ExitWest;
+            }
+
+            return null;
+        }
+
         public virtual DisplayText Enter(Actor actor)
         {
             //set location of actor entering location
@@ -154,6 +184,7 @@ namespace ConsoleRPG.Game.Locations
             return viewedDisplayText;
         }
 
+        
         /// <summary>
         /// 
         /// </summary>

@@ -188,7 +188,7 @@ namespace ConsoleRPG.Game.Actors
                 return new DisplayText(Name + " cannot move there!");
             }
 
-            var destination = Util.GetExitMatchInLocation(this.Location, commandClauseString);
+            var destination = Location.GetExitMatchInLocation(commandClauseString);
 
             if (destination == null)
             {

@@ -65,21 +65,21 @@ namespace ConsoleRPGTests.System
         //    Assert.Equal(itemName, Util.GetItemMatchInLocation(location, itemName.ToLower()).Name);
         //}
 
-        [Fact]
-        public void GetExitMatchInLocationReturnsCorrectMatch()
-        {
-            var locationName = "Testing Area";
-            var otherLocationName = "Another Place";
-            var exitName = "north";
-            var wrongExitName = "bob";
+        //[Fact]
+        //public void GetExitMatchInLocationReturnsCorrectMatch()
+        //{
+        //    var locationName = "Testing Area";
+        //    var otherLocationName = "Another Place";
+        //    var exitName = "north";
+        //    var wrongExitName = "bob";
 
-            var location = new Location(locationName);
-            var otherLocation = new Location(otherLocationName);
+        //    var location = new Location(locationName);
+        //    var otherLocation = new Location(otherLocationName);
 
-            location.ExitNorth = otherLocation;
+        //    location.ExitNorth = otherLocation;
 
-            Assert.Null(Util.GetExitMatchInLocation(location, wrongExitName));
-            Assert.Equal(otherLocationName, Util.GetExitMatchInLocation(location, exitName).Name);
-        }
+        //    Assert.Null(Util.GetExitMatchInLocation(location, wrongExitName));
+        //    Assert.Equal(otherLocationName, Util.GetExitMatchInLocation(location, exitName).Name);
+        //}
     }
 }
