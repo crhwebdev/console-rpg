@@ -10,6 +10,21 @@ namespace ConsoleRPG.Game.Locations
 {
     public class Location : IViewable
     {
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC CONSTRUCTOR                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+        public Location(string name)
+        {
+            Name = name;
+            Actors = new List<Actor>();
+            Items = new List<Item>();
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC PROPS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Actor> Actors { get; set; }
@@ -23,20 +38,19 @@ namespace ConsoleRPG.Game.Locations
         public Location ExitSouthwest { get; set; }
         public Location ExitWest { get; set; }
         public Location ExitNorthwest { get; set; }
-        
 
-        public Location(string name)
-        {
-            Name = name;
-            Actors = new List<Actor>();
-            Items = new List<Item>();
-        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC METHODS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
 
         /// <summary>
-        /// 
+        /// Returns an object that impliments IViewable from the location that
+        /// has the Name property equal to targetName
         /// </summary>
-        /// <param name="targetName"></param>
-        /// <returns></returns>
+        /// <param name="targetName">A string that matches the object's Name property</param>
+        /// <returns>An IViewable object if a match found. Otherwise, returns null</returns>
         public IViewable GetViewableMatchInLocation(string targetName)
         {
 
@@ -64,10 +78,10 @@ namespace ConsoleRPG.Game.Locations
         }
 
         /// <summary>
-        /// 
+        /// Returns an Actor ojbect with a Name property that matches targetName
         /// </summary>
-        /// <param name="targetName"></param>
-        /// <returns></returns>
+        /// <param name="targetName">A string that matches the object's Name property</param>
+        /// <returns>An Actor object if a match found. Otherwise, returns null</returns>
         public Actor GetActorMatchInLocation(string targetName)
         {
             foreach (var person in Actors)
@@ -84,10 +98,10 @@ namespace ConsoleRPG.Game.Locations
         }
 
         /// <summary>
-        /// 
+        /// Returns an Item ojbect with a Name property that matches targetName
         /// </summary>
-        /// <param name="targetName"></param>
-        /// <returns></returns>
+        /// <param name="targetName">A string that matches the object's Name property</param>
+        /// <returns>An Item object if a match found. Otherwise, returns null</returns>
         public Item GetItemMatchInLocation(string targetName)
         {
 
@@ -104,10 +118,10 @@ namespace ConsoleRPG.Game.Locations
         }
 
         /// <summary>
-        /// 
+        /// Returns a Location ojbect that matches destinationName as determined within the method
         /// </summary>
-        /// <param name="destinationName"></param>
-        /// <returns></returns>
+        /// <param name="destinationName">A string that matches the Location as determined in the method</param>
+        /// <returns>A Location object if a match found. Otherwise, returns null</returns>
         public Location GetExitMatchInLocation(string destinationName)
         {
             if (destinationName.Equals("north", StringComparison.CurrentCultureIgnoreCase) && ExitNorth != null)
@@ -133,6 +147,11 @@ namespace ConsoleRPG.Game.Locations
             return null;
         }
 
+        /// <summary>
+        /// Returns a DisplayText object with the text description of the Location 
+        /// </summary>
+        /// <param name="actor">The actor object that is calling this method and to which a DisplayText object is returned</param>
+        /// <returns>A DisplayText object</returns>
         public virtual DisplayText Enter(Actor actor)
         {
             //set location of actor entering location
@@ -163,6 +182,11 @@ namespace ConsoleRPG.Game.Locations
             return enterDisplayText;
         }
 
+        /// <summary>
+        /// Returns a DisplayText object with the text description of the location
+        /// </summary>
+        /// <param name="viewer">The actor object that is calling this method and to whcih a DisplayText object is returned</param>
+        /// <returns>A DisplayText object</returns>
         public virtual DisplayText Viewed(Actor viewer)
         {
             var viewedDisplayText = new DisplayText(viewer.GetPersonalPronoun() + " sees " + Description);
@@ -184,11 +208,15 @@ namespace ConsoleRPG.Game.Locations
             return viewedDisplayText;
         }
 
-        
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PRIVATE METHODS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
         /// <summary>
-        /// 
+        /// Returns a DisplayText object with a list of Actors in the Location
         /// </summary>
-        /// <returns></returns>
+        /// <returns>a DisplayText object</returns>
         private DisplayText GetListOfActorsDisplay()
         {
             //get list of npcs in room
@@ -203,9 +231,9 @@ namespace ConsoleRPG.Game.Locations
         }
 
         /// <summary>
-        /// 
+        /// Returns a DisplayText object with a list of Items in the Location
         /// </summary>
-        /// <returns></returns>
+        /// <returns>a DisplayText object</returns>
         private DisplayText GetListOfItemsDisplay()
         {
             //get list of items in room
