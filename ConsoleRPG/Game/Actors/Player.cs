@@ -11,7 +11,9 @@ namespace ConsoleRPG.Game.Actors
     public class Player : Actor
     {
 
-        //Constructor
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   CONSTRUCTOR
+        ////////////////////////////////////////////////////////////////////////////////////////        
         public Player(string name) : base(name) { }
 
         ////////////////////////////////////////////////////////////////////////////////////////
@@ -26,10 +28,10 @@ namespace ConsoleRPG.Game.Actors
         ////////////////////////////////////////////////////////////////////////////////////////        
 
         /// <summary>
-        /// 
+        /// Executes Drop command and returns appropriate DisplayText to caller
         /// </summary>
-        /// <param name="commandClauseString"></param>
-        /// <returns></returns>
+        /// <param name="commandClauseString">Term to be matched to items in player Inventory</param>
+        /// <returns>a DisplayText object</returns>
         public override DisplayText Drop(string commandClauseString)
         {
             
@@ -61,10 +63,10 @@ namespace ConsoleRPG.Game.Actors
         }
 
         /// <summary>
-        /// 
+        /// Executes Equip command and returns appropriate DisplayText to caller
         /// </summary>
-        /// <param name="commandClauseString"></param>
-        /// <returns></returns>
+        /// <param name="commandClauseString">Term to be matched to items in player Inventory</param>
+        /// <returns>a DisplayText object</returns>
         public override DisplayText Equip(string commandClauseString)
         {            
              if(commandClauseString == "")
@@ -119,10 +121,10 @@ namespace ConsoleRPG.Game.Actors
         }
 
         /// <summary>
-        /// 
+        /// Executes Get command and returns appropriate DisplayText to caller
         /// </summary>
-        /// <param name="commandClauseString"></param>
-        /// <returns></returns>
+        /// <param name="commandClauseString">Term to be matched to items in player's Location</param>
+        /// <returns>a DisplayText object</returns>
         public override DisplayText Get(string commandClauseString)
         {            
             if (commandClauseString == "")
@@ -144,10 +146,10 @@ namespace ConsoleRPG.Game.Actors
         }
 
         /// <summary>
-        /// 
+        /// Executes Look command and returns appropriate DisplayText to caller
         /// </summary>
-        /// <param name="commandClauseString"></param>
-        /// <returns></returns>        
+        /// <param name="commandClauseString">Term to be matched to IViewable objects in Location (or just location if empty string)</param>
+        /// <returns>a DisplayText object</returns>
         public override DisplayText Look(string commandClauseString)
         {
             var displayText = new DisplayText();
@@ -175,10 +177,10 @@ namespace ConsoleRPG.Game.Actors
         }
 
         /// <summary>
-        /// 
+        /// Executes Move command and returns appropriate DisplayText to caller
         /// </summary>
-        /// <param name="commandClauseString"></param>
-        /// <returns></returns>
+        /// <param name="commandClauseString">Term to be matched to Location exits</param>
+        /// <returns>a DisplayText object</returns>
         public override DisplayText Move(string commandClauseString)
         {
             var displayText = new DisplayText();
@@ -214,9 +216,9 @@ namespace ConsoleRPG.Game.Actors
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        /// Executes Inventory command and returns appropriate DisplayText to caller
+        /// </summary>        
+        /// <returns>a DisplayText object</returns>
         public override DisplayText ShowInventory()
         {
             var inventoryDisplayText = new DisplayText();
@@ -264,10 +266,10 @@ namespace ConsoleRPG.Game.Actors
         }
 
         /// <summary>
-        /// 
+        /// Executes Unequip command and returns appropriate DisplayText to caller
         /// </summary>
-        /// <param name="commandClauseString"></param>
-        /// <returns></returns>
+        /// <param name="commandClauseString">Term to be matched to items in player Equip Slots</param>
+        /// <returns>a DisplayText object</returns>
         public override DisplayText Unequip(string commandClauseString)
         {
             var unequipDisplayText = new DisplayText();
@@ -321,6 +323,12 @@ namespace ConsoleRPG.Game.Actors
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PRIVATE METHODS                          
         ////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Utility function used by Equip method. Adds item bonus stats
+        /// to player
+        /// </summary>
+        /// <param name="item">a reference to the item from which bonuses are being added</param>
         private void AddItemBonusesToStats(IEquipable item)
         {            
             Defense += item.DefenseBonus;                        
@@ -328,6 +336,11 @@ namespace ConsoleRPG.Game.Actors
             AttackPower += item.AttackPowerBonus;
         }
 
+        /// <summary>
+        /// Utility function used by Unequip method. Removes item bonus stats 
+        /// from player
+        /// </summary>
+        /// <param name="item">a reference to the item from which bonuses are being removed on player</param>
         private void RemoveItemBonusesFromStats(IEquipable item)
         {                        
             Defense -= item.DefenseBonus;
