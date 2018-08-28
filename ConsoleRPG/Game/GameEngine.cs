@@ -11,36 +11,47 @@ namespace ConsoleRPG.Game
 {
     public class GameEngine
     {
-        //This class does the following:
-        // Instantiates all game components as private fields
-        // Start method runs game loop
-        // Stop method ends game loop and performs cleanup
 
-
-        public Actor Player { get; set; }        
-
-        //Game Components
-        public TextConsole GameConsole { get; set;}
-        public CommandInterpreter CommandInterpreter { get; set; }
-        public Level CurrentAdventure { get; set; }        
-
-        //Other Game Fields
-        private static GameEngine _instance = null;
-        private bool _gameIsRunning;
-        public Queue<Actions.Action> ActionQueue; 
-
-        //Game Command List - add commads to this list to use in engine
-        //private List<Actions.Action> _commands = new List<Actions.Action>();    
-        
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PROTECTED CONSTRUCTOR - SINGLETON CLASS                         
+        ////////////////////////////////////////////////////////////////////////////////////////
 
         protected GameEngine()
-        {            
+        {
             GameConsole = new GameConsole();
             CommandInterpreter = CommandInterpreter.Instance(this);
-            _gameIsRunning = false;         
+            _gameIsRunning = false;
             ActionQueue = new Queue<Actions.Action>();
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC PROPS                          
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+        public Actor Player { get; set; }        
+        public TextConsole GameConsole { get; set;}
+        public CommandInterpreter CommandInterpreter { get; set; }
+        public Level CurrentAdventure { get; set; }
+        public Queue<Actions.Action> ActionQueue { get; set; }
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PRIVATE FIELDS                          
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+        private static GameEngine _instance = null;
+        private bool _gameIsRunning;
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC METHODS                          
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Get an instance of the GameEngine if it already exists
+        /// or create a new one if it dosen't
+        /// </summary>
+        /// <returns>Instance of GameEngine</returns>
         public static GameEngine Instance()
         {
             if(_instance == null)
@@ -51,6 +62,9 @@ namespace ConsoleRPG.Game
             return _instance;
         }
         
+        /// <summary>
+        /// Start GameEngine and run game loop
+        /// </summary>
         public void Start()
         {
             _gameIsRunning = true;
@@ -70,11 +84,21 @@ namespace ConsoleRPG.Game
             }
         }
 
+        /// <summary>
+        /// Stop GameEngine
+        /// </summary>
         public void Stop()
         {
             _gameIsRunning = false;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PRIVATE METHODS                          
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Update method that runs actions in ActionQueue and updates display
+        /// </summary>
         private void Update()
         {
 
