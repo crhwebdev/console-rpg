@@ -11,6 +11,20 @@ namespace ConsoleRPG.Game
 {
     public class CommandInterpreter
     {
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PROTECTED CONSTRUCTOR  - Is a Singelton                        
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
+        protected CommandInterpreter(GameEngine gameEngine)
+        {
+            _gameEngine = gameEngine;            
+        }
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PRIVATE FIELDS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
         private static CommandInterpreter _instance = null;
         private GameEngine _gameEngine;
         private Dictionary<string, string> _prepositions = new Dictionary<string, string>
@@ -20,12 +34,17 @@ namespace ConsoleRPG.Game
             {"in", "in" }
         };
 
-        protected CommandInterpreter(GameEngine gameEngine)
-        {
-            _gameEngine = gameEngine;
-            //_testRoom = new Room("A dark dank chamber full of soft whispering voices...");
-        }
 
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC METHODS                          
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Get an instance of the CommandInterpreter if it already exists
+        /// or create a new one if it dosen't
+        /// </summary>
+        /// <param name="gameEngine">An instance of the gameEngine used with CommandInterpreter</param>
+        /// <returns>Instance of CommandInterpretere</returns>
         public static CommandInterpreter Instance(GameEngine gameEngine)
         {
             if(_instance == null)
@@ -36,6 +55,11 @@ namespace ConsoleRPG.Game
             return _instance;
         }
 
+        /// <summary>
+        /// Return a string array of parsed commands
+        /// </summary>
+        /// <param name="commandString"></param>
+        /// <returns></returns>
         public string[] ParseCommandString(string commandString)
         {
             string[] parsedCommandList = new string[2];
@@ -80,6 +104,13 @@ namespace ConsoleRPG.Game
             return parsedCommandList;
         }
 
+        /// <summary>
+        /// Returns an action for a correct commandList from GameEngine
+        /// If not correct, returns a Message Action with error message.
+        /// </summary>
+        /// <param name="commandList"></param>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public Action GetAction(string[] commandList, Actor player)
         {
 
