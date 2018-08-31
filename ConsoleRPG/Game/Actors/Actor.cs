@@ -12,7 +12,10 @@ namespace ConsoleRPG.Game.Actors
 
     public abstract class Actor : IViewable
     {
-        //Constructor 
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   CONSTRUCTOR
+        //////////////////////////////////////////////////////////////////////////////////////// 
+        
         public Actor(string name)
         {
             Name = name;
@@ -71,19 +74,19 @@ namespace ConsoleRPG.Game.Actors
         public virtual DisplayText Unequip(string commandClauseString) { throw new NotImplementedException(); }
 
         /// <summary>
-        /// 
+        /// Returns DisplayText of Actors Description
         /// </summary>
-        /// <param name="viewer"></param>
-        /// <returns></returns>
+        /// <param name="viewer">Actor that is using Look method on this object</param>
+        /// <returns>DisplayText with Actors Description</returns>
         public virtual DisplayText Viewed(Actor viewer)
         {
             return new DisplayText(viewer.GetPersonalPronoun() + " sees " + Description);
         }
 
         /// <summary>
-        /// 
+        /// Gets a PersonalPronoun based on Actors Sex property
         /// </summary>
-        /// <returns></returns>
+        /// <returns>String value: It, He, She</returns>
         public virtual string GetPersonalPronoun()
         {
             if(Sex == Sexes.Neuter)
@@ -109,10 +112,10 @@ namespace ConsoleRPG.Game.Actors
         //////////////////////////////////////////////////////////////////////////////////////// 
 
         /// <summary>
-        /// 
+        /// Roles nultiple "FUDGE" dice and returns total result
         /// </summary>
-        /// <param name="numberOfDice"></param>
-        /// <returns></returns>
+        /// <param name="numberOfDice">Number of dice to role</param>
+        /// <returns>An int value representintg total of dice rolls</returns>
         protected int RollMultipleDice(int numberOfDice = 4)
         {
             var sum = 0;
@@ -126,9 +129,9 @@ namespace ConsoleRPG.Game.Actors
         }
 
         /// <summary>
-        /// 
+        /// Role a single "FUDGE" dice and returns result
         /// </summary>
-        /// <returns></returns>
+        /// <returns>An int value from -1 to +1</returns>
         protected int RollSingleDie()
         {
             //generate random number between 1 and 6
@@ -158,10 +161,10 @@ namespace ConsoleRPG.Game.Actors
 
 
         /// <summary>
-        /// 
+        /// Get item in an equipmentslot or null if none equiped
         /// </summary>
-        /// <param name="targetName"></param>
-        /// <returns></returns>
+        /// <param name="targetName">name of equipment slot</param>
+        /// <returns>An Item that is equiped in slot</returns>
         protected Item GetEquipSlotWithMatch(string targetName)
         {
 
@@ -190,9 +193,13 @@ namespace ConsoleRPG.Game.Actors
             return null;
         }
 
+        /// <summary>
+        /// Get an Item in Actor's Inventory if it matches targetName
+        /// </summary>
+        /// <param name="targetName">Name of item to match</param>
+        /// <returns>An Item that matches targetName</returns>
         protected Item GetItemMatchInInventory(string targetName)
         {
-
             if (targetName == "")
             {
                 return null;
@@ -205,7 +212,6 @@ namespace ConsoleRPG.Game.Actors
                     return item as Item;
                 }
             }
-
             return null;
         }
 
