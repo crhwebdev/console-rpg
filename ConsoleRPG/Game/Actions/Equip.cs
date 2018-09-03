@@ -8,9 +8,10 @@ using System.Text;
 namespace ConsoleRPG.Game.Actions
 {
     public class Equip : Action
-    {       
-        private Actor _actor;
-        private string _target;
+    {
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   CONSTRUCTOR                          
+        ////////////////////////////////////////////////////////////////////////////////////////
 
         public Equip(Actor actor, string target)
         {
@@ -18,6 +19,22 @@ namespace ConsoleRPG.Game.Actions
             _target = target;
         }
 
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PRIVATE FIELDS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
+        private Actor _actor;
+        private string _target;
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC METHODS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
+        /// <summary>
+        /// Executes Action on actor that Action was created with
+        /// </summary>
+        /// <returns></returns>
         public override DisplayText Do()
         {                                     
             return _actor.Equip(_target); 
