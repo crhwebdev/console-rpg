@@ -8,15 +8,33 @@ namespace ConsoleRPG.Game.Actions
 {
     public class Drop : Action
     {
-        private Actor _actor;
-        private string _target;
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   CONSTRUCTOR                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
 
+        
         public Drop(Actor actor, string commandClauseString)
         {
             _actor = actor;
             _target = commandClauseString;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PRIVATE FIELDS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
+        private Actor _actor;
+        private string _target;
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC METHODS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
+        /// <summary>
+        /// Executes Action on actor that Action was created with
+        /// </summary>
+        /// <returns></returns>
         public override DisplayText Do()
         {
             return _actor.Drop(_target);
