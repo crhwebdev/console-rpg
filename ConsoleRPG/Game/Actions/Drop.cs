@@ -32,9 +32,9 @@ namespace ConsoleRPG.Game.Actions
         //////////////////////////////////////////////////////////////////////////////////////// 
 
         /// <summary>
-        /// Executes Action on actor that Action was created with
+        /// Executes Drop action on actor 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>DisplayText</returns>
         public override DisplayText Do()
         {
             return _actor.Drop(_target);
