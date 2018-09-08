@@ -8,17 +8,33 @@ using System.Text;
 namespace ConsoleRPG.Game.Actions
 {
     public class Move : Action
-    {       
-        private Actor _actor;
-        private string _target;
+    {
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   CONSTRUCTOR                          
+        ////////////////////////////////////////////////////////////////////////////////////////
 
-        //needs access to player (i.e. actor), portal (i.e. reciever), and then other stuff depending on Action
         public Move(Actor actor, string target)
         {
             _actor = actor;
             _target = target;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PRIVATE FIELDS                          
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+        private Actor _actor;
+        private string _target;
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC METHODS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
+        /// <summary>
+        /// Executes Move action on player, which calls 
+        ///  Enter method on Location.
+        /// </summary>
+        /// <returns>DisplayText</returns>
         public override DisplayText Do()
         {              
             return _actor.Move(_target); 
