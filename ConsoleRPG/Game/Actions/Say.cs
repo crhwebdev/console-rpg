@@ -8,9 +8,9 @@ namespace ConsoleRPG.Game.Actions
 {
     public class Say : Action
     {
-        public string Display { get; set; }
-        private Actor _actor;
-        private string _text;
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   CONSTRUCTOR                          
+        ////////////////////////////////////////////////////////////////////////////////////////
 
         public Say(Actor actor, string text)
         {
@@ -18,6 +18,24 @@ namespace ConsoleRPG.Game.Actions
             _text = text;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PRIVATE FIELDS                          
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+        public string Display { get; set; }
+        private Actor _actor;
+        private string _text;
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC METHODS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
+
+        /// <summary>
+        /// Executes Say action, which calls 
+        ///  Say method on Actor.
+        /// </summary>
+        /// <returns>DisplayText</returns>
         public override DisplayText Do()
         {
             var displayText = _actor.Say(_text);
