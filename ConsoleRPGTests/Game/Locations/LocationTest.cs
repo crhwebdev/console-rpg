@@ -1,5 +1,6 @@
 ﻿using ConsoleRPG.Game.Actors;
 using ConsoleRPG.Game.Locations;
+using ConsoleRPG.Game.Props;
 using System;
 using System.Linq;
 using Xunit;
@@ -48,6 +49,27 @@ namespace ConsoleRPGTests.Game.Locations
             Assert.Equal(_player.GetPersonalPronoun() + " sees " + _areaDescription, areaViewResult);
         }
 
-       
+        [Fact]
+        public void GetViewableMatchInLocationReturnsCorrectMatch()
+        {
+            var locationName = "Testing Area";
+            var itemName = "Test Item";
+            var npcName = "Test Dude";
+
+            var location = new Location(locationName);
+            var viewItem = new Weapon(itemName);
+            var viewNPC = new NPC(npcName);
+
+            location.Items.Add(viewItem);
+            location.Actors.Add(viewNPC);
+
+            Assert.Equal(locationName, location.GetViewableMatchInLocation("").Name);
+            Assert.Equal(itemName, location.GetViewableMatchInLocation(itemName).Name);
+            Assert.Equal(itemName, location.GetViewableMatchInLocation(itemName.ToLower()).Name);
+            Assert.Equal(npcName, location.GetViewableMatchInLocation(npcName).Name);
+            Assert.Equal(npcName, location.GetViewableMatchInLocation(npcName.ToLower()).Name);
+
+        }
+
     }
 }
