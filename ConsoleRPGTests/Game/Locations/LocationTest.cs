@@ -88,5 +88,20 @@ namespace ConsoleRPGTests.Game.Locations
 
         }
 
+        [Fact]
+        public void GetActorMatchInLocationnReturnsCorrectMatch()
+        {
+            var locationName = "Testing Area";
+            var npcName = "Test Dude";
+
+            var location = new Location(locationName);
+            var viewNPC = new NPC(npcName);
+            location.Actors.Add(viewNPC);
+
+            Assert.Null(location.GetActorMatchInLocation("Wrong Dude"));
+            Assert.Equal(npcName, location.GetActorMatchInLocation(npcName).Name);
+            Assert.Equal(npcName, location.GetActorMatchInLocation(npcName.ToLower()).Name);
+
+        }
     }
 }
