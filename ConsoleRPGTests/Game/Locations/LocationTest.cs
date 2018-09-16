@@ -103,5 +103,20 @@ namespace ConsoleRPGTests.Game.Locations
             Assert.Equal(npcName, location.GetActorMatchInLocation(npcName.ToLower()).Name);
 
         }
+
+        [Fact]
+        public void GetItemMatchInLocationReturnsCorrectMatch()
+        {
+            var locationName = "Testing Area";
+            var itemName = "Test Item";
+
+            var location = new Location(locationName);
+            var viewItem = new Weapon(itemName);
+            location.Items.Add(viewItem);
+
+            Assert.Null(location.GetItemMatchInLocation("Wrong Thing"));
+            Assert.Equal(itemName, location.GetItemMatchInLocation(itemName).Name);
+            Assert.Equal(itemName, location.GetItemMatchInLocation(itemName.ToLower()).Name);
+        }
     }
 }
