@@ -7,6 +7,9 @@ namespace ConsoleRPG.Game.Props
 {
     public class Weapon : Item, IEquipable
     {
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC CONSTRUCTOR                          
+        ////////////////////////////////////////////////////////////////////////////////////////
 
         public Weapon(string name, int attackPowerBonus = 0) : base(name)
         {
@@ -17,6 +20,10 @@ namespace ConsoleRPG.Game.Props
             AttackPowerBonus = attackPowerBonus;
             
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC PROPS                          
+        //////////////////////////////////////////////////////////////////////////////////////// 
 
         public EquipmentSlots EquipableSlot { get; set; }
         public int AttackBonus { get; set; }
