@@ -4,8 +4,15 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Props.Interfaces
 {
+    /// <summary>
+    /// A enum for equipment slots
+    /// </summary>
     public enum EquipmentSlots { Head, Body, Hands, Feet, MainWeapon, SecondaryWeapon };
 
+
+    /// <summary>
+    /// An interface of equipable objects in the game
+    /// </summary>
     public interface IEquipable
     {
         ////////////////////////////////////////////////////////////////////////////////////////

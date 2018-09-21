@@ -5,6 +5,9 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Props.Interfaces
 {
+    /// <summary>
+    /// An interface for game objects that can be aquired by Actors.
+    /// </summary>
     public interface IPortable
     {
         ////////////////////////////////////////////////////////////////////////////////////////
