@@ -9,8 +9,14 @@ namespace ConsoleRPG.System
     /// </summary>
     public interface IConsole
     {
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PUBLIC METHODS                          
+        ////////////////////////////////////////////////////////////////////////////////////////
+
         void Write(string text);
+
         void WriteLine(string text);
+
         string ReadLine();
     }
 }
