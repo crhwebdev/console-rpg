@@ -28,6 +28,8 @@ namespace ConsoleRPG.Game.Actors
         //   PUBLIC METHODS                          
         ////////////////////////////////////////////////////////////////////////////////////////        
 
+        
+
         /// <summary>
         /// Executes Drop command and returns appropriate DisplayText to caller
         /// </summary>
@@ -333,7 +335,7 @@ namespace ConsoleRPG.Game.Actors
         private void AddItemBonusesToStats(IEquipable item)
         {            
             Defense += item.DefenseBonus;                        
-            Attack += item.AttackBonus;
+            AttackChance += item.AttackBonus;
             AttackPower += item.AttackPowerBonus;
         }
 
@@ -345,7 +347,7 @@ namespace ConsoleRPG.Game.Actors
         private void RemoveItemBonusesFromStats(IEquipable item)
         {                        
             Defense -= item.DefenseBonus;
-            Attack -= item.AttackBonus;
+            AttackChance -= item.AttackBonus;
             AttackPower -= item.AttackPowerBonus;
         }
 
