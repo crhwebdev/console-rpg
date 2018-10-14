@@ -23,12 +23,20 @@ namespace ConsoleRPG.Game.Actors
 
         public override Location Location { get; set; }
 
-                
+
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PUBLIC METHODS                          
         ////////////////////////////////////////////////////////////////////////////////////////        
 
-        
+        /// <summary>
+        /// Handles Attack command for player
+        /// </summary>
+        /// <param name="commandClauseString"></param>
+        /// <returns>DisplayText of results of attack</returns>
+        public override DisplayText Attack(string commandClauseString)
+        {
+            return new DisplayText(Name + " attacks!");
+        }
 
         /// <summary>
         /// Executes Drop command and returns appropriate DisplayText to caller
