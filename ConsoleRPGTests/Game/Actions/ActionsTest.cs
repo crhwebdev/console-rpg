@@ -20,6 +20,14 @@ namespace ConsoleRPGTests.Game.Actions
             _testPlayer = new MockPlayer("Test Dude");                        
         }
 
+        // TESTS
+        // ATTACK ACTION
+        [Fact]
+        public void AttackActionCallsCorrectActorAction()
+        {
+            var action = new Attack(_testPlayer, "");
+            Assert.Equal("attack", action.Do().ToString());
+        }
 
         // TESTS
         // DROP ACTION
@@ -96,6 +104,11 @@ namespace ConsoleRPGTests.Game.Actions
     class MockPlayer : Player
     {
         public MockPlayer(string name) : base(name) {}
+
+        public override DisplayText Attack(string commandClauseString)
+        {
+            return new DisplayText("attack");
+        }
 
         public override DisplayText Drop(string commandClauseString)
         {
