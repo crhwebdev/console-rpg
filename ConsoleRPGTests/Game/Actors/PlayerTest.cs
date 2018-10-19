@@ -22,6 +22,13 @@ namespace ConsoleRPGTests.Game.Actors
         }
 
 
+        // ATTACK METHOD
+        [Fact]
+        public void PlayerAttackMethodReturnsAppropriateText()
+        {
+            Assert.True(false);
+        }
+
         // DROP METHOD
         [Fact]
         public void PlayerDropMethodReturnsAppropriateText()

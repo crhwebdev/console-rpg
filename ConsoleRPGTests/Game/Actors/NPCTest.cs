@@ -6,8 +6,10 @@ namespace ConsoleRPGTests.Game.Actors
 {
     public class NPCTest
     {
+        
+        // ATTACK METHOD
         [Fact]
-        public void TestMethod1()
+        public void NPCAttackMethodReturnsAppropriateText()
         {
             Assert.True(false);
         }
