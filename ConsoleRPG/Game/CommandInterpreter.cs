@@ -124,6 +124,8 @@ namespace ConsoleRPG.Game
                         
             switch (action)
             {
+                case "attack":
+                    return new Attack(player, commandClauseString);
                 case "drop":
                     return new Drop(player, commandClauseString);
                 case "equip":
