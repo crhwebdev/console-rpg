@@ -53,6 +53,14 @@ namespace ConsoleRPGTests.Game
             Assert.Null(returnParsed);                        
         }
 
+        [Fact]
+        public void ReturnsAttackActionFromCommandList()
+        {
+            string[] commandList = { "attack", "thing" };
+            var returnAction = _commandInterpreter.GetAction(commandList, _player);
+            Assert.IsType<Attack>(returnAction);
+
+        }
 
         [Fact]
         public void ReturnsDropActionFromCommandList()
