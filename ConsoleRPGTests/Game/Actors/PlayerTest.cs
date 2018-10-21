@@ -26,7 +26,23 @@ namespace ConsoleRPGTests.Game.Actors
         [Fact]
         public void PlayerAttackMethodReturnsAppropriateText()
         {
-            Assert.True(false);
+
+            var name = "Testy Tess";
+            var player = new Player(name);
+            var attackTarget = new NPC("Hit Me");
+            player.Location = new Location("Testing Arena");
+            player.Location.Actors.Add(attackTarget);
+            
+
+            //player displays correct text for no target
+            Assert.Equal("There is nothing to attack!", player.Attack("").ToString());
+
+            //player displays correct text when attacking none existant Actor
+            Assert.Equal(player.Name + " cannot attack that!", player.Attack("xyz").ToString());
+
+            //player displays correct text when attacking an existing target
+            Assert.Equal(player.Name + " attacks " + attackTarget.Name + "!", player.Attack("Hit Me").ToString());
+
         }
 
         // DROP METHOD
