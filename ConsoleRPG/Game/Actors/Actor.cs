@@ -57,14 +57,37 @@ namespace ConsoleRPG.Game.Actors
 
         //Actor State
         public virtual bool IsHostile { get; set; }
-               
+
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PUBLIC METHODS                          
         //////////////////////////////////////////////////////////////////////////////////////// 
 
         //Has various methods that correspond to actions that can be executed with him as the reciever               
-        public virtual DisplayText Attack(string commandClauseString) { throw new NotImplementedException(); }
+
+        /// <summary>
+        /// Handles Attack command for player
+        /// </summary>
+        /// <param name="commandClauseString"></param>
+        /// <returns>DisplayText of results of attack</returns>
+        public virtual DisplayText Attack(string commandClauseString)
+        {
+            if (commandClauseString == "")
+            {
+                return new DisplayText("There is nothing to attack!");
+            }
+
+            var target = Location.GetActorMatchInLocation(commandClauseString);
+
+            if (target != null)
+            {
+                return new DisplayText(Name + " attacks " + target.Name + "!");
+            }
+
+            return new DisplayText(Name + " cannot attack that!");
+
+        }
+
         public virtual DisplayText Drop(string commandClauseString) { throw new NotImplementedException(); }
         public virtual DisplayText Equip(string commandClauseString) { throw new NotImplementedException(); }
         public virtual DisplayText Get(string commandClauseString) { throw new NotImplementedException(); }

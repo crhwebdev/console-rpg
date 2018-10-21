@@ -35,7 +35,7 @@ namespace ConsoleRPG.Game.Actors
         /// <returns>DisplayText of results of attack</returns>
         public override DisplayText Attack(string commandClauseString)
         {
-            return new DisplayText(Name + " attacks!");
+            return base.Attack(commandClauseString);            
         }
 
         /// <summary>
