@@ -74,7 +74,7 @@ namespace ConsoleRPG.Game.Actors
         {
             if (commandClauseString == "")
             {
-                return new DisplayText("There is nothing to attack!");
+                return TextStringManager.GetErrorTextString(ErrorTextStrings.NoAttackTarget);
             }
 
             var target = Location.GetActorMatchInLocation(commandClauseString);
