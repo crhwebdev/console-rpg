@@ -81,10 +81,10 @@ namespace ConsoleRPG.Game.Actors
 
             if (target != null)
             {
-                return new DisplayText(Name + " attacks " + target.Name + "!");
+                return TextStringManager.GetCommandTextString(CommandTextStrings.AttackExecutedOnTarget, this, target.Name);
             }
 
-            return new DisplayText(Name + " cannot attack that!");
+            return TextStringManager.GetCommandTextString(CommandTextStrings.AttackFailTargetNotFound, this);
 
         }
 
