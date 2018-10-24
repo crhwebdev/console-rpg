@@ -48,7 +48,7 @@ namespace ConsoleRPG.Game.Actors
             
             if (commandClauseString == "")
             {
-                return new DisplayText("There is nothing to drop!");
+                return TextStringManager.GetErrorTextString(ErrorTextStrings.NoDropTarget);
             }
 
             var item = GetItemMatchInInventory(commandClauseString);
@@ -58,19 +58,19 @@ namespace ConsoleRPG.Game.Actors
                 Location.Items.Add(item);
                 item.Location = Location;
                 Inventory.Remove(item);
-                                
-                return new DisplayText(Name + " drops the " + item.Name);
+
+                return TextStringManager.GetCommandTextString(CommandTextStrings.DropItem, this, item.Name);
             }
             else
             {
                 item = GetEquipSlotWithMatch(commandClauseString);
                 if(item != null)
                 {
-                    return new DisplayText("You cannot drop an equiped item!");
+                    return TextStringManager.GetErrorTextString(ErrorTextStrings.NoDropEquipedItem);
                 }
             }
 
-            return new DisplayText("You don't have that item!");
+            return TextStringManager.GetErrorTextString(ErrorTextStrings.NoSuchDropItem);
         }
 
         /// <summary>

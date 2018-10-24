@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-public enum ErrorTextStrings { NoAttackTarget };
-public enum CommandTextStrings { AttackExecutedOnTarget, AttackFailTargetNotFound };
+public enum ErrorTextStrings { NoAttackTarget, NoDropTarget, NoDropEquipedItem, NoSuchDropItem };
+public enum CommandTextStrings { AttackExecutedOnTarget, AttackFailTargetNotFound, DropItem };
 
 namespace ConsoleRPG.Game
 {
@@ -16,8 +16,15 @@ namespace ConsoleRPG.Game
             switch (text)
             {
                 case ErrorTextStrings.NoAttackTarget:
-                    return new DisplayText("There is nothing to attack!");                    
+                    return new DisplayText("There is nothing to attack!");
+                case ErrorTextStrings.NoDropTarget:
+                    return new DisplayText("There is nothing to drop!");
+                case ErrorTextStrings.NoDropEquipedItem:
+                    return new DisplayText("You cannot drop an equiped item!");
+                case ErrorTextStrings.NoSuchDropItem:
+                    return new DisplayText("You don't have that item!");
                 default:
+                    
                     return new DisplayText("No Such String");
             }
         }
@@ -30,6 +37,8 @@ namespace ConsoleRPG.Game
                     return new DisplayText(actor.Name + " attacks " + targetName + "!");
                 case CommandTextStrings.AttackFailTargetNotFound:
                     return new DisplayText(actor.Name + " cannot attack that!");
+                case CommandTextStrings.DropItem:
+                    return new DisplayText(actor.Name + " drops the " + targetName);
                 default:
                     return new DisplayText("No Such String");
             }
