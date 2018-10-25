@@ -82,7 +82,7 @@ namespace ConsoleRPG.Game.Actors
         {            
              if(commandClauseString == "")
             {
-                return new DisplayText("There is nothing to equip!");
+                return TextStringManager.GetErrorTextString(ErrorTextStrings.NoEquipTarget);
             }
 
             var item = GetItemMatchInInventory(commandClauseString);
@@ -114,21 +114,21 @@ namespace ConsoleRPG.Game.Actors
                             EquipSlotMainWeapon = item as Weapon;
                             Inventory.Remove(item);
                             break;                        
-                        default:                            
-                            return new DisplayText("You cannot equip that!");                           
+                        default:
+                            return TextStringManager.GetErrorTextString(ErrorTextStrings.EquipNotEquipable);
                     }
                     
                     AddItemBonusesToStats(equipableItem);
 
-                    return new DisplayText(Name + " equips the " + item.Name);
+                    return TextStringManager.GetCommandTextString(CommandTextStrings.EquipItem, this, item.Name);
                 }
                 else
-                {                    
-                    return new DisplayText("You cannot equip that!");
+                {
+                    return TextStringManager.GetErrorTextString(ErrorTextStrings.EquipNotEquipable);
                 }                                
             }
-            
-            return new DisplayText("That does not exist in your inventory!");
+
+            return TextStringManager.GetErrorTextString(ErrorTextStrings.ItemNotInInventory);
         }
 
         /// <summary>

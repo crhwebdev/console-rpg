@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-public enum ErrorTextStrings { NoAttackTarget, NoDropTarget, NoDropEquipedItem, NoSuchDropItem };
-public enum CommandTextStrings { AttackExecutedOnTarget, AttackFailTargetNotFound, DropItem };
+public enum ErrorTextStrings { NoAttackTarget, NoDropTarget, NoDropEquipedItem, NoSuchDropItem, NoEquipTarget, EquipNotEquipable, ItemNotInInventory };
+public enum CommandTextStrings { AttackExecutedOnTarget, AttackFailTargetNotFound, DropItem, EquipItem };
 
 namespace ConsoleRPG.Game
 {
@@ -23,8 +23,13 @@ namespace ConsoleRPG.Game
                     return new DisplayText("You cannot drop an equiped item!");
                 case ErrorTextStrings.NoSuchDropItem:
                     return new DisplayText("You don't have that item!");
-                default:
-                    
+                case ErrorTextStrings.NoEquipTarget:
+                    return new DisplayText("There is nothing to equip!");
+                case ErrorTextStrings.EquipNotEquipable:
+                    return new DisplayText("You cannot equip that!");
+                case ErrorTextStrings.ItemNotInInventory:
+                    return new DisplayText("That does not exist in your inventory!");
+                default:                    
                     return new DisplayText("No Such String");
             }
         }
@@ -39,6 +44,8 @@ namespace ConsoleRPG.Game
                     return new DisplayText(actor.Name + " cannot attack that!");
                 case CommandTextStrings.DropItem:
                     return new DisplayText(actor.Name + " drops the " + targetName);
+                case CommandTextStrings.EquipItem:
+                    return new DisplayText(actor.Name + " equips the " + targetName);
                 default:
                     return new DisplayText("No Such String");
             }
