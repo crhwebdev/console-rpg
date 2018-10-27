@@ -4,8 +4,30 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-public enum ErrorTextStrings { NoAttackTarget, NoDropTarget, NoDropEquipedItem, NoSuchDropItem, NoEquipTarget, EquipNotEquipable, ItemNotInInventory, NoGetTarget, InvalidGetTarget };
-public enum CommandTextStrings { AttackExecutedOnTarget, AttackFailTargetNotFound, DropItem, EquipItem, GetItem };
+public enum ErrorTextStrings
+{
+    NoAttackTarget,
+    NoDropTarget,
+    NoDropEquipedItem,
+    NoSuchDropItem,
+    NoEquipTarget,
+    EquipNotEquipable,
+    ItemNotInInventory,
+    NoGetTarget,
+    InvalidGetTarget,
+    InvalidLookTarget
+};
+
+public enum CommandTextStrings
+{
+    AttackExecutedOnTarget,
+    AttackFailTargetNotFound,
+    DropItem,
+    EquipItem,
+    GetItem,
+    LookAt,
+    LookAtLocation    
+};
 
 namespace ConsoleRPG.Game
 {
@@ -33,6 +55,8 @@ namespace ConsoleRPG.Game
                     return new DisplayText("There is nothing to get!");
                 case ErrorTextStrings.InvalidGetTarget:
                     return new DisplayText("You cannot get that!");
+                case ErrorTextStrings.InvalidLookTarget:
+                    return new DisplayText("There's nothing to look at!");
                 default:                    
                     return new DisplayText("No Such String");
             }
@@ -52,6 +76,11 @@ namespace ConsoleRPG.Game
                     return new DisplayText(actor.Name + " equips the " + targetName);
                 case CommandTextStrings.GetItem:
                     return new DisplayText(actor.Name + " gets the " + targetName);
+                case CommandTextStrings.LookAt:
+                    return new DisplayText(actor.Name + " looks at " + targetName);
+                case CommandTextStrings.LookAtLocation:
+                    return new DisplayText(actor.Name + " looks around...");
+                    
                 default:
                     return new DisplayText("No Such String");
             }

@@ -171,21 +171,19 @@ namespace ConsoleRPG.Game.Actors
 
             if (viewed == null)
             {
-                return new DisplayText("I don't understand.");
-                
-            }
-            
-            if (viewed is Location)
+                displayText.Add(TextStringManager.GetErrorTextString(ErrorTextStrings.InvalidLookTarget));                 
+            }            
+            else if (viewed is Location)
             {
-                displayText.Add(Name + " looks around...");
+                displayText.Add(TextStringManager.GetCommandTextString(CommandTextStrings.LookAtLocation, this));
+                displayText.Add(viewed.Viewed(this));
             }
             else
             {
-                displayText.Add(Name + " looks at " + viewed.Name);
+                displayText.Add(TextStringManager.GetCommandTextString(CommandTextStrings.LookAt, this, viewed.Name));
+                displayText.Add(viewed.Viewed(this));
             }
-
-            displayText.Add(viewed.Viewed(this));
-
+           
             return displayText;                                                
         }
 
