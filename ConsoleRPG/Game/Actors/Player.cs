@@ -140,7 +140,8 @@ namespace ConsoleRPG.Game.Actors
         {            
             if (commandClauseString == "")
             {
-                return new DisplayText("There is nothing to get!");
+                return TextStringManager.GetErrorTextString(ErrorTextStrings.NoGetTarget);
+                
             }
 
             var item = Location.GetItemMatchInLocation(commandClauseString);
@@ -149,11 +150,12 @@ namespace ConsoleRPG.Game.Actors
             {
                 Inventory.Add(item);
                 item.Location = null;
-                Location.Items.Remove(item);                                
-                return new DisplayText(Name + " gets the " + item.Name);
+                Location.Items.Remove(item);
+                return TextStringManager.GetCommandTextString(CommandTextStrings.GetItem, this, item.Name);                
             }
 
-            return new DisplayText("You cannot get that!");            
+            return TextStringManager.GetErrorTextString(ErrorTextStrings.InvalidGetTarget);
+            
         }
 
         /// <summary>
