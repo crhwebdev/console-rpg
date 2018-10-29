@@ -198,23 +198,24 @@ namespace ConsoleRPG.Game.Actors
 
             if(commandClauseString == "")
             {
-                return new DisplayText(Name + " cannot move there!");
+                return TextStringManager.GetCommandTextString(CommandTextStrings.CannotMoveToTarget, this);
+                
             }
 
             var destination = Location.GetExitMatchInLocation(commandClauseString);
 
             if (destination == null)
             {
-                return new DisplayText(Name + " cannot move there!");
+                return TextStringManager.GetCommandTextString(CommandTextStrings.CannotMoveToTarget, this);
             }
 
             if (IsHostile)
             {
-                displayText.Add("You cannot move while in combat!");
+                displayText.Add(TextStringManager.GetErrorTextString(ErrorTextStrings.CannotMoveInCombat));
             }
             else
             {
-                displayText.Add(Name + " moves...");
+                displayText.Add(TextStringManager.GetCommandTextString(CommandTextStrings.MoveToTargetLocation, this));
                 displayText.Add(destination.Enter(this));
             }
             
