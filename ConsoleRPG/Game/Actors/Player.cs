@@ -238,15 +238,15 @@ namespace ConsoleRPG.Game.Actors
 
             if(Inventory.Count < 1)
             {
-                inventoryDisplayTextLine.Add("You have nothing in your pack, Master.");
+                inventoryDisplayTextLine.Add(TextStringManager.GetCommandTextString(CommandTextStrings.InventoryEmpty, this).ToString());
             }
             else if(Inventory.Count == 1)
             {
-                inventoryDisplayTextLine.Add("Master, you have: " + Inventory[0].Name + ".");
+                inventoryDisplayTextLine.Add(TextStringManager.GetCommandTextString(CommandTextStrings.ShowInventory, this) + Inventory[0].Name + ".");
             }
             else
             {
-                inventoryDisplayTextLine.Add("Your Inventory, Master: ");
+                inventoryDisplayTextLine.Add(TextStringManager.GetCommandTextString(CommandTextStrings.ShowInventory, this).ToString());
 
                 var index = 0;
 

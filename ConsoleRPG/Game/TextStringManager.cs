@@ -29,7 +29,9 @@ public enum CommandTextStrings
     LookAt,
     LookAtLocation,
     CannotMoveToTarget,
-    MoveToTargetLocation
+    MoveToTargetLocation,
+    InventoryEmpty,
+    ShowInventory,
 };
 
 namespace ConsoleRPG.Game
@@ -61,7 +63,7 @@ namespace ConsoleRPG.Game
                 case ErrorTextStrings.InvalidLookTarget:
                     return new DisplayText("There's nothing to look at!");
                 case ErrorTextStrings.CannotMoveInCombat:
-                    return new DisplayText("You cannot move while in combat!");
+                    return new DisplayText("You cannot move while in combat!");                                
                 default:                    
                     return new DisplayText("No Such String");
             }
@@ -89,6 +91,10 @@ namespace ConsoleRPG.Game
                     return new DisplayText(actor.Name + " cannot move there!");
                 case CommandTextStrings.MoveToTargetLocation:
                     return new DisplayText(actor.Name + " moves...");
+                case CommandTextStrings.InventoryEmpty:
+                    return new DisplayText("You have nothing in your pack, Master.");
+                case CommandTextStrings.ShowInventory:
+                    return new DisplayText("Master, you have: ");
                 default:
                     return new DisplayText("No Such String");
             }
