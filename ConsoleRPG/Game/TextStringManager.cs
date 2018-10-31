@@ -16,7 +16,9 @@ public enum ErrorTextStrings
     NoGetTarget,
     InvalidGetTarget,
     InvalidLookTarget,
-    CannotMoveInCombat
+    CannotMoveInCombat,
+    InvalidUnequipTarget,
+    CannotUnequipTarget
 };
 
 public enum CommandTextStrings
@@ -32,6 +34,7 @@ public enum CommandTextStrings
     MoveToTargetLocation,
     InventoryEmpty,
     ShowInventory,
+    UnequipItem
 };
 
 namespace ConsoleRPG.Game
@@ -63,7 +66,11 @@ namespace ConsoleRPG.Game
                 case ErrorTextStrings.InvalidLookTarget:
                     return new DisplayText("There's nothing to look at!");
                 case ErrorTextStrings.CannotMoveInCombat:
-                    return new DisplayText("You cannot move while in combat!");                                
+                    return new DisplayText("You cannot move while in combat!");
+                case ErrorTextStrings.InvalidUnequipTarget:
+                    return new DisplayText("There is nothing to unequip!");
+                case ErrorTextStrings.CannotUnequipTarget:
+                    return new DisplayText("That is not equiped!");
                 default:                    
                     return new DisplayText("No Such String");
             }
@@ -95,6 +102,8 @@ namespace ConsoleRPG.Game
                     return new DisplayText("You have nothing in your pack, Master.");
                 case CommandTextStrings.ShowInventory:
                     return new DisplayText("Master, you have: ");
+                case CommandTextStrings.UnequipItem:
+                    return new DisplayText(actor.Name + " unequips the " + targetName);
                 default:
                     return new DisplayText("No Such String");
             }

@@ -287,7 +287,7 @@ namespace ConsoleRPG.Game.Actors
             var unequipDisplayText = new DisplayText();
             if (commandClauseString == "")
             {
-                return new DisplayText("There is nothing to unequip!");
+                return TextStringManager.GetErrorTextString(ErrorTextStrings.InvalidUnequipTarget);
             }
 
             //search for item in equipment slots
@@ -323,11 +323,11 @@ namespace ConsoleRPG.Game.Actors
 
                 RemoveItemBonusesFromStats(equipableItem);
                 
-                unequipDisplayText.Add(Name + " unequips the " + item.Name);
+                unequipDisplayText.Add(TextStringManager.GetCommandTextString(CommandTextStrings.UnequipItem, this, item.Name));
                 return unequipDisplayText;
             }
 
-            unequipDisplayText.Add("That is not equiped!");
+            unequipDisplayText.Add(TextStringManager.GetErrorTextString(ErrorTextStrings.CannotUnequipTarget));
 
             return unequipDisplayText;
         }
