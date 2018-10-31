@@ -34,7 +34,8 @@ public enum CommandTextStrings
     MoveToTargetLocation,
     InventoryEmpty,
     ShowInventory,
-    UnequipItem
+    UnequipItem,
+    SaySomething
 };
 
 namespace ConsoleRPG.Game
@@ -104,6 +105,8 @@ namespace ConsoleRPG.Game
                     return new DisplayText("Master, you have: ");
                 case CommandTextStrings.UnequipItem:
                     return new DisplayText(actor.Name + " unequips the " + targetName);
+                case CommandTextStrings.SaySomething:
+                    return new DisplayText(actor.Name + " says: '" + targetName + "'");
                 default:
                     return new DisplayText("No Such String");
             }

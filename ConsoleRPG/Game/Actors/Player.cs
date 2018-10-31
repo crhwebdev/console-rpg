@@ -224,7 +224,7 @@ namespace ConsoleRPG.Game.Actors
 
         public override DisplayText Say(string commandClauseString)
         {
-            return new DisplayText(Name + " says: '" + commandClauseString + "'");
+            return TextStringManager.GetCommandTextString(CommandTextStrings.SaySomething, this, commandClauseString);            
         }
 
         /// <summary>
