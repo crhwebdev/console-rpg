@@ -165,8 +165,8 @@ namespace ConsoleRPG.Game.Locations
             if (actor is Player)
             {
                 enterDisplayText.Add(new DisplayTextLine(Name, ConsoleColor.Red));
-                enterDisplayText.Add(actor.GetPersonalPronoun() + " enters " + Description);
-                            
+                enterDisplayText.Add(TextStringManager.GetGeneralTextString(GeneralTextStrings.ActorEntersLocation, actor, Description));
+                                            
                 //add list of npcs to DisplayText 
                 enterDisplayText += GetListOfActorsDisplay();              
 

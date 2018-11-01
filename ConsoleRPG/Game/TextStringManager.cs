@@ -38,6 +38,11 @@ public enum CommandTextStrings
     SaySomething
 };
 
+public enum GeneralTextStrings
+{
+    ActorEntersLocation
+};
+
 namespace ConsoleRPG.Game
 {
     public static class TextStringManager
@@ -112,5 +117,15 @@ namespace ConsoleRPG.Game
             }
         }
 
+        public static DisplayText GetGeneralTextString(GeneralTextStrings text, Actor actor, string targetText = "")
+        {
+            switch (text)
+            {
+                case GeneralTextStrings.ActorEntersLocation:
+                    return new DisplayText(actor.GetPersonalPronoun() + " enters " + targetText);
+                default:
+                    return new DisplayText("No Such String");
+            }
+        }
     }
 }
