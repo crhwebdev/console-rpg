@@ -189,13 +189,14 @@ namespace ConsoleRPG.Game.Locations
         /// <returns>A DisplayText object</returns>
         public virtual DisplayText Viewed(Actor viewer)
         {
-            var viewedDisplayText = new DisplayText(viewer.GetPersonalPronoun() + " sees " + Description);
-
+            var viewedDisplayText = new DisplayText();
+            viewedDisplayText.Add(TextStringManager.GetGeneralTextString(GeneralTextStrings.ActorViewsLocation, viewer, Description));
+                        
             //get list of npcs in room
             var npcListDisplayText = new DisplayText();
             foreach (var person in Actors)
             {
-                var personDisplayTextLine = new DisplayTextLine(person.Name + " is here");
+                var personDisplayTextLine = new DisplayTextLine(TextStringManager.GetGeneralTextString(GeneralTextStrings.ActorIsHere, person).ToString());                                
                 npcListDisplayText.Add(personDisplayTextLine);
             }
            

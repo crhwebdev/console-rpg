@@ -40,7 +40,9 @@ public enum CommandTextStrings
 
 public enum GeneralTextStrings
 {
-    ActorEntersLocation
+    ActorEntersLocation,
+    ActorViewsLocation,
+    ActorIsHere
 };
 
 namespace ConsoleRPG.Game
@@ -123,6 +125,10 @@ namespace ConsoleRPG.Game
             {
                 case GeneralTextStrings.ActorEntersLocation:
                     return new DisplayText(actor.GetPersonalPronoun() + " enters " + targetText);
+                case GeneralTextStrings.ActorViewsLocation:
+                    return new DisplayText(actor.GetPersonalPronoun() + " sees " + targetText);
+                case GeneralTextStrings.ActorIsHere:
+                    return new DisplayText(actor.Name + " is here");
                 default:
                     return new DisplayText("No Such String");
             }
