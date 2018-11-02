@@ -84,22 +84,22 @@ namespace ConsoleRPG.Game
             }
         }
 
-        public static DisplayText GetCommandTextString(CommandTextStrings text, Actor actor, string targetName = "")
+        public static DisplayText GetCommandTextString(CommandTextStrings text, Actor actor, string targetText = "")
         {
             switch (text)
             {
                 case CommandTextStrings.AttackExecutedOnTarget:
-                    return new DisplayText(actor.Name + " attacks " + targetName + "!");
+                    return new DisplayText(actor.Name + " attacks " + targetText + "!");
                 case CommandTextStrings.AttackFailTargetNotFound:
                     return new DisplayText(actor.Name + " cannot attack that!");
                 case CommandTextStrings.DropItem:
-                    return new DisplayText(actor.Name + " drops the " + targetName);
+                    return new DisplayText(actor.Name + " drops the " + targetText);
                 case CommandTextStrings.EquipItem:
-                    return new DisplayText(actor.Name + " equips the " + targetName);
+                    return new DisplayText(actor.Name + " equips the " + targetText);
                 case CommandTextStrings.GetItem:
-                    return new DisplayText(actor.Name + " gets the " + targetName);
+                    return new DisplayText(actor.Name + " gets the " + targetText);
                 case CommandTextStrings.LookAt:
-                    return new DisplayText(actor.Name + " looks at " + targetName);
+                    return new DisplayText(actor.Name + " looks at " + targetText);
                 case CommandTextStrings.LookAtLocation:
                     return new DisplayText(actor.Name + " looks around...");
                 case CommandTextStrings.CannotMoveToTarget:
@@ -111,9 +111,9 @@ namespace ConsoleRPG.Game
                 case CommandTextStrings.ShowInventory:
                     return new DisplayText("Master, you have: ");
                 case CommandTextStrings.UnequipItem:
-                    return new DisplayText(actor.Name + " unequips the " + targetName);
+                    return new DisplayText(actor.Name + " unequips the " + targetText);
                 case CommandTextStrings.SaySomething:
-                    return new DisplayText(actor.Name + " says: '" + targetName + "'");
+                    return new DisplayText(actor.Name + " says: '" + targetText + "'");
                 default:
                     return new DisplayText("No Such String");
             }
