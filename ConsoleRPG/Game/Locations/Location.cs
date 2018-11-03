@@ -191,18 +191,10 @@ namespace ConsoleRPG.Game.Locations
         {
             var viewedDisplayText = new DisplayText();
             viewedDisplayText.Add(TextStringManager.GetGeneralTextString(GeneralTextStrings.ActorViewsLocation, viewer, Description));
-                        
-            //get list of npcs in room
-            var npcListDisplayText = new DisplayText();
-            foreach (var person in Actors)
-            {
-                var personDisplayTextLine = new DisplayTextLine(TextStringManager.GetGeneralTextString(GeneralTextStrings.ActorIsHere, person).ToString());                                
-                npcListDisplayText.Add(personDisplayTextLine);
-            }
-           
+                                    
             //add list of npcs to DisplayText 
             viewedDisplayText += GetListOfActorsDisplay();
-
+                                   
             //add list of items to DisplayText
             viewedDisplayText += GetListOfItemsDisplay();
 
@@ -222,9 +214,12 @@ namespace ConsoleRPG.Game.Locations
         {
             //get list of npcs in room
             var npcListDisplayText = new DisplayText();
+
             foreach (var person in Actors)
             {
-                var personDisplayTextLine = new DisplayTextLine(person.Name + " is here");
+                //var personDisplayTextLine = new DisplayTextLine(person.Name + " is here");
+                //npcListDisplayText.Add(personDisplayTextLine);
+                var personDisplayTextLine = new DisplayTextLine(TextStringManager.GetGeneralTextString(GeneralTextStrings.ActorIsHere, person).ToString());
                 npcListDisplayText.Add(personDisplayTextLine);
             }
 
@@ -248,8 +243,6 @@ namespace ConsoleRPG.Game.Locations
             }
                                     
             return itemListDisplayText;
-        }
-
-        
+        }        
     }
 }
