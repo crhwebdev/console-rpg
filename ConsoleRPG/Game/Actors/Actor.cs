@@ -23,12 +23,22 @@ namespace ConsoleRPG.Game.Actors
             Sex = Sexes.Neuter;
             Inventory = new List<Item>();
             IsHostile = false;
+            _actorAI = ActorAI.Instance();
+        }
+
+        public Actor(string name, IActorAI actorAI)
+        {
+            Name = name;
+            Description = "an entity";
+            Sex = Sexes.Neuter;
+            Inventory = new List<Item>();
+            IsHostile = false;
+            _actorAI = actorAI;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PUBLIC PROPERTIES                          
-        //////////////////////////////////////////////////////////////////////////////////////// 
-
+        ////////////////////////////////////////////////////////////////////////////////////////         
         public virtual string Name { get; set; }
         public virtual Sexes Sex { get; set; }
         public virtual string Description { get; set; }
@@ -58,6 +68,10 @@ namespace ConsoleRPG.Game.Actors
         //Actor State
         public virtual bool IsHostile { get; set; }
 
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //   PROTECTED PROPERTIES                          
+        ////////////////////////////////////////////////////////////////////////////////////////         
+        protected IActorAI _actorAI { get; set; }
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PUBLIC METHODS                          
