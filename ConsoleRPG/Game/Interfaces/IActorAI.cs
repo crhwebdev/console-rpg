@@ -8,7 +8,7 @@ namespace ConsoleRPG.Game.Interfaces
 {
     public interface IActorAI
     {
-        DisplayText DetermineCombatRound(Actor target);
+        DisplayText DetermineCombatRound(Actor host, Actor target);
         
     }
 }

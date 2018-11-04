@@ -42,9 +42,13 @@ namespace ConsoleRPG.Game
             return _instance;
         }
 
-        public DisplayText DetermineCombatRound(Actor target)
+        public DisplayText DetermineCombatRound(Actor host, Actor target)
         {
             return new DisplayText("DetermineCombatRound called!");
+
+            //checks that target has a location
+            //checks that location of host Actor is same as target
+
         }
 
         
