@@ -28,6 +28,11 @@ namespace ConsoleRPG.Game.Actors
         {
             return new DisplayText(Name + " attacks!");
         }
+
+        public DisplayText Attacked(Actor attacker)
+        {
+            return new DisplayText("I was attacked");
+        }
     }
 
   
