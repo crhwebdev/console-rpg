@@ -18,6 +18,7 @@ namespace ConsoleRPG.Game.Locations
         {
             Name = name;
             Actors = new List<Actor>();
+            Hostiles = new List<Actor>();
             Items = new List<Item>();
         }
 
@@ -28,6 +29,7 @@ namespace ConsoleRPG.Game.Locations
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Actor> Actors { get; set; }
+        public List<Actor> Hostiles { get; set; }
         public List<Item> Items { get; set; }
 
         public Location ExitNorth { get; set; } 
