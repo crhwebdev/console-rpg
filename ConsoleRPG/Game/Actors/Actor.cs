@@ -23,18 +23,18 @@ namespace ConsoleRPG.Game.Actors
             Sex = Sexes.Neuter;
             Inventory = new List<Item>();
             IsHostile = false;
-            _actorAI = ActorAI.Instance();
+            
         }
 
-        public Actor(string name, IActorAI actorAI)
-        {
-            Name = name;
-            Description = "an entity";
-            Sex = Sexes.Neuter;
-            Inventory = new List<Item>();
-            IsHostile = false;
-            _actorAI = actorAI;
-        }
+        //public Actor(string name, IActorAI actorAI)
+        //{
+        //    Name = name;
+        //    Description = "an entity";
+        //    Sex = Sexes.Neuter;
+        //    Inventory = new List<Item>();
+        //    IsHostile = false;
+            
+        //}
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PUBLIC PROPERTIES                          

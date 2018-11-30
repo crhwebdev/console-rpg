@@ -1,4 +1,5 @@
-﻿using ConsoleRPG.Game.Locations;
+﻿using ConsoleRPG.Game.Interfaces;
+using ConsoleRPG.Game.Locations;
 using ConsoleRPG.Game.Props;
 using ConsoleRPG.Game.Props.Interfaces;
 using ConsoleRPG.System;
@@ -15,7 +16,15 @@ namespace ConsoleRPG.Game.Actors
         //   CONSTRUCTOR
         ////////////////////////////////////////////////////////////////////////////////////////   
         
-        public Player(string name) : base(name) { }
+        public Player(string name) : base(name)
+        {
+            _actorAI = ActorAI.Instance(); //TODO: change this once an NPCAI class is created
+        }
+
+        public Player(string name, IActorAI actorAI) : base(name)
+        {
+            _actorAI = actorAI;
+        }
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PUBLIC PROPS                          
