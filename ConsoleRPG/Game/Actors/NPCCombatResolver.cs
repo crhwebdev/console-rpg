@@ -5,22 +5,22 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleRPG.Game
+namespace ConsoleRPG.Game.Actors
 {
-    public class NPCAI : IActorAI
+    public class NPCCombatResolver : ICombatResolver
     {
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PROTECTED CONSTRUCTOR  - Is a Singelton                        
         //////////////////////////////////////////////////////////////////////////////////////// 
 
-        protected NPCAI(){}
+        protected NPCCombatResolver(){}
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PRIVATE FIELDS                          
         //////////////////////////////////////////////////////////////////////////////////////// 
 
-        private static NPCAI _instance = null;        
+        private static NPCCombatResolver _instance = null;        
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PUBLIC METHODS                          
@@ -32,11 +32,11 @@ namespace ConsoleRPG.Game
         /// </summary>
         /// <param name="game">reference to GameEngine</param>
         /// <returns>Instance of CombatManager</returns>
-        public static NPCAI Instance()
+        public static NPCCombatResolver Instance()
         {
             if (_instance == null)
             {
-                _instance = new NPCAI();
+                _instance = new NPCCombatResolver();
             }
 
             return _instance;

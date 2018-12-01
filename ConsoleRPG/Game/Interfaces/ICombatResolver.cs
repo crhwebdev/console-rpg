@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ConsoleRPG.Game.Interfaces
 {
-    public interface IActorAI
+    public interface ICombatResolver
     {
         DisplayText DetermineCombatRound(Actor host, Actor target);
         
