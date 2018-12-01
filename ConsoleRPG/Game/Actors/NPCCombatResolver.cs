@@ -7,20 +7,20 @@ using System.Text;
 
 namespace ConsoleRPG.Game
 {
-    public class NPCCombatResolver : IActorAI
+    public class NPCAI : IActorAI
     {
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PROTECTED CONSTRUCTOR  - Is a Singelton                        
         //////////////////////////////////////////////////////////////////////////////////////// 
 
-        protected NPCCombatResolver(){}
+        protected NPCAI(){}
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PRIVATE FIELDS                          
         //////////////////////////////////////////////////////////////////////////////////////// 
 
-        private static NPCCombatResolver _instance = null;        
+        private static NPCAI _instance = null;        
 
         ////////////////////////////////////////////////////////////////////////////////////////
         //   PUBLIC METHODS                          
@@ -32,11 +32,11 @@ namespace ConsoleRPG.Game
         /// </summary>
         /// <param name="game">reference to GameEngine</param>
         /// <returns>Instance of CombatManager</returns>
-        public static NPCCombatResolver Instance()
+        public static NPCAI Instance()
         {
             if (_instance == null)
             {
-                _instance = new NPCCombatResolver();
+                _instance = new NPCAI();
             }
 
             return _instance;
