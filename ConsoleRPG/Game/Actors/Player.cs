@@ -18,7 +18,7 @@ namespace ConsoleRPG.Game.Actors
         
         public Player(string name) : base(name)
         {
-            _actorAI = NPCCombatResolver.Instance(); //TODO: change this once an NPCAI class is created
+            _actorAI = PlayerCombatResolver.Instance();
         }
 
         public Player(string name, ICombatResolver actorAI) : base(name)
